@@ -1,13 +1,20 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 const App = () => {
     return (
-        <div>
-            <Typography variant="h1">
-                Hello, World!
-            </Typography>
-        </div>
+        <>
+            <CssBaseline />
+            <AppBar position="relative">
+                <Toolbar>
+                    <MenuBookIcon />
+                    <Typography variant="h6">
+                        Eatsy Recipe App
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+        </>
     );
 }
 
