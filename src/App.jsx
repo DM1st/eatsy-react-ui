@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 const cards = [1,2,3,4,5,6,7,8,9];
@@ -68,6 +68,16 @@ const App = () => {
                 </Grid>
             </Container>
         </main>
+        <footer sx={{bgcolor: 'background.paper', p: 6}}>
+            <Typography variant='h6' align = 'center' gutterBottom>
+                Created by DM1st.
+            </Typography>
+            <Typography variant='subtitle1' align='center' color='textSecondary'>
+                <Link href="https://github.com/DM1st/eatsy-react-ui">
+                    The Source Code
+                </Link>
+            </Typography>
+        </footer>
     </>;
 }
 
