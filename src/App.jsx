@@ -44,7 +44,7 @@ const App = () => {
             <Container maxWidth="md" sx={{padding: '20px 0'}}>
                 <Grid container spacing={4}>
                     {cards.map((card) => (
-                        <Grid item key={card}>
+                        <Grid item key={card} xs={12} sm={6} md={4}>
                         <Card sx={{height: '100%', display: 'flex', flexDirection: 'column'}}>
                             <CardMedia sx={{paddingTop: '56.25%' }} //16:9
                             image="https://source.unsplash.com/random"
