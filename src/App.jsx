@@ -41,6 +41,30 @@ const App = () => {
                     </div>
                 </Container>
             </Box>
+            <Container maxWidth="md" sx={{padding: '20px 0'}}>
+                <Grid container spacing={4}>
+                    <Grid item>
+                        <Card sx={{height: '100%', display: 'flex', flexDirection: 'column'}}>
+                            <CardMedia sx={{paddingTop: '56.25%' }} //16:9
+                            image="https://source.unsplash.com/random"
+                            title="Image title"
+                            />
+                            <CardContent sx= {{flexGrow: 1}}>
+                                <Typography gutterBottom variant='h5'>
+                                    Recipe Title
+                                </Typography>
+                                <Typography>
+                                    This is a recipe card. You can use this section to describe the recipe. 
+                                </Typography>
+                            </CardContent>   
+                            <CardActions>
+                                <Button size="small" color="primary">View</Button>
+                                <Button size="small" color="primary">Edit</Button>
+                            </CardActions>                         
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Container>
         </main>
     </>;
 }
