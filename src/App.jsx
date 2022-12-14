@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
-
+const cards = [1,2,3,4,5,6,7,8,9];
 
 const App = () => {
 
@@ -43,7 +43,8 @@ const App = () => {
             </Box>
             <Container maxWidth="md" sx={{padding: '20px 0'}}>
                 <Grid container spacing={4}>
-                    <Grid item>
+                    {cards.map((card) => (
+                        <Grid item key={card}>
                         <Card sx={{height: '100%', display: 'flex', flexDirection: 'column'}}>
                             <CardMedia sx={{paddingTop: '56.25%' }} //16:9
                             image="https://source.unsplash.com/random"
@@ -63,6 +64,7 @@ const App = () => {
                             </CardActions>                         
                         </Card>
                     </Grid>
+                    ))} 
                 </Grid>
             </Container>
         </main>
