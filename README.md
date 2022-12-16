@@ -93,10 +93,11 @@ Using docker compose for a dev Docker image (app hot-reload)
 
 A separate dockerfile exists for use in production.
 Using the production Dockerfile, build and tag the Docker image:
-`docker build -f Dockerfile.prod -t sample:prod .`
+`docker build -f dockerfile.prod -t sample:prod .`
 
 Spin up the container:
 `docker run -it --rm -p 1337:80 sample:prod`
 
-
+Using docker compose for the prod docker image
+`docker-compose -f docker-compose.prod.yml up -d --build`
 
