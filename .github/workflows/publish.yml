@@ -24,4 +24,4 @@ jobs:
       - name: Build and push the eatsy-react-ui Docker image
         run: |
           docker-compose -f docker-compose.prod.yml up -d
-          docker push ${{secrets.DOCKER_USER}}/eatsy-api-docker
+          docker push ${{secrets.DOCKER_USER}}/eatsy-react-ui-docker
