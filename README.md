@@ -85,6 +85,18 @@ docker run \
     -e CHOKIDAR_USEPOLLING=true \
     sample:dev
 ```
+Using docker compose for a dev Docker image (app hot-reload)
+
+`docker-compose up -d --build`
+
+`docker-compose stop`
+
+A separate dockerfile exists for use in production.
+Using the production Dockerfile, build and tag the Docker image:
+`docker build -f Dockerfile.prod -t sample:prod .`
+
+Spin up the container:
+`docker run -it --rm -p 1337:80 sample:prod`
 
 
 
