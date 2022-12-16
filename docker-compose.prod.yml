@@ -4,6 +4,7 @@ services:
 
   sample-prod:
     container_name: sample-prod
+    image: dm1st/eatsy-react-ui-docker:latest
     build:
       context: .
       dockerfile: dockerfile.prod
