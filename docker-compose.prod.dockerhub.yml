@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+
+  sample-prod:
+    container_name: sample-prod
+    image: dm1st/eatsy-react-ui-docker:latest
+    ports:
+      - '1337:80'
