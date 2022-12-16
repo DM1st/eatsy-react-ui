@@ -1,0 +1,27 @@
+# Github workflow file to execute the docker-compose.prod.yml file (stored in project root) which will
+# build the docker image (From the dockerfile).
+# The workflow then pushes the built image to dockerhub.
+# Publish.yml and docker-compose.prod.yml not used to deployment of live instance to Render.com (only dockerfile.prod at project root)
+name: Create and publish a Docker image
+on:
+  push:
+    branches: [ 'develop' ]
+
+jobs:
+  build-and-publish-eatsy-api-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login to the Docker Container registry
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}} #GITHUB secrets
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Build and push the eatsy-react-ui Docker image
+        run: |
+          docker-compose -f docker-compose.prod.yml up -d
+          docker push ${{secrets.DOCKER_USER}}/eatsy-api-docker
