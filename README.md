@@ -1,10 +1,75 @@
+# Eatsy React UI
+
+A React application to allow users to interact with the [Eatsy App Service](https://github.com/DM1st/eatsy) to for creating, viewing, editing and deleting your favourite recipes.
+
 [![Create and publish a Docker image](https://github.com/DM1st/eatsy-react-ui/actions/workflows/publish.yml/badge.svg)](https://github.com/DM1st/eatsy-react-ui/actions/workflows/publish.yml)
 
-# Getting Started with Create React App
+A live demo version of the Eatsy React UI is deployed on Render.com and can be found [here](https://eatsy-ui.onrender.com/). Please note, it uses free-tier services so will take a few minutes for the service to spin up.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and the built Production Docker image of the Eatsy React UI can be found on DockerHub [here](https://hub.docker.com/r/dm1st/eatsy-react-ui-docker)
 
-## Available Scripts
+## Getting started
+
+The easiest way to deploy your own instance of the application is by using the built Production Docker image of the Eatsy React UI found on Dockerhub. To utilise this:
+
+- Transfer the `docker-compose.prod.dockerhub.yml` file (from the project root) to your machine where you will be running the service. Your machine will need Docker and Docker-Compose installed.
+- Run the following command in the directory where you have placed the docker-compose.prod.dockerhub.yml file to run the application:
+
+```
+docker-compose -f docker-compose.prod.dockerhub.yml up -d
+```
+
+However, if required, there are other Docker file options to deploy your own instance via Docker:
+
+
+### Option 1) Build and Tag a dev Docker image (app hot-reload)
+
+`docker build -t react-ui:dev .`
+
+Then, spin up the container once the build is done:
+
+```
+docker run \
+    -it \
+    --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    -p 3001:3000 \
+    -e CHOKIDAR_USEPOLLING=true \
+    react-ui:dev
+```
+For the above command: 
+- docker run creates and runs a new container instance from the image.
+- `-it` starts the container in interactive mode. (react-scripts exits after start-up which will cause the container to exit, therefore interactive is needed).
+- `-rm` removes the container and volumes after the container exits
+- `-v ${PWD}:/app \` mounts the contaner at "/app"
+- we need to use the container version of "node_modules" so configure a volume with `-v /app/node_modules`
+- -p 3001:3000 exposes port 3000 to other Docker containers on the same network (for inter-container communication) and port 3001 to the host.
+- `-e CHOKIDAR_USEPOLLING=true` enables a polling mechanism via chokidar (which wraps fs.watch, fs.watchFile, and fsevents) so that hot-reloading will work.
+
+### Option 2) Using docker-compose for a dev Docker image (app hot-reload)
+
+Spin up: `docker-compose up -d --build`
+
+Spin down: `docker-compose stop`
+
+### A separate dockerfile exists for use in production.
+
+### Option 3) Using the production Dockerfile, 
+
+Build and tag the Docker image: `docker build -f dockerfile.prod -t react-ui:prod .`
+
+Spin up the container: `docker run -it --rm -p 1337:80 react-ui:prod`
+
+- This is the dockerfile that is used to deploy the application on Render.com
+
+### Option 4) Using docker-compose for the prod docker image
+
+Spin up: `docker-compose -f docker-compose.prod.yml up -d --build`
+
+Spin down: `docker-compose stop`
+
+## Available Scripts for building the React App locally
 
 In the project directory, you can run:
 
@@ -70,46 +135,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-### Build and Tag a dev Docker image (app hot-reload)
-`docker build -t sample:dev .`
-
-Then, spin up the container once the build is done:
-
-```
-docker run \
-    -it \
-    --rm \
-    -v ${PWD}:/app \
-    -v /app/node_modules \
-    -p 3001:3000 \
-    -e CHOKIDAR_USEPOLLING=true \
-    sample:dev
-```
-```
-* docker run creates and runs a new container instance from the image.
-* `-it` starts the container in interactive mode. (react-scripts exits after start-up which will cause the container to exit, therefore interactive is needed).
-* `-rm` removes the container and volumes after the container exits
-* `-v ${PWD}:/app \` mounts the contaner at "/app"
-* we need to use the container version of "node_modules" so configure a volume with `-v /app/node_modules`
-* -p 3001:3000 exposes port 3000 to other Docker containers on the same network (for inter-container communication) and port 3001 to the host.
-* `-e CHOKIDAR_USEPOLLING=true` enables a polling mechanism via chokidar (which wraps fs.watch, fs.watchFile, and fsevents) so that hot-reloading will work.
-```
-
-Using docker compose for a dev Docker image (app hot-reload)
-
-`docker-compose up -d --build`
-
-`docker-compose stop`
-
-A separate dockerfile exists for use in production.
-Using the production Dockerfile, build and tag the Docker image:
-`docker build -f dockerfile.prod -t sample:prod .`
-
-Spin up the container:
-`docker run -it --rm -p 1337:80 sample:prod`
-
-Using docker compose for the prod docker image
-`docker-compose -f docker-compose.prod.yml up -d --build`
-
