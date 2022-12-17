@@ -1,12 +1,15 @@
+#Use this Docker-Compose file the build the Eatsy UI image using the prod dockerfile in the root of the project.
 version: '3.7'
 
 services:
 
-  sample-prod:
-    container_name: sample-prod
+  ui-prod-service:
+    #builds the Docker image from the dockerfile.prod in the root of this project specified by "." and applies the specified tag with the image parameter
+    container_name: ui-prod-service
     image: dm1st/eatsy-react-ui-docker:latest
     build:
       context: .
       dockerfile: dockerfile.prod
+    #Tells Docker to expose the UI's container port 1337 to the host port 80
     ports:
       - '1337:80'

@@ -1,3 +1,5 @@
+#Build and tag a development docker image (with application hot reloading)
+
 # pull official base image
 FROM node:13.12.0-alpine
 

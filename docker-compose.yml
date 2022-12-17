@@ -1,16 +1,18 @@
+#Use this Docker-Compose file the build the Eatsy UI dev image using the dockerfile in the root of the project.
 version: '3.7'
 
 services:
-
-  sample:
-    container_name: sample
+  #builds the Docker image from the dockerfile in the root of this project specified by "." 
+  ui-dev-service:
+    container_name: ui-dev-service
     build:
       context: .
       dockerfile: dockerfile
+    #Volumes needed so that node_modules directory isn't overwritten at container runtime.  
     volumes:
       - '.:/app'
       - '/app/node_modules'
-    ports:
+    ports: #Expose port 3001 on the host and port 3000 for internal comms
       - 3001:3000
-    environment:
+    environment: #To enable app hot reloading
       - CHOKIDAR_USEPOLLING=true

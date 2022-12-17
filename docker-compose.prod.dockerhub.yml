@@ -1,9 +1,10 @@
+#Use this docker compose config for pulling the built image of eatsy-react-ui service on dockerhub
 version: '3.7'
 
 services:
 
-  sample-prod:
-    container_name: sample-prod
+  ui-prod-prod:
+    container_name: ui-prod-service
     image: dm1st/eatsy-react-ui-docker:latest
     ports:
       - '1337:80'

@@ -87,6 +87,16 @@ docker run \
     -e CHOKIDAR_USEPOLLING=true \
     sample:dev
 ```
+```
+* docker run creates and runs a new container instance from the image.
+* `-it` starts the container in interactive mode. (react-scripts exits after start-up which will cause the container to exit, therefore interactive is needed).
+* `-rm` removes the container and volumes after the container exits
+* `-v ${PWD}:/app \` mounts the contaner at "/app"
+* we need to use the container version of "node_modules" so configure a volume with `-v /app/node_modules`
+* -p 3001:3000 exposes port 3000 to other Docker containers on the same network (for inter-container communication) and port 3001 to the host.
+* `-e CHOKIDAR_USEPOLLING=true` enables a polling mechanism via chokidar (which wraps fs.watch, fs.watchFile, and fsevents) so that hot-reloading will work.
+```
+
 Using docker compose for a dev Docker image (app hot-reload)
 
 `docker-compose up -d --build`

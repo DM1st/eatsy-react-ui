@@ -1,3 +1,5 @@
+#Dockerfile for Optimised Production build
+
 # build environment
 FROM node:13.12.0-alpine as build
 WORKDIR /app
@@ -14,3 +16,9 @@ FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80 1337
 CMD ["nginx", "-g", "daemon off;"]
+
+#Multistage build pattern to create a temporary image used for building 
+#the artefact (the production-ready React static files) that
+#is then copied over to the production image.
+#Temporary build image is discarded along with original files and folders.
+#This produces a lean production-ready image.
