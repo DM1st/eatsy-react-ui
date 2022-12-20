@@ -4,7 +4,7 @@ version: '3.7'
 services:
   #builds the Docker image from the dockerfile in the root of this project specified by "." 
   ui-dev-service:
-    container_name: ui-dev-service
+    image: react-ui:dev
     build:
       context: .
       dockerfile: dockerfile
@@ -12,7 +12,9 @@ services:
     volumes:
       - '.:/app'
       - '/app/node_modules'
-    ports: #Expose port 3001 on the host and port 3000 for internal comms
+    #Expose port 3001 on the host and port 3000 for internal comms
+    ports: 
       - 3001:3000
-    environment: #To enable app hot reloading
+    #To enable app hot reloading
+    environment: 
       - CHOKIDAR_USEPOLLING=true

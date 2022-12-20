@@ -3,8 +3,7 @@ version: '3.7'
 
 services:
 
-  ui-prod-prod:
-    container_name: ui-prod-service
+  ui-prod-service:
     image: dm1st/eatsy-react-ui-docker:latest
     ports:
       - '1337:80'

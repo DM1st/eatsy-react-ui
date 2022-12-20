@@ -5,7 +5,6 @@ services:
 
   ui-prod-service:
     #builds the Docker image from the dockerfile.prod in the root of this project specified by "." and applies the specified tag with the image parameter
-    container_name: ui-prod-service
     image: dm1st/eatsy-react-ui-docker:latest
     build:
       context: .
