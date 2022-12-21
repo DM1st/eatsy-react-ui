@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Stack} from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -21,12 +21,15 @@ const App = () => {
     return <>
         <CssBaseline />
         <AppBar position="relative">
-            <Toolbar>
-                <MenuBookIcon sx={{marginRight: '20px'}} />
+            <Grid container direction='row' alignItems='center' justifyContent='space-between'>
+                <Toolbar>
+                    <MenuBookIcon sx={{marginRight:'20px'}} />
+                </Toolbar>
                 <Typography variant="h6">
-                    Eatsy Recipe App
+                        Eatsy Recipe App
                 </Typography>
-            </Toolbar>
+                <Toolbar sx={{marginRight:'40px'}}  />
+            </Grid>
         </AppBar>
         <main>
         <Fab sx={{ 
@@ -39,10 +42,7 @@ const App = () => {
             <AddIcon />
         </Fab>
             <Box sx={{bgcolor: 'background.paper'}}>
-                <Container sx={{marginTop: '40px'}} maxWidth="sm">
-                    <Typography variant="h2" align="center" color="textPrimary" gutterBottom>
-                        Eatsy Recipe App
-                    </Typography>
+                <Container sx={{marginTop: '20px'}} maxWidth="sm">
                     <Typography variant="h5" align="center" color="textSecondary" paragraph>
                         Share your best creations or try the recommendations from other people!
                     </Typography>
