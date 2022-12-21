@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { styled } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Stack, Autocomplete, TextField, CardHeader} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -12,6 +12,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import LocalPizzaSharpIcon from '@mui/icons-material/LocalPizzaSharp';
 
 
 const cards = [1,2,3,4,5,6,7,8,9];
@@ -107,12 +108,21 @@ const App = () => {
                             <CardHeader
                                 avatar={
                                         <Avatar sx={{ bgcolor: green[500] }} aria-label="recipe">
-                                        <MenuBookIcon/>
+                                        <LocalPizzaSharpIcon/>
                                         </Avatar>
                                     }
                                     title="Recipe Title"
                                     subheader="December 21, 2022">
-
+                                        <CardActions>
+                                            <Button onClick={() => setCountUp(countUp + 1)}>
+                                                <ThumbUpIcon />
+                                                {`${countUp === 0 ? ' ' : countUp}`} 
+                                            </Button>
+                                            <Button onClick={() => setCountDown(countDown +1)}>
+                                                <ThumbDownIcon />
+                                                {`${countDown === 0 ? ' ' : countDown}`}
+                                            </Button>  
+                                        </CardActions>
                             </CardHeader>
                             <CardMedia sx={{paddingTop: '56.25%' }} //16:9
                             image="https://source.unsplash.com/random"
