@@ -41,6 +41,8 @@ const ExpandMore = styled((props) => {
 
 const App = () => {
 
+    let author ='Uploader: DM1st';
+    
     const [countUp, setCountUp] = useState(0)
     const [countDown, setCountDown] = useState(0)
 
@@ -90,8 +92,7 @@ const App = () => {
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
-                                            label="filterSelectedOptions"
-                                            placeholder="Dessert"
+                                            label="filter by tags"                                   
                                         />
                                     )}
                                 />
@@ -112,18 +113,7 @@ const App = () => {
                                         </Avatar>
                                     }
                                     title="Recipe Title"
-                                    subheader="December 21, 2022">
-                                        <CardActions>
-                                            <Button onClick={() => setCountUp(countUp + 1)}>
-                                                <ThumbUpIcon />
-                                                {`${countUp === 0 ? ' ' : countUp}`} 
-                                            </Button>
-                                            <Button onClick={() => setCountDown(countDown +1)}>
-                                                <ThumbDownIcon />
-                                                {`${countDown === 0 ? ' ' : countDown}`}
-                                            </Button>  
-                                        </CardActions>
-                            </CardHeader>
+                                    subheader= {author} />
                             <CardMedia sx={{paddingTop: '56.25%' }} //16:9
                             image="https://source.unsplash.com/random"
                             title="Image title"
@@ -134,9 +124,6 @@ const App = () => {
                                 </Typography>
                             </CardContent>   
                             <CardActions disableSpacing>
-                                <IconButton aria-label="add to favorites">
-                                    <FavoriteIcon />
-                                </IconButton>
                                 <IconButton aria-label="share">
                                     <ShareIcon />
                                 </IconButton> 
