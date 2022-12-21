@@ -76,7 +76,7 @@ const App = () => {
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
                     <Typography variant="body1" align="center" color="textSecondary" paragraph>
-                        Share your best creations or try something new!
+                        Share your best recipes with Eatsy or try something new!
                     </Typography>
                     <div >
                         <Grid sx={{marginTop: '8px'}} justifyContent="center">
