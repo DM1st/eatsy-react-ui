@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { styled } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -45,8 +45,8 @@ const App = () => {
 
     let author ='Uploader: DM1st';
     
-    const [countUp, setCountUp] = useState(0)
-    const [countDown, setCountDown] = useState(0)
+    const [countUp, setCountUp] = useState(5)
+    const [countDown, setCountDown] = useState(2)
 
     const [expanded, setExpanded] = React.useState(false);
 
@@ -71,11 +71,12 @@ const App = () => {
                         Eatsy Recipe App
                 </Typography>
                 <Toolbar sx={{paddingTop:'4px'}}>
-                    <iconButton >
-                        <InfoOutlinedIcon />
-                    </iconButton> 
+                    <Tooltip title= "Eatsy is an online recipe book to allow users to find, create and share their favourite recipes with other cooking and baking enthusiasts!">
+                        <iconButton >
+                            <InfoOutlinedIcon />
+                        </iconButton> 
+                    </Tooltip>
                 </Toolbar>
-                
             </Grid>
         </AppBar>
         <main>
@@ -90,9 +91,6 @@ const App = () => {
         </Fab>
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
-                    <Typography variant="body1" align="center" color="textSecondary" paragraph>
-                        Share your best recipes with Eatsy or try something new!
-                    </Typography>
                     <div >
                     <Tabs sx={{padding:'0px', margin:'0px'}}  value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
                         <Tab icon={<LocalOfferSharpIcon />} 
