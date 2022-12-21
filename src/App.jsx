@@ -5,6 +5,17 @@ import AddIcon from '@mui/icons-material/Add';
 
 const cards = [1,2,3,4,5,6,7,8,9];
 
+const tags = [
+    {tag:'Dessert'},
+    {tag:'Cake'},
+    {tag:'Cake'},
+    {tag:'Food'},
+    {tag:'Drink'},
+    {tag:'Healthy'},
+    {tag:'Slow'},
+
+]
+
 const App = () => {
 
     return <>
