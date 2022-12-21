@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Stack, Autocomplete, TextField} from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+
 
 const cards = [1,2,3,4,5,6,7,8,9];
 
@@ -17,6 +20,9 @@ const tags = [
 ]
 
 const App = () => {
+
+    const [countUp, setCountUp] = useState(0)
+    const [countDown, setCountDown] = useState(0)
 
     return <>
         <CssBaseline />
@@ -87,7 +93,15 @@ const App = () => {
                             </CardContent>   
                             <CardActions>
                                 <Button size="small" color="primary">View</Button>
-                                <Button size="small" color="primary">Edit</Button>
+                                <Button onClick={() => setCountUp(countUp + 1)}>
+                                    <ThumbUpIcon />
+                                    {`${countUp === 0 ? '' : countUp}`} 
+                                </Button>
+                                <Button onClick={() => setCountDown(countDown +1)}>
+                                    <ThumbDownIcon />
+                                    {`${countDown === 0 ? ' ' : countDown}`}
+                                </Button>
+                                
                             </CardActions>                         
                         </Card>
                     </Grid>
