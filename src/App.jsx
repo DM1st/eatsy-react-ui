@@ -43,8 +43,8 @@ const App = () => {
         </Fab>
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
-                    <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                        Share your best creations or try the recommendations from other people!
+                    <Typography variant="body1" align="center" color="textSecondary" paragraph>
+                        Share your best creations or try something new!
                     </Typography>
                     <div >
                         <Grid sx={{marginTop: '8px'}} justifyContent="center">
