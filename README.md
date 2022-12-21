@@ -32,6 +32,8 @@ However, if required, there are other Docker file options and further guidance i
 
 ## Available Scripts for building the React App locally
 
+*Pre-requisities: npm will need to be installed*
+
 In the project directory, you can run:
 
 ### `npm start`
@@ -51,7 +53,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Additional deployment options
+## Additional Docker deployment options
 
 ### Option 1) Build and Tag a dev Docker image (app hot-reload)
 
@@ -77,7 +79,7 @@ For the above command:
 - `-rm` removes the container and volumes after the container exits
 - `-v ${PWD}:/app \` mounts the contaner at "/app"
 - we need to use the container version of "node_modules" so configure a volume with `-v /app/node_modules`
-- -p 3001:3000 exposes port 3000 to other Docker containers on the same network (for inter-container communication) and port 3001 to the host.
+- `-p 3001:3000` exposes port 3000 to other Docker containers on the same network (for inter-container communication) and port 3001 to the host.
 - `-e CHOKIDAR_USEPOLLING=true` enables a polling mechanism via chokidar (which wraps fs.watch, fs.watchFile, and fsevents) so that hot-reloading will work.
 
 ### Option 2) Using docker-compose for a dev Docker image (app hot-reload)
