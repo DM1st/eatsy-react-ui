@@ -8,7 +8,6 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { green } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
@@ -115,7 +114,7 @@ const App = () => {
                                     title="Recipe Title"
                                     subheader= {author} />
                             <CardMedia sx={{paddingTop: '56.25%' }} //16:9
-                            image="https://source.unsplash.com/random"
+                            image="https://source.unsplash.com/ykThMylLsbY"
                             title="Image title"
                             />
                             <CardContent sx= {{flexGrow: 1}}>
