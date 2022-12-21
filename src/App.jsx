@@ -12,7 +12,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import LocalPizzaSharpIcon from '@mui/icons-material/LocalPizzaSharp';
-
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LocalOfferSharpIcon from '@mui/icons-material/LocalOfferSharp';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
@@ -70,7 +70,12 @@ const App = () => {
                 <Typography variant="h6">
                         Eatsy Recipe App
                 </Typography>
-                <Toolbar sx={{marginRight:'40px'}}  />
+                <Toolbar sx={{paddingTop:'4px'}}>
+                    <iconButton >
+                        <InfoOutlinedIcon />
+                    </iconButton> 
+                </Toolbar>
+                
             </Grid>
         </AppBar>
         <main>
