@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { styled } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -12,6 +12,9 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import LocalPizzaSharpIcon from '@mui/icons-material/LocalPizzaSharp';
+
+import LocalOfferSharpIcon from '@mui/icons-material/LocalOfferSharp';
+import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 
 const cards = [1,2,3,4,5,6,7,8,9];
@@ -51,6 +54,12 @@ const App = () => {
       setExpanded(!expanded);
     };
 
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+
     return <>
         <CssBaseline />
         <AppBar position="relative">
@@ -80,6 +89,10 @@ const App = () => {
                         Share your best recipes with Eatsy or try something new!
                     </Typography>
                     <div >
+                    <Tabs value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
+                        <Tab icon={<LocalOfferSharpIcon fontSize='12px' />} label="Filter by tag" iconPosition='start' />
+                        <Tab icon={<SearchSharpIcon fontSize='12px' />} label="Free text search" iconPosition='start'/>
+                    </Tabs>
                         <Grid sx={{marginTop: '8px'}} justifyContent="center">
                             <Grid item>
                                 <Autocomplete
