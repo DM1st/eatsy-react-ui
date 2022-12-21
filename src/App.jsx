@@ -89,9 +89,17 @@ const App = () => {
                         Share your best recipes with Eatsy or try something new!
                     </Typography>
                     <div >
-                    <Tabs value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
-                        <Tab icon={<LocalOfferSharpIcon fontSize='12px' />} label="Filter by tag" iconPosition='start' />
-                        <Tab icon={<SearchSharpIcon fontSize='12px' />} label="Free text search" iconPosition='start'/>
+                    <Tabs sx={{padding:'0px', margin:'0px'}}  value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
+                        <Tab icon={<LocalOfferSharpIcon />} 
+                            label="Filter by tag" 
+                            iconPosition='start'
+                            style={{minHeight:"30%"}}                            
+                            />
+                        <Tab icon={<SearchSharpIcon />} 
+                            label= "Free text search"
+                            iconPosition='start'
+                            style={{minHeight:"30%"}}
+                            />
                     </Tabs>
                         <Grid sx={{marginTop: '8px'}} justifyContent="center">
                             <Grid item>
