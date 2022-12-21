@@ -1,6 +1,7 @@
 import React from 'react';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab} from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AddIcon from '@mui/icons-material/Add';
 
 const cards = [1,2,3,4,5,6,7,8,9];
 
@@ -17,20 +18,29 @@ const App = () => {
             </Toolbar>
         </AppBar>
         <main>
+        <Fab sx={{ 
+            position: "fixed", 
+            bottom: (theme) => theme.spacing(2),
+            right: (theme) => theme.spacing(2)
+            }} 
+            color="secondary" 
+            aria-label="add">
+            <AddIcon />
+        </Fab>
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '40px'}} maxWidth="sm">
                     <Typography variant="h2" align="center" color="textPrimary" gutterBottom>
                         Eatsy Recipe App
                     </Typography>
                     <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                        Welcome to the Eatsy Recipe App for all your favourite recipes! Share your best creations or try the recommendations from other people!
+                        Share your best creations or try the recommendations from other people!
                     </Typography>
                     <div >
                         <Grid sx={{marginTop: '8px'}} container spacing={2} justifyContent="center">
                             <Grid item>
-                                <Button variant="contained" color="primary">
-                                    Add Recipe
-                                </Button>
+                            <Button variant="contained" color="primary">
+                                Add Recipe
+                            </Button>
                             </Grid>
                             <Grid item>
                                 <Button variant="outlined" color="primary">
