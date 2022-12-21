@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Stack} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Stack, Autocomplete, TextField} from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -8,11 +8,11 @@ const cards = [1,2,3,4,5,6,7,8,9];
 const tags = [
     {tag:'Dessert'},
     {tag:'Cake'},
-    {tag:'Cake'},
+    {tag:'Christmas'},
     {tag:'Food'},
     {tag:'Drink'},
     {tag:'Healthy'},
-    {tag:'Slow'},
+    {tag:'Slow Cooker'},
 
 ]
 
@@ -47,16 +47,22 @@ const App = () => {
                         Share your best creations or try the recommendations from other people!
                     </Typography>
                     <div >
-                        <Grid sx={{marginTop: '8px'}} container spacing={2} justifyContent="center">
+                        <Grid sx={{marginTop: '8px'}} justifyContent="center">
                             <Grid item>
-                            <Button variant="contained" color="primary">
-                                Add Recipe
-                            </Button>
-                            </Grid>
-                            <Grid item>
-                                <Button variant="outlined" color="primary">
-                                    Secondary action
-                                </Button>
+                                <Autocomplete
+                                    multiple
+                                    id="tags-outlined"
+                                    options={tags}
+                                    getOptionLabel={(option) => option.tag}
+                                    filterSelectedOptions
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="filterSelectedOptions"
+                                            placeholder="Dessert"
+                                        />
+                                    )}
+                                />
                             </Grid>
                         </Grid>
                     </div>
