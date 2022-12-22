@@ -163,57 +163,55 @@ const App = () => {
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
                     <div >
-                    <Tabs sx={{padding:'0px', margin:'0px'}} value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
-                        <Tab icon={<LocalOfferSharpIcon />} 
-                            label="Filter by tag" 
-                            iconPosition='start'
-                            style={{minHeight:"30%"}} 
-                            {...a11yProps(0)}                          
-                            />
-                        <Tab icon={<SearchSharpIcon />} 
-                            label= "Free text search"
-                            iconPosition='start'
-                            style={{minHeight:"30%"}}
-                            {...a11yProps(1)}   
-                            />
-                    </Tabs>
-                        <Grid sx={{marginTop: '8px'}} justifyContent="center">
-                            <Grid item>
-                                <TabPanel value={value} index={0}>
-                                    <Autocomplete
-                                        multiple
-                                        id="tags-outlined"
-                                        options={tags}
-                                        getOptionLabel={(option) => option.tag}
-                                        filterSelectedOptions
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                label="filter by tags"                                   
-                                            />
-                                        )}
+                        <Tabs value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
+                            <Tab icon={<LocalOfferSharpIcon />} 
+                                label="Filter by tag" 
+                                iconPosition='start'
+                                style={{minHeight:"30%"}} 
+                                {...a11yProps(0)}                          
+                                />
+                            <Tab icon={<SearchSharpIcon />} 
+                                label= "Free text search"
+                                iconPosition='start'
+                                style={{minHeight:"30%"}}
+                                {...a11yProps(1)}   
+                                />
+                        </Tabs>       
+                        <TabPanel value={value} index={0}>
+                            <Autocomplete
+                                size="small"
+                                multiple
+                                id="tags-outlined"
+                                options={tags}
+                                getOptionLabel={(option) => option.tag}
+                                filterSelectedOptions
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        label="filter by tags"                                   
                                     />
-                                </TabPanel>
-                                <TabPanel value={value} index={1}>
-                                    <Autocomplete
-                                        freeSolo
-                                        id="free-solo-search"
-                                        disableClearable
-                                        options={recipes.map((option) => option.name)}
-                                        renderInput={(params) => (
-                                        <TextField
-                                            {...params}
-                                            label="Search input"
-                                            InputProps={{
-                                            ...params.InputProps,
-                                            type: 'search',
-                                            }}
-                                                />
-                                            )}
-                                    />
-                                </TabPanel>
-                            </Grid>
-                        </Grid>
+                                )}
+                            />
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            <Autocomplete
+                                size="small"
+                                freeSolo
+                                id="free-solo-search"
+                                disableClearable
+                                options={recipes.map((option) => option.name)}
+                                renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Search input"
+                                    InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                    }}
+                                        />
+                                    )}
+                            />
+                        </TabPanel>
                     </div>
                 </Container>
             </Box>
