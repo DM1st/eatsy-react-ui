@@ -33,6 +33,17 @@ const tags = [
 
 ]
 
+const recipes = [
+    {name:'Pasta Bake'},
+    {name:'Pulled pork'},
+    {name:'Homemade lemonade'},
+    {name:'Gammon in COla'},
+    {name:'Treacle sponge'},
+    {name:'Chocolate pudding'},
+    {name:'Turkey Tagine'},
+
+]
+
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -184,7 +195,22 @@ const App = () => {
                                     />
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
-                                    Item Two
+                                    <Autocomplete
+                                        freeSolo
+                                        id="free-solo-search"
+                                        disableClearable
+                                        options={recipes.map((option) => option.name)}
+                                        renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Search input"
+                                            InputProps={{
+                                            ...params.InputProps,
+                                            type: 'search',
+                                            }}
+                                                />
+                                            )}
+                                    />
                                 </TabPanel>
                             </Grid>
                         </Grid>
