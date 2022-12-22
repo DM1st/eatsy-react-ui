@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import SvgIcon from '@mui/material/SvgIcon';
 import { styled } from '@mui/material/styles';
 import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip} from '@mui/material';
@@ -42,6 +43,39 @@ const ExpandMore = styled((props) => {
       duration: theme.transitions.duration.shortest,
     }),
   }));
+
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
 
 const App = () => {
 
@@ -118,33 +152,40 @@ const App = () => {
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
                     <div >
-                    <Tabs sx={{padding:'0px', margin:'0px'}}  value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
+                    <Tabs sx={{padding:'0px', margin:'0px'}} value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
                         <Tab icon={<LocalOfferSharpIcon />} 
                             label="Filter by tag" 
                             iconPosition='start'
-                            style={{minHeight:"30%"}}                            
+                            style={{minHeight:"30%"}} 
+                            {...a11yProps(0)}                          
                             />
                         <Tab icon={<SearchSharpIcon />} 
                             label= "Free text search"
                             iconPosition='start'
                             style={{minHeight:"30%"}}
+                            {...a11yProps(1)}   
                             />
                     </Tabs>
                         <Grid sx={{marginTop: '8px'}} justifyContent="center">
                             <Grid item>
-                                <Autocomplete
-                                    multiple
-                                    id="tags-outlined"
-                                    options={tags}
-                                    getOptionLabel={(option) => option.tag}
-                                    filterSelectedOptions
-                                    renderInput={(params) => (
-                                        <TextField
-                                            {...params}
-                                            label="filter by tags"                                   
-                                        />
-                                    )}
-                                />
+                                <TabPanel value={value} index={0}>
+                                    <Autocomplete
+                                        multiple
+                                        id="tags-outlined"
+                                        options={tags}
+                                        getOptionLabel={(option) => option.tag}
+                                        filterSelectedOptions
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                label="filter by tags"                                   
+                                            />
+                                        )}
+                                    />
+                                </TabPanel>
+                                <TabPanel value={value} index={1}>
+                                    Item Two
+                                </TabPanel>
                             </Grid>
                         </Grid>
                     </div>
