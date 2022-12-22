@@ -16,6 +16,7 @@ import LocalPizzaSharpIcon from '@mui/icons-material/LocalPizzaSharp';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LocalOfferSharpIcon from '@mui/icons-material/LocalOfferSharp';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 
 const cards = [1,2,3,4,5,6,7,8,9];
@@ -61,6 +62,16 @@ const App = () => {
       setValue(newValue);
     };
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleTooltipClose = () => {
+      setOpen(false);
+    };
+  
+    const handleTooltipOpen = () => {
+      setOpen(true);
+    };
+
     return <>
         <CssBaseline />
         <AppBar position="relative">
@@ -72,11 +83,25 @@ const App = () => {
                         Eatsy Recipe App
                 </Typography>
                 <Toolbar sx={{paddingTop:'4px'}}>
-                    <Tooltip title= "Eatsy is an online recipe book to allow users to find, create and share their favourite recipes with other cooking and baking enthusiasts!">
-                        <iconButton >
-                            <InfoOutlinedIcon />
-                        </iconButton> 
-                    </Tooltip>
+                    <ClickAwayListener onClickAway={handleTooltipClose}>
+                        <div>
+                            <Tooltip 
+                            PopperProps={{
+                                disablePortal: true,
+                            }}
+                                onClose={handleTooltipClose}
+                                open={open}
+                                disableFocusListener
+                                disableHoverListener
+                                disableTouchListener
+                                title = "Eatsy is an online recipe book to allow users to find, create and share their favourite recipes with other cooking and baking enthusiasts!"
+                            >
+                                <iconButton onClick={handleTooltipOpen}>
+                                    <InfoOutlinedIcon />
+                                </iconButton> 
+                            </Tooltip>
+                        </div>
+                    </ClickAwayListener>
                 </Toolbar>
             </Grid>
         </AppBar>
