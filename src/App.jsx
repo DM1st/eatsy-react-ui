@@ -234,25 +234,25 @@ const App = () => {
                 <AddIcon />
             </Fab>
             <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-                <DialogTitle>Subscribe</DialogTitle>
+                <DialogTitle>Add new recipe</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         To subscribe to this website, please enter your email address here. We
                         will send updates occasionally.
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Email Address"
-                        type="email"
-                        fullWidth
-                        variant="standard"
-                    />
+                    <TextField autoFocus margin="dense" id="Recipe Title" label="Recipe Title" type="text" fullWidth variant="standard"/>
+                    <TextField autoFocus margin="dense" id="uploader" label="Your Name" type="text" fullWidth variant="standard"/>
+                    <Button>
+                        Upload Picture
+                        <input
+                            type='file'
+                            
+                        />
+                    </Button>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseDialog}>Cancel</Button>
-                    <Button onClick={handleCloseDialog}>Subscribe</Button>
+                    <Button onClick={handleCloseDialog}>Add Recipe</Button>
                 </DialogActions>
             </Dialog>
         </div>
