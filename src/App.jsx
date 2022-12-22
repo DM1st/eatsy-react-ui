@@ -29,6 +29,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+import { Label } from '@mui/icons-material';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -240,14 +242,19 @@ const App = () => {
                         To subscribe to this website, please enter your email address here. We
                         will send updates occasionally.
                     </DialogContentText>
-                    <TextField autoFocus margin="dense" id="Recipe Title" label="Recipe Title" type="text" fullWidth variant="standard"/>
-                    <TextField autoFocus margin="dense" id="uploader" label="Your Name" type="text" fullWidth variant="standard"/>
-                    <Button>
-                        Upload Picture
+                    <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth variant="standard"/>
+                    <TextField autoFocus margin="dense" id="uploader" label="Add your name" type="text" fullWidth variant="standard"/>
+                    <Button variant="raised" >
+                        Add Picture
                         <input
-                            type='file'
-                            
-                        />
+                        accept="image/*"
+                        
+                        
+                        id="raised-button-file"
+                        multiple
+                        type="file"
+                    />
+                        <AddPhotoAlternateOutlinedIcon/>
                     </Button>
                 </DialogContent>
                 <DialogActions>
