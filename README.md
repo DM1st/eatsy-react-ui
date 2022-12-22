@@ -28,6 +28,8 @@ docker pull dm1st/eatsy-react-ui-docker && docker-compose -f docker-compose.prod
 
 Once complete, navigate to *http://<your_machine_local_host>:1337* to view the service. 
 
+To spin down the service: `docker-compose -f docker-compose.prod.dockerhub.yml down`
+
 However, if required, there are other Docker file options and further guidance in the 'Additional deployment options' section to deploy Eatsy React UI locally or with a development docker instance.
 
 ## Available Scripts for building the React App locally
@@ -110,4 +112,4 @@ Spin up: `docker-compose -f docker-compose.prod.yml up -d --build`
 
 Once complete, navigate to http://<your_machine_local_host>:1337 to view the service.
 
-Spin down: `docker-compose down`
+Spin down: `docker-compose -f docker-compose.prod.yml down`
