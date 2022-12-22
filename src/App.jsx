@@ -24,6 +24,11 @@ import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -172,6 +177,16 @@ const App = () => {
       setOpen(true);
     };
 
+    const [dialogOpen, setDialogOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setDialogOpen(true);
+      };
+    
+      const handleCloseDialog = () => {
+        setDialogOpen(false);
+      };
+
     return <>
         <CssBaseline />
         <AppBar position="relative">
@@ -206,15 +221,41 @@ const App = () => {
             </Grid>
         </AppBar>
         <main>
-        <Fab sx={{ 
-            position: "fixed", 
-            bottom: (theme) => theme.spacing(2),
-            right: (theme) => theme.spacing(2)
-            }} 
-            color="secondary" 
-            aria-label="add">
-            <AddIcon />
-        </Fab>
+        <div>    
+            <Fab sx={{ 
+                position: "fixed", 
+                bottom: (theme) => theme.spacing(2),
+                right: (theme) => theme.spacing(2)
+                }} 
+                color="secondary" 
+                aria-label="add"
+                onClick={handleClickOpen}
+                >
+                <AddIcon />
+            </Fab>
+            <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+                <DialogTitle>Subscribe</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        To subscribe to this website, please enter your email address here. We
+                        will send updates occasionally.
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog}>Cancel</Button>
+                    <Button onClick={handleCloseDialog}>Subscribe</Button>
+                </DialogActions>
+            </Dialog>
+        </div>
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
                     <div >
