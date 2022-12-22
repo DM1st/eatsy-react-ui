@@ -77,12 +77,12 @@ const App = () => {
         <AppBar position="relative">
             <Grid container direction='row' alignItems='center' justifyContent='space-between'>
                 <Toolbar>
-                    <MenuBookIcon sx={{marginRight:'20px'}} />
+                    <MenuBookIcon sx={{marginRight:'15px'}} />
                 </Toolbar>
                 <Typography variant="h6">
                         Eatsy Recipe App
                 </Typography>
-                <Toolbar sx={{paddingTop:'4px'}}>
+                <Toolbar sx={{paddingTop:'4px', marginLeft:'0px'}}>
                     <ClickAwayListener onClickAway={handleTooltipClose}>
                         <div>
                             <Tooltip 
