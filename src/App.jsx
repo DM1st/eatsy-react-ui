@@ -237,7 +237,7 @@ const App = () => {
                 <AddIcon />
             </Fab>
             <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-                <DialogTitle>Add new recipe</DialogTitle>
+                <DialogTitle>New recipe</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Some text to desrcibe the creating new recipe dialog
