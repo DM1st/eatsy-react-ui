@@ -238,8 +238,7 @@ const App = () => {
 
         return(
 
-          <Container sx={{width:'100%', paddingTop:'20px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
-            <Typography color="textSecondary"></Typography>
+          <Container sx={{width:'100%', display:'flex', align:'center', paddingTop:'20px', justifyContent:'end', paddingRight:'0', paddingLeft:'0'}}>
                 <Button variant="contained" >
                   Save Recipe
                 </Button>
@@ -296,31 +295,29 @@ const App = () => {
                 >
                 <AddIcon />
             </Fab>
-            <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+            <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog}>
               <Container>
                 <Card >
-                <Box p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
-                <ListItem >
-                  <Typography variant="h5" sx={{marginBottom:'10px'}}>
-                    New Recipe
-                  </Typography>
-                </ListItem>
-                <ListItem divider>
+                <Box fullWidth p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
+                <Typography variant="h5" sx={{marginBottom:'10px'}}>
+                  New Recipe
+                </Typography>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
                 </ListItem>
-                <ListItem divider>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <UploaderNameAndAvatar />
                 </ListItem>
-                <ListItem divider>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <RecipePhoto />
                 </ListItem>
-                <ListItem divider>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <TextField autoFocus margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
-                <ListItem divider>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <RecipePhoto />
                 </ListItem>
-                <ListItem divider>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <RecipePhoto />
                 </ListItem>
                 <SaveRecipe />
