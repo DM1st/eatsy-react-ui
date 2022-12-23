@@ -29,8 +29,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
-import { Label } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import CollectionsIcon from '@mui/icons-material/Collections';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -244,18 +245,29 @@ const App = () => {
                     </DialogContentText>
                     <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth variant="standard"/>
                     <TextField autoFocus margin="dense" id="uploader" label="Add your name" type="text" fullWidth variant="standard"/>
-                    <Button variant="raised" >
-                        Add Picture
+                    <CardContent>
+                      <Grid container justify="center" alignItems="center">
                         <input
-                        accept="image/*"
-                        
-                        
-                        id="raised-button-file"
-                        multiple
-                        type="file"
-                    />
-                        <AddPhotoAlternateOutlinedIcon/>
-                    </Button>
+                          accept="image/*"
+                          /*className={classes.input}*/
+                          id="contained-button-file"
+                          multiple
+                          type="file"
+                          /*onChange={this.handleUploadClick}*/
+                        />
+                        <label htmlFor="contained-button-file">
+                          <Fab component="span" /*className={classes.button}*/>
+                            <AddPhotoAlternateIcon />
+                          </Fab>
+                        </label>
+                        <Fab /*className={classes.button}*/ /*onClick={this.handleSearchClick}*/>
+                          <SearchIcon />
+                        </Fab>
+                        <Fab /*className={classes.button}*/ /*onClick={this.handleGalleryClick}*/>
+                          <CollectionsIcon />
+                        </Fab>
+                      </Grid>
+                    </CardContent>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseDialog}>Cancel</Button>
