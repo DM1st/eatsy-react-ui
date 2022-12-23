@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { green } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -25,14 +26,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import SearchIcon from '@mui/icons-material/Search';
+
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CollectionsIcon from '@mui/icons-material/Collections';
-import { display } from '@mui/system';
+
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -199,7 +196,7 @@ const App = () => {
         return (
           <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
             <Typography color="textSecondary">Insert your name and pick avatar</Typography>
-                <Fab component="span" sx={{margin:'6px', color:'blue'}}>
+                <Fab component="span" sx={{color:blue[700], backgroundColor:'white'}}>
                   <CollectionsIcon />
                 </Fab>
           </Container>
@@ -223,7 +220,7 @@ const App = () => {
                           />
               </Container>
               <label htmlFor="contained-button-file">
-                <Fab component="span" sx={{margin:'6px', color:'blue'}}>
+                <Fab component="span" sx={{color:blue[700], backgroundColor:'white'}}>
                   <AddPhotoAlternateIcon />
                 </Fab>
               </label>
@@ -333,7 +330,7 @@ const App = () => {
             </Fab>
             <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog}>
               <Container>
-                <Card >
+                
                 <Box fullWidth p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <Typography variant="h5" sx={{marginBottom:'10px'}}>
                   New Recipe
@@ -358,52 +355,9 @@ const App = () => {
                 </ListItem>
                 <SaveRecipe />
                 </Box>
-                </Card>
+                
               </Container>
             </Dialog>
-
-
-            {/*Delete Start
-            <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-                <DialogTitle>New recipe</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Some text to desrcibe the creating new recipe dialog
-                    </DialogContentText>
-                    <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth variant="standard"/>
-                    <TextField autoFocus margin="dense" id="uploader" label="Add your name" type="text" fullWidth variant="standard"/>
-                    <CardContent>
-                      <Grid container justify="center" alignItems="center">
-                        <Container sx={{display:'none'}}>
-                          <input 
-                            accept="image/*"
-                            sx={{ display: 'none' }}
-                            id="contained-button-file"
-                            multiple
-                            type="file"
-                            /*onChange={this.handleUploadClick}
-                          />
-                        </Container>
-                        <label htmlFor="contained-button-file">
-                          <Fab component="span" sx={{margin:'6px', color:'blue'}}>
-                            <AddPhotoAlternateIcon />
-                          </Fab>
-                        </label>
-                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleSearchClick}>
-                          <SearchIcon />
-                        </Fab>
-                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleGalleryClick}>
-                          <CollectionsIcon />
-                        </Fab>
-                      </Grid>
-                    </CardContent>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseDialog}>Cancel</Button>
-                    <Button onClick={handleCloseDialog}>Add Recipe</Button>
-                </DialogActions>
-            </Dialog>
-          Delete End*/}
         </div>
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
