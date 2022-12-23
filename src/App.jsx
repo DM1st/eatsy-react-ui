@@ -247,7 +247,43 @@ const App = () => {
         );
 
 
-      }
+      };
+
+      const AddIngredients = () => {
+
+        //Define handle click here
+
+        return(
+
+          <Container sx={{width:'100%', display:'flex', justifyContent:'space-between', align:'center', paddingTop:'5px', paddingBottom:'5px', paddingRight:'0', paddingLeft:'0'}}>
+                <Typography color="textSecondary">Add recipe ingredients</Typography>
+                <Button variant="outlined" >
+                  Ingredients
+                </Button>
+          </Container>
+
+        );
+
+
+      };
+
+      const AddMethod = () => {
+
+        //Define handle click here
+
+        return(
+
+          <Container sx={{width:'100%', display:'flex', align:'center', paddingTop:'5px', paddingBottom:'5px', justifyContent:'space-between', paddingRight:'0', paddingLeft:'0'}}>
+                <Typography color="textSecondary">Add Recipe method</Typography>
+                <Button variant="outlined" >
+                  Method
+                </Button>
+          </Container>
+
+        );
+
+
+      };
 
     return <>
         <CssBaseline />
@@ -315,15 +351,14 @@ const App = () => {
                   <TextField autoFocus margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <RecipePhoto />
+                  <AddIngredients />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <RecipePhoto />
+                  <AddMethod />
                 </ListItem>
                 <SaveRecipe />
                 </Box>
                 </Card>
-
               </Container>
             </Dialog>
 
