@@ -240,30 +240,31 @@ const App = () => {
                 <DialogTitle>Add new recipe</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We
-                        will send updates occasionally.
+                        Some text to desrcibe the creating new recipe dialog
                     </DialogContentText>
                     <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth variant="standard"/>
                     <TextField autoFocus margin="dense" id="uploader" label="Add your name" type="text" fullWidth variant="standard"/>
                     <CardContent>
                       <Grid container justify="center" alignItems="center">
-                        <input 
-                          accept="image/*"
-                          /*className={classes.input}*/
-                          id="contained-button-file"
-                          multiple
-                          type="file"
-                          /*onChange={this.handleUploadClick}*/
-                        />
+                        <Container sx={{display:'none'}}>
+                          <input 
+                            accept="image/*"
+                            sx={{ display: 'none' }}
+                            id="contained-button-file"
+                            multiple
+                            type="file"
+                            /*onChange={this.handleUploadClick}*/
+                          />
+                        </Container>
                         <label htmlFor="contained-button-file">
-                          <Fab component="span" sx={{margin:'10', color:'blue'}}>
+                          <Fab component="span" sx={{margin:'6px', color:'blue'}}>
                             <AddPhotoAlternateIcon />
                           </Fab>
                         </label>
-                        <Fab sx={{margin:'10', color:'blue'}} /*onClick={this.handleSearchClick}*/>
+                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleSearchClick}*/>
                           <SearchIcon />
                         </Fab>
-                        <Fab sx={{margin:'10', color:'blue'}} /*onClick={this.handleGalleryClick}*/>
+                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleGalleryClick}*/>
                           <CollectionsIcon />
                         </Fab>
                       </Grid>
