@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SvgIcon from '@mui/material/SvgIcon';
 import { styled, alpha  } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, ListItem} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -32,6 +32,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import SearchIcon from '@mui/icons-material/Search';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CollectionsIcon from '@mui/icons-material/Collections';
+import { display } from '@mui/system';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -190,6 +191,47 @@ const App = () => {
         setDialogOpen(false);
       };
 
+      //Functions for the add Recipe dialog
+      const UploaderNameAndAvatar = () => {
+
+        //Define the handle click here
+
+        return (
+          <Container sx={{padding:'0px', display:'flex', alignItems:'center', justifyContent: "space-between"}}>
+            <Typography color="textSecondary">Insert your name and pick avatar</Typography>
+                <Fab component="span" sx={{margin:'6px', color:'blue'}}>
+                  <CollectionsIcon />
+                </Fab>
+          </Container>
+        );
+
+      };
+
+      const RecipePhoto =() => {
+        //Define the handle click here
+
+        return (
+          <Container sx={{padding:'0px', display:'flex', alignItems:'center', justifyContent: "space-between"}}>
+            <Typography color="textSecondary">Add recipe photo</Typography>
+            <Container sx={{display:'none'}}>
+                          <input 
+                            accept="image/*"
+                            id="contained-button-file"
+                            multiple
+                            type="file"
+                            /*onChange={this.handleUploadClick}*/
+                          />
+              </Container>
+              <label htmlFor="contained-button-file">
+                <Fab component="span" sx={{margin:'6px', color:'blue'}}>
+                  <AddPhotoAlternateIcon />
+                </Fab>
+              </label>
+          </Container>
+        );
+
+      };
+
     return <>
         <CssBaseline />
         <AppBar position="relative">
@@ -237,6 +279,37 @@ const App = () => {
                 <AddIcon />
             </Fab>
             <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+              <Container>
+                <Card sx={{marginTop: '8'}}>
+                <Box p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
+                <ListItem >
+                  <Typography variant="h5" sx={{marginBottom:'10px'}}>
+                    New Recipe
+                  </Typography>
+                </ListItem>
+                <ListItem divider>
+                  <Typography color="textSecondary">Recipe title</Typography>
+                </ListItem>
+                <ListItem divider>
+                  <UploaderNameAndAvatar />
+                </ListItem>
+                <ListItem divider>
+                  <RecipePhoto />
+                </ListItem>
+                
+                
+                
+                
+                
+          </Box>
+        </Card>
+
+              </Container>
+            </Dialog>
+
+
+            {/*Delete Start
+            <Dialog open={dialogOpen} onClose={handleCloseDialog}>
                 <DialogTitle>New recipe</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -253,7 +326,7 @@ const App = () => {
                             id="contained-button-file"
                             multiple
                             type="file"
-                            /*onChange={this.handleUploadClick}*/
+                            /*onChange={this.handleUploadClick}
                           />
                         </Container>
                         <label htmlFor="contained-button-file">
@@ -261,10 +334,10 @@ const App = () => {
                             <AddPhotoAlternateIcon />
                           </Fab>
                         </label>
-                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleSearchClick}*/>
+                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleSearchClick}>
                           <SearchIcon />
                         </Fab>
-                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleGalleryClick}*/>
+                        <Fab sx={{margin:'6px', color:'blue'}} /*onClick={this.handleGalleryClick}>
                           <CollectionsIcon />
                         </Fab>
                       </Grid>
@@ -275,6 +348,7 @@ const App = () => {
                     <Button onClick={handleCloseDialog}>Add Recipe</Button>
                 </DialogActions>
             </Dialog>
+          Delete End*/}
         </div>
             <Box sx={{bgcolor: 'background.paper'}}>
                 <Container sx={{marginTop: '20px'}} maxWidth="sm">
