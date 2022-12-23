@@ -188,14 +188,16 @@ const App = () => {
         setDialogOpen(false);
       };
 
-      //Functions for the add Recipe dialog
-      const UploaderNameAndAvatar = () => {
+
+//Functions for the add Recipe dialog
+
+      const SelectAvatar = () => {
 
         //Define the handle click here
 
         return (
           <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
-            <Typography color="textSecondary">Insert your name and pick avatar</Typography>
+            <Typography color="textSecondary">Select your avatar</Typography>
                 <Fab component="span" sx={{color:blue[700], backgroundColor:'white'}}>
                   <CollectionsIcon />
                 </Fab>
@@ -253,7 +255,7 @@ const App = () => {
         return(
 
           <Container sx={{width:'100%', display:'flex', justifyContent:'space-between', align:'center', paddingTop:'5px', paddingBottom:'5px', paddingRight:'0', paddingLeft:'0'}}>
-                <Typography color="textSecondary">Add recipe ingredients</Typography>
+                <Typography color="textSecondary">Add ingredients</Typography>
                 <Button variant="outlined" >
                   Ingredients
                 </Button>
@@ -339,7 +341,10 @@ const App = () => {
                   <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <UploaderNameAndAvatar />
+                <TextField autoFocus margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
+                </ListItem>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                  <SelectAvatar />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <RecipePhoto />
