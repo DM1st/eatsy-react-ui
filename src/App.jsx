@@ -247,7 +247,7 @@ const App = () => {
                     <TextField autoFocus margin="dense" id="uploader" label="Add your name" type="text" fullWidth variant="standard"/>
                     <CardContent>
                       <Grid container justify="center" alignItems="center">
-                        <input
+                        <input 
                           accept="image/*"
                           /*className={classes.input}*/
                           id="contained-button-file"
@@ -256,14 +256,14 @@ const App = () => {
                           /*onChange={this.handleUploadClick}*/
                         />
                         <label htmlFor="contained-button-file">
-                          <Fab component="span" /*className={classes.button}*/>
+                          <Fab component="span" sx={{margin:'10', color:'blue'}}>
                             <AddPhotoAlternateIcon />
                           </Fab>
                         </label>
-                        <Fab /*className={classes.button}*/ /*onClick={this.handleSearchClick}*/>
+                        <Fab sx={{margin:'10', color:'blue'}} /*onClick={this.handleSearchClick}*/>
                           <SearchIcon />
                         </Fab>
-                        <Fab /*className={classes.button}*/ /*onClick={this.handleGalleryClick}*/>
+                        <Fab sx={{margin:'10', color:'blue'}} /*onClick={this.handleGalleryClick}*/>
                           <CollectionsIcon />
                         </Fab>
                       </Grid>
