@@ -232,6 +232,24 @@ const App = () => {
 
       };
 
+      const SaveRecipe = () => {
+
+        //Define handle click here
+
+        return(
+
+          <Container sx={{width:'100%', paddingTop:'20px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
+            <Typography color="textSecondary"></Typography>
+                <Button variant="contained" >
+                  Save Recipe
+                </Button>
+          </Container>
+
+        );
+
+
+      }
+
     return <>
         <CssBaseline />
         <AppBar position="relative">
@@ -299,10 +317,13 @@ const App = () => {
                 <ListItem divider>
                   <TextField autoFocus margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
-                
-                
-                
-                
+                <ListItem divider>
+                  <RecipePhoto />
+                </ListItem>
+                <ListItem divider>
+                  <RecipePhoto />
+                </ListItem>
+                <SaveRecipe />
                 </Box>
                 </Card>
 
