@@ -197,7 +197,7 @@ const App = () => {
         //Define the handle click here
 
         return (
-          <Container sx={{padding:'0px', display:'flex', alignItems:'center', justifyContent: "space-between"}}>
+          <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
             <Typography color="textSecondary">Insert your name and pick avatar</Typography>
                 <Fab component="span" sx={{margin:'6px', color:'blue'}}>
                   <CollectionsIcon />
@@ -211,7 +211,7 @@ const App = () => {
         //Define the handle click here
 
         return (
-          <Container sx={{padding:'0px', display:'flex', alignItems:'center', justifyContent: "space-between"}}>
+          <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent:'space-between'}}>
             <Typography color="textSecondary">Add recipe photo</Typography>
             <Container sx={{display:'none'}}>
                           <input 
@@ -280,7 +280,7 @@ const App = () => {
             </Fab>
             <Dialog open={dialogOpen} onClose={handleCloseDialog}>
               <Container>
-                <Card sx={{marginTop: '8'}}>
+                <Card >
                 <Box p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <ListItem >
                   <Typography variant="h5" sx={{marginBottom:'10px'}}>
@@ -288,7 +288,7 @@ const App = () => {
                   </Typography>
                 </ListItem>
                 <ListItem divider>
-                  <Typography color="textSecondary">Recipe title</Typography>
+                  <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
                 </ListItem>
                 <ListItem divider>
                   <UploaderNameAndAvatar />
@@ -296,13 +296,15 @@ const App = () => {
                 <ListItem divider>
                   <RecipePhoto />
                 </ListItem>
+                <ListItem divider>
+                  <TextField autoFocus margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
+                </ListItem>
                 
                 
                 
                 
-                
-          </Box>
-        </Card>
+                </Box>
+                </Card>
 
               </Container>
             </Dialog>
