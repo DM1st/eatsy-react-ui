@@ -338,10 +338,10 @@ const App = () => {
                   New Recipe
                 </Typography>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <TextField autoFocus margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
+                  <TextField margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                <TextField autoFocus margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
+                <TextField margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <SelectAvatar />
@@ -350,7 +350,7 @@ const App = () => {
                   <RecipePhoto />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <TextField autoFocus margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
+                  <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <AddIngredients />
