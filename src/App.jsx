@@ -198,9 +198,20 @@ const App = () => {
         return (
           <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
             <Typography color="textSecondary">Select your avatar</Typography>
+            <Container sx={{display:'none'}}>
+                          <input 
+                            accept="image/*"
+                            id="contained-button-avatar"
+                            multiple
+                            type="file"
+                            /*onChange={this.handleUploadClick}*/
+                          />
+              </Container>
+              <label htmlFor="contained-button-avatar">
                 <Fab component="span" sx={{color:blue[700], backgroundColor:'white'}}>
                   <CollectionsIcon />
                 </Fab>
+              </label>
           </Container>
         );
 
