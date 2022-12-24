@@ -272,6 +272,7 @@ const FilterByTags = () => {
 
   return(
     <Autocomplete
+      fullWidth
       size="small"
       multiple
       id="tags-outlined"
@@ -378,6 +379,9 @@ const FilterByTags = () => {
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
                   <AddMethod />
+                </ListItem>
+                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                  <FilterByTags fullWidth/>
                 </ListItem>
                 <SaveRecipe />
                 </Box>
