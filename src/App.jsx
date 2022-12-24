@@ -330,9 +330,7 @@ const App = () => {
                 >
                 <AddIcon />
             </Fab>
-            <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog}>
-              <Container>
-                
+            <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog}>                
                 <Box fullWidth p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <Typography variant="h5" sx={{marginBottom:'10px'}}>
                   New Recipe
@@ -360,8 +358,6 @@ const App = () => {
                 </ListItem>
                 <SaveRecipe />
                 </Box>
-                
-              </Container>
             </Dialog>
         </div>
             <Box sx={{bgcolor: 'background.paper'}}>
