@@ -8,8 +8,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { green } from '@mui/material/colors';
-import { blue } from '@mui/material/colors';
+import { green, teal, blue, red, pink, indigo, amber } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -30,6 +29,15 @@ import Dialog from '@mui/material/Dialog';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CollectionsIcon from '@mui/icons-material/Collections';
 
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import IcecreamIcon from '@mui/icons-material/Icecream';
+import CakeIcon from '@mui/icons-material/Cake';
+import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
+import LocalBarIcon from '@mui/icons-material/LocalBar';
+import RamenDiningIcon from '@mui/icons-material/RamenDining';
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+
+import Stack from '@mui/material/Stack';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -180,7 +188,7 @@ const App = () => {
 
     const [dialogOpen, setDialogOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleFabClickOpen = () => {
         setDialogOpen(true);
       };
     
@@ -193,26 +201,65 @@ const App = () => {
 
       const SelectAvatar = () => {
 
-        //Define the handle click here
+        const [open, setOpen] = React.useState(false);
+        const handleOpen = () => {
+          setOpen(true);
+        };
+        const handleClose = () => {
+          setOpen(false);
+        };
 
         return (
-          <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
+          <React.Fragment>
+            <Container sx={{width:'100%', padding:'0px', display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
             <Typography color="textSecondary">Select your avatar</Typography>
-            <Container sx={{display:'none'}}>
-                          <input 
-                            accept="image/*"
-                            id="contained-button-avatar"
-                            multiple
-                            type="file"
-                            /*onChange={this.handleUploadClick}*/
-                          />
-              </Container>
-              <label htmlFor="contained-button-avatar">
-                <Fab component="span" sx={{color:blue[700], backgroundColor:'white'}}>
-                  <CollectionsIcon />
-                </Fab>
-              </label>
-          </Container>
+            <Fab onClick={handleOpen} component="span" sx={{color:blue[700], backgroundColor:'white'}}>
+              <CollectionsIcon />
+            </Fab>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="child-dialog-title"
+              aria-describedby="child-dialog-description"
+            >
+               <Box >
+                <p id="child-dialog-description">
+                  Pick a pre-set Avatar or upload custom image.
+                </p>
+                <Stack direction="row" spacing={2} padding={2}>
+                  <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar"> <LocalPizzaIcon/> </Avatar>
+                  <Avatar sx={{ bgcolor: blue[500] }} aria-label="fast food avatar"> <FastfoodIcon /> </Avatar>
+                  <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar"> <IcecreamIcon /> </Avatar>
+                  <Avatar sx={{ bgcolor: pink[500] }} aria-label="cake avatar"> <CakeIcon /> </Avatar>
+                  <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar"> <SoupKitchenIcon /> </Avatar>
+                  <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar"> <LocalBarIcon /> </Avatar>
+                  <Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar"> <RamenDiningIcon />  </Avatar>
+                </Stack>
+                <Stack direction="row" spacing={2} padding={2}>
+                  <Avatar alt="DM1st" src="/static/images/avatar/featherMcGraw.jpg" /> 
+                  <Container sx={{display:'none'}}>
+                    <input 
+                      accept="image/*"
+                      id="contained-button-avatar"
+                      multiple
+                      type="file"
+                      /*onChange={this.handleUploadClick}*/
+                    />
+                  </Container>
+                  <label htmlFor="contained-button-avatar">
+                    <Fab component="span" size='small' sx={{color:blue[700], backgroundColor:'white'}}>
+                      <AddPhotoAlternateIcon />
+                    </Fab>
+                  </label>
+                </Stack>
+                <Stack direction="row" spacing={2}>
+
+                
+                </Stack>
+              </Box>
+            </Dialog>
+            </Container>
+          </React.Fragment>
         );
 
       };
@@ -362,40 +409,40 @@ const FilterByTags = () => {
                 }} 
                 color="secondary" 
                 aria-label="add"
-                onClick={handleClickOpen}
+                onClick={handleFabClickOpen}
                 >
                 <AddIcon />
             </Fab>
-            <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog}>                
+            <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">                
                 <Box fullWidth p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
-                <Typography variant="h5" sx={{marginBottom:'10px'}}>
-                  New Recipe
-                </Typography>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <TextField margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                <TextField margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <SelectAvatar />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <RecipePhoto />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <AddIngredients />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <AddMethod />
-                </ListItem>
-                <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <FilterByTags />
-                </ListItem>
-                <SaveRecipe />
+                  <Typography variant="h5" sx={{marginBottom:'10px'}}>
+                    New Recipe
+                  </Typography>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <TextField margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                  <TextField margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <SelectAvatar />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <RecipePhoto />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <AddIngredients />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <AddMethod />
+                  </ListItem>
+                  <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
+                    <FilterByTags />
+                  </ListItem>
+                  <SaveRecipe />
                 </Box>
             </Dialog>
         </div>
