@@ -275,6 +275,7 @@ const FilterByTags = () => {
       fullWidth
       size="small"
       multiple
+      limitTags={2}
       id="tags-outlined"
       options={tags}
       getOptionLabel={(option) => option.tag}
@@ -381,7 +382,7 @@ const FilterByTags = () => {
                   <AddMethod />
                 </ListItem>
                 <ListItem sx={{paddingRight:'0', paddingLeft:'0'}} divider>
-                  <FilterByTags fullWidth/>
+                  <FilterByTags />
                 </ListItem>
                 <SaveRecipe />
                 </Box>
