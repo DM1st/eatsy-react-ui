@@ -455,7 +455,7 @@ const App = () => {
                                                         Edit
                                                     </MenuItem>
                                                     <Divider sx={{ my: 0.5 }} />
-                                                    <MenuItem onClick={handleClose} disableRipple>
+                                                    <MenuItem onClick={handleClose} disableRipple disabled='true'>
                                                         <DeleteSharpIcon />
                                                         Delete
                                                     </MenuItem>
