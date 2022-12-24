@@ -266,6 +266,29 @@ const App = () => {
 
       };
 
+//Filter by tags function here
+
+const FilterByTags = () => {
+
+  return(
+    <Autocomplete
+      size="small"
+      multiple
+      id="tags-outlined"
+      options={tags}
+      getOptionLabel={(option) => option.tag}
+      filterSelectedOptions
+      renderInput={(params) => (
+          <TextField
+              {...params}
+              label="filter by tags"                                   
+          />
+      )}
+    />
+  );
+  
+};
+
       const AddMethod = () => {
 
         //Define handle click here
@@ -378,20 +401,7 @@ const App = () => {
                                 />
                         </Tabs>       
                         <TabPanel value={value} index={0}>
-                            <Autocomplete
-                                size="small"
-                                multiple
-                                id="tags-outlined"
-                                options={tags}
-                                getOptionLabel={(option) => option.tag}
-                                filterSelectedOptions
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        label="filter by tags"                                   
-                                    />
-                                )}
-                            />
+                            <FilterByTags />
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             <Autocomplete
