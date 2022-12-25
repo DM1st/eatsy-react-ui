@@ -230,7 +230,6 @@ const App = () => {
                   <Stack direction="row" spacing={2} padding={2} >
                     <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar"> <LocalPizzaIcon/> </Avatar>
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar"> <IcecreamIcon /> </Avatar>
-                    <Avatar sx={{ bgcolor: pink[500] }} aria-label="cake avatar"> <CakeIcon /> </Avatar>
                     <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar"> <SoupKitchenIcon /> </Avatar>
                     <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar"> <LocalBarIcon /> </Avatar>
                     <Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar"> <RamenDiningIcon />  </Avatar>
@@ -241,14 +240,13 @@ const App = () => {
                     <Avatar sx={{ bgcolor: green[500] }}>DM</Avatar>
                     <Avatar sx={{ bgcolor: deepOrange[500] }}>LM</Avatar>
                     <Avatar sx={{ bgcolor: deepPurple[500] }}>TH</Avatar>
-                    <Avatar sx={{ bgcolor: yellow[500] }}>NG</Avatar>
                     <Avatar sx={{ bgcolor: cyan[500] }}>TP</Avatar>
                     <Avatar sx={{ bgcolor: indigo[500] }}>OP</Avatar>
                   </Stack>
                 </ListItem>
                 <Stack direction="row" spacing={2} padding={2}>
                   <Container sx={{ padding:'0px', display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                    <Typography color="textSecondary">Alternatively, upload your custom Avatar:</Typography>
+                    <Typography color="textSecondary">Or, upload your custom Avatar:</Typography>
                     <Container sx={{display:'none'}}>
                           <input 
                             accept="image/*"
