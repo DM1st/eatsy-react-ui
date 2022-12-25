@@ -223,13 +223,12 @@ const App = () => {
               aria-describedby="child-dialog-description"
             >
                <Box sx={{padding:'5px'}}>
-                <Typography id="child-dialog-description" variant="h7">
-                  Pick a pre-set Avatar or upload a custom image.
+                <Typography id="child-dialog-description" variant="h7" sx={{padding:'20px'}}>
+                  Pick a pre-set Avatar
                 </Typography>
                 <ListItem divider>
                   <Stack direction="row" spacing={2} padding={2} >
                     <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar"> <LocalPizzaIcon/> </Avatar>
-                    <Avatar sx={{ bgcolor: blue[500] }} aria-label="fast food avatar"> <FastfoodIcon /> </Avatar>
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar"> <IcecreamIcon /> </Avatar>
                     <Avatar sx={{ bgcolor: pink[500] }} aria-label="cake avatar"> <CakeIcon /> </Avatar>
                     <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar"> <SoupKitchenIcon /> </Avatar>
@@ -244,7 +243,6 @@ const App = () => {
                     <Avatar sx={{ bgcolor: deepPurple[500] }}>TH</Avatar>
                     <Avatar sx={{ bgcolor: yellow[500] }}>NG</Avatar>
                     <Avatar sx={{ bgcolor: cyan[500] }}>TP</Avatar>
-                    <Avatar sx={{ bgcolor: red[500] }}>HN</Avatar>
                     <Avatar sx={{ bgcolor: indigo[500] }}>OP</Avatar>
                   </Stack>
                 </ListItem>
