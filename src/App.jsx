@@ -8,7 +8,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { green, teal, blue, red, pink, indigo, amber } from '@mui/material/colors';
+import { green, teal, blue, red, pink, indigo, amber, cyan, deepPurple, deepOrange, yellow } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -222,39 +222,50 @@ const App = () => {
               aria-labelledby="child-dialog-title"
               aria-describedby="child-dialog-description"
             >
-               <Box >
-                <p id="child-dialog-description">
-                  Pick a pre-set Avatar or upload custom image.
-                </p>
+               <Box sx={{padding:'5px'}}>
+                <Typography id="child-dialog-description" variant="h7">
+                  Pick a pre-set Avatar or upload a custom image.
+                </Typography>
+                <ListItem divider>
+                  <Stack direction="row" spacing={2} padding={2} >
+                    <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar"> <LocalPizzaIcon/> </Avatar>
+                    <Avatar sx={{ bgcolor: blue[500] }} aria-label="fast food avatar"> <FastfoodIcon /> </Avatar>
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar"> <IcecreamIcon /> </Avatar>
+                    <Avatar sx={{ bgcolor: pink[500] }} aria-label="cake avatar"> <CakeIcon /> </Avatar>
+                    <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar"> <SoupKitchenIcon /> </Avatar>
+                    <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar"> <LocalBarIcon /> </Avatar>
+                    <Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar"> <RamenDiningIcon />  </Avatar>
+                  </Stack>
+                </ListItem>
+                <ListItem divider>
+                  <Stack direction="row" spacing={2} padding={2}>
+                    <Avatar sx={{ bgcolor: green[500] }}>DM</Avatar>
+                    <Avatar sx={{ bgcolor: deepOrange[500] }}>LM</Avatar>
+                    <Avatar sx={{ bgcolor: deepPurple[500] }}>TH</Avatar>
+                    <Avatar sx={{ bgcolor: yellow[500] }}>NG</Avatar>
+                    <Avatar sx={{ bgcolor: cyan[500] }}>TP</Avatar>
+                    <Avatar sx={{ bgcolor: red[500] }}>HN</Avatar>
+                    <Avatar sx={{ bgcolor: indigo[500] }}>OP</Avatar>
+                  </Stack>
+                </ListItem>
                 <Stack direction="row" spacing={2} padding={2}>
-                  <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar"> <LocalPizzaIcon/> </Avatar>
-                  <Avatar sx={{ bgcolor: blue[500] }} aria-label="fast food avatar"> <FastfoodIcon /> </Avatar>
-                  <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar"> <IcecreamIcon /> </Avatar>
-                  <Avatar sx={{ bgcolor: pink[500] }} aria-label="cake avatar"> <CakeIcon /> </Avatar>
-                  <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar"> <SoupKitchenIcon /> </Avatar>
-                  <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar"> <LocalBarIcon /> </Avatar>
-                  <Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar"> <RamenDiningIcon />  </Avatar>
-                </Stack>
-                <Stack direction="row" spacing={2} padding={2}>
-                  <Avatar alt="DM1st" src="/static/images/avatar/featherMcGraw.jpg" /> 
-                  <Container sx={{display:'none'}}>
-                    <input 
-                      accept="image/*"
-                      id="contained-button-avatar"
-                      multiple
-                      type="file"
-                      /*onChange={this.handleUploadClick}*/
-                    />
+                  <Container sx={{ padding:'0px', display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                    <Typography color="textSecondary">Alternatively, upload your custom Avatar:</Typography>
+                    <Container sx={{display:'none'}}>
+                          <input 
+                            accept="image/*"
+                            id="contained-button-avatar"
+                            multiple
+                            type="file"
+                            /*onChange={this.handleUploadClick}*/
+                          />
+                    </Container>
+                        <label htmlFor="contained-button-avatar">
+                          <Fab component="span" size='small' sx={{color:blue[700], backgroundColor:'white'}}>
+                            <AddPhotoAlternateIcon />
+                          </Fab>
+                        </label>
                   </Container>
-                  <label htmlFor="contained-button-avatar">
-                    <Fab component="span" size='small' sx={{color:blue[700], backgroundColor:'white'}}>
-                      <AddPhotoAlternateIcon />
-                    </Fab>
-                  </label>
-                </Stack>
-                <Stack direction="row" spacing={2}>
-
-                
                 </Stack>
               </Box>
             </Dialog>
