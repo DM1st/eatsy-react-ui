@@ -8,7 +8,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { green, teal, blue, red, pink, indigo, amber, cyan, deepPurple, deepOrange, yellow } from '@mui/material/colors';
+import { green, teal, blue, red, lime, indigo, amber, cyan, deepPurple, deepOrange, yellow } from '@mui/material/colors';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -36,6 +36,7 @@ import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import RamenDiningIcon from '@mui/icons-material/RamenDining';
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+import BakeryDiningIcon from '@mui/icons-material/BakeryDiningSharp';
 
 import Stack from '@mui/material/Stack';
 
@@ -224,7 +225,7 @@ const App = () => {
             >
                <Box sx={{padding:'5px'}}>
                 <Typography id="child-dialog-description" variant="h7" sx={{padding:'20px'}}>
-                  Pick a pre-set Avatar
+                  Pick a pre-set Avatar:
                 </Typography>
                 <ListItem divider>
                   <Stack direction="row" spacing={2} padding={2} >
@@ -232,7 +233,14 @@ const App = () => {
                     <IconButton><Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar"> <IcecreamIcon /> </Avatar></IconButton>
                     <IconButton><Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar"> <SoupKitchenIcon /> </Avatar></IconButton>
                     <IconButton><Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar"> <LocalBarIcon /> </Avatar></IconButton>
+                  </Stack>
+                </ListItem>
+                <ListItem divider>
+                  <Stack direction="row" spacing={2} padding={2} >
                     <IconButton><Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar"> <RamenDiningIcon /></Avatar></IconButton>
+                    <IconButton><Avatar sx={{ bgcolor: lime[500] }} aria-label="Ramen Dinning avatar"> <FastfoodIcon /></Avatar></IconButton>
+                    <IconButton><Avatar sx={{ bgcolor: blue[500] }} aria-label="Ramen Dinning avatar"> <CakeIcon /></Avatar></IconButton>
+                    <IconButton><Avatar sx={{ bgcolor: yellow[500] }} aria-label="Ramen Dinning avatar"> <BakeryDiningIcon /></Avatar></IconButton>
                   </Stack>
                 </ListItem>
                 <ListItem divider>
@@ -241,7 +249,6 @@ const App = () => {
                   <IconButton><Avatar sx={{ bgcolor: deepOrange[500] }}>LM</Avatar></IconButton>
                   <IconButton><Avatar sx={{ bgcolor: deepPurple[500] }}>TH</Avatar></IconButton>
                   <IconButton><Avatar sx={{ bgcolor: cyan[500] }}>TP</Avatar></IconButton>
-                  <IconButton><Avatar sx={{ bgcolor: indigo[500] }}>OP</Avatar></IconButton>
                   </Stack>
                 </ListItem>
                 <Stack direction="row" spacing={2} padding={2}>
