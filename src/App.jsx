@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SvgIcon from '@mui/material/SvgIcon';
 import { styled, alpha  } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, ListItem} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, List, ListItem, ListSubheader, ListItemText} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -40,8 +40,6 @@ import BakeryDiningIcon from '@mui/icons-material/BakeryDiningSharp';
 
 import Stack from '@mui/material/Stack';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -334,10 +332,10 @@ const App = () => {
         };
       
         //State object - initialise with an array of objects
-        const [items, setItems] = useState([
-          {ingredientName: 'ingredient 1', quantity: '1'},
-          {ingredientName: 'ingredient 2', quantity: '250g'},
-          {ingredientName:  'ingredient 3', quantity: '50ml'},
+        const [ingredients, setItems] = useState([
+          {ingredientName: 'Dill Pickles', quantity: '10 g'},
+          {ingredientName: 'Egg noodles', quantity: '1 nest'},
+          {ingredientName:  'Chicken breast', quantity: '100g'},
         ]);
 
         return(
@@ -353,46 +351,35 @@ const App = () => {
                 aria-labelledby="child-dialog-ingredients"
                 >
                   {/* Map function to loop over list and display the items */}
-                  <div >
-                      {items.map((item, index) => (
-                        <div >
-                          <div >
-                            <FontAwesomeIcon icon={faCircle} />
-                                <span>{item.ingredientName}</span>
-                          </div>
-                          <div >
-                            <button>
-                              <FontAwesomeIcon icon={faChevronLeft} />
-                            </button>
-                            <span> {item.quantity} </span>
-                            <button>
-                              <FontAwesomeIcon icon={faChevronRight} />
-                            </button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  <List
+                    subheader={
+                      <ListSubheader
+                        color={"primary"}
+                        inset                    
+                      >
+                        Ingredients
+                      </ListSubheader>
+                    }
+                  >
+                    {ingredients.map((ingredient, index) => {
+                      return (
+                        <ListItem 
+                          key={ingredient}
+                          dense
+                          divider
+                        >
+                          <ListItemText
+                            primary={ingredient.ingredientName}
+                          />
+
+                        </ListItem>
+                      );
+                    })}
+                  </List>
                 </Dialog>
           </Container>
-
         );
-
-
       };
-
-      //Function for the ingredient list
-const DefineIngredients =() => {
-
- 
-
-  return (
-    <React.Fragment>
-      
-
-    </React.Fragment>
-  );
-
-}
 
 //Filter by tags function here
 
