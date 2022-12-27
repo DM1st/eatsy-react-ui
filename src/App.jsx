@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SvgIcon from '@mui/material/SvgIcon';
 import { styled, alpha  } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, List, ListItem, ListSubheader, ListItemText} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, List, ListItem, ListSubheader, ListItemText, ListItemSecondaryAction, Input, Paper, InputBase} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -28,6 +28,7 @@ import Dialog from '@mui/material/Dialog';
 
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CollectionsIcon from '@mui/icons-material/Collections';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import IcecreamIcon from '@mui/icons-material/Icecream';
@@ -39,6 +40,10 @@ import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import BakeryDiningIcon from '@mui/icons-material/BakeryDiningSharp';
 
 import Stack from '@mui/material/Stack';
+import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
+import DirectionsIcon from '@mui/icons-material/Directions';
+
 
 
 const StyledMenu = styled((props) => (
@@ -350,12 +355,26 @@ const App = () => {
                 onClose={handleClose}
                 aria-labelledby="child-dialog-ingredients"
                 >
+                  <Paper
+                    component="form"
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+                  >  
+                    <InputBase
+                      sx={{ ml: 1, flex: 1 }}
+                      placeholder="Add new ingredient"
+                      inputProps={{ 'aria-label': 'Add new ingredient' }}
+                    />
+                    <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                    <IconButton color="primary" sx={{ p: '10px' }} aria-label="add ingredient">
+                      <AddIcon />
+                    </IconButton>
+                  </Paper>
                   {/* Map function to loop over list and display the items */}
                   <List
                     subheader={
                       <ListSubheader
                         color={"primary"}
-                        inset                    
+                                            
                       >
                         Ingredients
                       </ListSubheader>
@@ -371,14 +390,36 @@ const App = () => {
                           <ListItemText
                             primary={ingredient.ingredientName}
                           />
-
+                          <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label='deleteIngredient'>
+                              <DeleteIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
                         </ListItem>
                       );
                     })}
                   </List>
+                  <SaveIngredients />
                 </Dialog>
           </Container>
         );
+      };
+
+      const SaveIngredients = () => {
+
+        //Define handle click here
+
+        return(
+
+          <Container sx={{width:'100%', display:'flex', align:'center', paddingTop:'20px', justifyContent:'end', paddingRight:'0', paddingLeft:'0'}}>
+                <Button  >
+                  Save Ingredients
+                </Button>
+          </Container>
+
+        );
+
+
       };
 
 //Filter by tags function here
