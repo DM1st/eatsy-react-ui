@@ -337,11 +337,30 @@ const App = () => {
         };
       
         //State object - initialise with an array of objects
-        const [ingredients, setItems] = useState([
+        const [ingredients, setIngredients] = useState([
           {ingredientName: 'Dill Pickles', quantity: '10 g'},
           {ingredientName: 'Egg noodles', quantity: '1 nest'},
           {ingredientName:  'Chicken breast', quantity: '100g'},
         ]);
+
+        //State object for adding new ingredient to ingredient list
+        const [inputValue, setInputValue] = useState('');
+
+        const handleAddButtonClick = () => {
+          
+          //Creates new ingredient object which gets pushed to the Array
+          const newIngredient = {
+            ingredientName: inputValue,
+          };
+        
+          //Copies the existing array (to avoid mutating state) and add the newIngredient object on to the end. 
+          const newIngredients = [...ingredients, newIngredient];
+          
+          //Pushes the new array back into state.
+          setIngredients(newIngredients);
+          //Reset the inputValue to empty the string for ease of adding new ingredients.
+          setInputValue('');
+        };
 
         return(
 
@@ -359,13 +378,16 @@ const App = () => {
                     component="form"
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
                   >  
-                    <InputBase
+                  {/*Whever user types, onChange gets called. React passes event in automatically so we can obtain the value*/}
+                  {/*setInputValue is then called to set what the user has typed in as state. */}
+                  {/*value of the input to be whatever value is stoered in the inputValue state variable. */}
+                    <InputBase value={inputValue} onChange={(event) => setInputValue(event.target.value)}
                       sx={{ ml: 1, flex: 1 }}
                       placeholder="Add new ingredient"
                       inputProps={{ 'aria-label': 'Add new ingredient' }}
                     />
                     <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                    <IconButton color="primary" sx={{ p: '10px' }} aria-label="add ingredient">
+                    <IconButton onClick={ () => handleAddButtonClick()} color="primary" sx={{ p: '10px' }} aria-label="add ingredient">
                       <AddIcon />
                     </IconButton>
                   </Paper>
