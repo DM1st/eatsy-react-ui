@@ -40,6 +40,9 @@ import BakeryDiningIcon from '@mui/icons-material/BakeryDiningSharp';
 
 import Stack from '@mui/material/Stack';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 const StyledMenu = styled((props) => (
     <Menu
       elevation={0}
@@ -197,6 +200,44 @@ const App = () => {
         setDialogOpen(false);
       };
 
+
+//Function for the ingredient list
+const DefineIngredients =() => {
+
+  //State object - initialise with an array of objects
+  const [items, setItems] = useState([
+    {ingredientName: 'ingredient 1', quantity: '1'},
+    {ingredientName: 'ingredient 2', quantity: '250g'},
+    {ingredientName:  'ingredient 3', quantity: '50ml'},
+  ]);
+
+  return (
+    <React.Fragment>
+      {/* Map function to loop over list and display the items */}
+      <div >
+          {items.map((item, index) => (
+            <div >
+              <div >
+                <FontAwesomeIcon icon={faCircle} />
+                    <span>{item.itemName}</span>
+              </div>
+              <div >
+                <button>
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+                <span> {item.quantity} </span>
+                <button>
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+    </React.Fragment>
+  );
+
+}
 
 //Functions for the add Recipe dialog
 
