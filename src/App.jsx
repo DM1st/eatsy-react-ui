@@ -200,45 +200,6 @@ const App = () => {
         setDialogOpen(false);
       };
 
-
-//Function for the ingredient list
-const DefineIngredients =() => {
-
-  //State object - initialise with an array of objects
-  const [items, setItems] = useState([
-    {ingredientName: 'ingredient 1', quantity: '1'},
-    {ingredientName: 'ingredient 2', quantity: '250g'},
-    {ingredientName:  'ingredient 3', quantity: '50ml'},
-  ]);
-
-  return (
-    <React.Fragment>
-      {/* Map function to loop over list and display the items */}
-      <div >
-          {items.map((item, index) => (
-            <div >
-              <div >
-                <FontAwesomeIcon icon={faCircle} />
-                    <span>{item.itemName}</span>
-              </div>
-              <div >
-                <button>
-                  <FontAwesomeIcon icon={faChevronLeft} />
-                </button>
-                <span> {item.quantity} </span>
-                <button>
-                  <FontAwesomeIcon icon={faChevronRight} />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-    </React.Fragment>
-  );
-
-}
-
 //Functions for the add Recipe dialog
 
       const SelectAvatar = () => {
@@ -364,20 +325,74 @@ const DefineIngredients =() => {
       const AddIngredients = () => {
 
         //Define handle click here
+        const [open, setOpen] = React.useState(false);
+        const handleOpen = () => {
+          setOpen(true);
+        };
+        const handleClose = () => {
+          setOpen(false);
+        };
+      
+        //State object - initialise with an array of objects
+        const [items, setItems] = useState([
+          {ingredientName: 'ingredient 1', quantity: '1'},
+          {ingredientName: 'ingredient 2', quantity: '250g'},
+          {ingredientName:  'ingredient 3', quantity: '50ml'},
+        ]);
 
         return(
 
           <Container sx={{width:'100%', display:'flex', justifyContent:'space-between', align:'center', paddingTop:'5px', paddingBottom:'5px', paddingRight:'0', paddingLeft:'0'}}>
                 <Typography color="textSecondary">Add ingredients</Typography>
-                <Button variant="outlined" >
+                <Button variant="outlined" onClick={handleOpen}>
                   Ingredients
                 </Button>
+                <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="child-dialog-ingredients"
+                >
+                  {/* Map function to loop over list and display the items */}
+                  <div >
+                      {items.map((item, index) => (
+                        <div >
+                          <div >
+                            <FontAwesomeIcon icon={faCircle} />
+                                <span>{item.ingredientName}</span>
+                          </div>
+                          <div >
+                            <button>
+                              <FontAwesomeIcon icon={faChevronLeft} />
+                            </button>
+                            <span> {item.quantity} </span>
+                            <button>
+                              <FontAwesomeIcon icon={faChevronRight} />
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                </Dialog>
           </Container>
 
         );
 
 
       };
+
+      //Function for the ingredient list
+const DefineIngredients =() => {
+
+ 
+
+  return (
+    <React.Fragment>
+      
+
+    </React.Fragment>
+  );
+
+}
 
 //Filter by tags function here
 
