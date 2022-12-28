@@ -336,12 +336,8 @@ const App = () => {
           setOpen(false);
         };
       
-        //State object - initialise with an array of objects
-        const [ingredients, setIngredients] = useState([
-          {ingredientName: 'Dill Pickles', quantity: '10 g'},
-          {ingredientName: 'Egg noodles', quantity: '1 nest'},
-          {ingredientName:  'Chicken breast', quantity: '100g'},
-        ]);
+        //State object - initialise with an empty array
+        const [ingredients, setIngredients] = useState([]);
 
         //State object for adding new ingredient to ingredient list
         const [inputValue, setInputValue] = useState('');
@@ -360,6 +356,23 @@ const App = () => {
           setIngredients(newIngredients);
           //Reset the inputValue to empty the string for ease of adding new ingredients.
           setInputValue('');
+        };
+
+        const CloseIngredientsDialog = () => {
+
+          //Define handle click here
+  
+          return(
+  
+            <Container sx={{width:'100%', display:'flex', align:'center', paddingTop:'20px', justifyContent:'end', paddingRight:'0', paddingLeft:'0'}}>
+                  <Button  onClick={handleClose}>
+                    Done
+                  </Button>
+            </Container>
+  
+          );
+  
+  
         };
 
         return(
@@ -421,28 +434,12 @@ const App = () => {
                       );
                     })}
                   </List>
-                  <SaveIngredients />
+                  <CloseIngredientsDialog />
                 </Dialog>
           </Container>
         );
       };
 
-      const SaveIngredients = () => {
-
-        //Define handle click here
-
-        return(
-
-          <Container sx={{width:'100%', display:'flex', align:'center', paddingTop:'20px', justifyContent:'end', paddingRight:'0', paddingLeft:'0'}}>
-                <Button  >
-                  Save Ingredients
-                </Button>
-          </Container>
-
-        );
-
-
-      };
 
 //Filter by tags function here
 
