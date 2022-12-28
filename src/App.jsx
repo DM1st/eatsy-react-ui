@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SvgIcon from '@mui/material/SvgIcon';
 import { styled, alpha  } from '@mui/material/styles';
-import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, List, ListItem, ListSubheader, ListItemText, ListItemSecondaryAction, Input, Paper, InputBase} from '@mui/material';
+import { Typography, Link, AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Fab, Autocomplete, TextField, CardHeader, Tabs, Tab, Tooltip, List, ListItem, ListSubheader, ListItemText, ListItemSecondaryAction, Paper, InputBase} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';
@@ -40,9 +40,6 @@ import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import BakeryDiningIcon from '@mui/icons-material/BakeryDiningSharp';
 
 import Stack from '@mui/material/Stack';
-import SearchIcon from '@mui/icons-material/Search';
-import MenuIcon from '@mui/icons-material/Menu';
-import DirectionsIcon from '@mui/icons-material/Directions';
 
 
 
@@ -337,7 +334,11 @@ const App = () => {
         };
       
         //State object - initialise with an empty array
-        const [ingredients, setIngredients] = useState([]);
+        const [ingredients, setIngredients] = useState([
+          {ingredientName: 'Dill Pickles', quantity: '10 g'},
+          {ingredientName: 'Egg noodles', quantity: '1 nest'},
+          {ingredientName:  'Chicken breast', quantity: '100g'},
+        ]);
 
         //State object for adding new ingredient to ingredient list
         const [inputValue, setInputValue] = useState('');
