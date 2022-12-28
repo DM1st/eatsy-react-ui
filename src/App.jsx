@@ -373,7 +373,13 @@ const App = () => {
   
           );
   
-  
+        };
+
+        const handleRemoveIngredientClick = (ingredientName) => {
+
+          const updatedIngredientList = ingredients.filter((ingredient) => ingredient.ingredientName !== ingredientName);
+          setIngredients(updatedIngredientList);
+
         };
 
         return(
@@ -428,7 +434,7 @@ const App = () => {
                           />
                           <ListItemSecondaryAction>
                             <IconButton edge="end" aria-label='deleteIngredient'>
-                              <DeleteIcon />
+                              <DeleteIcon /*onClick={handleRemoveIngredientClick(ingredient.ingredientName)}*//>
                             </IconButton>
                           </ListItemSecondaryAction>
                         </ListItem>
