@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import RecipeDialog from './RecipeDialog';
 import FilterByTags from './FilterByTags';
 
@@ -27,6 +28,7 @@ import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
+import { render } from '@testing-library/react';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -164,32 +166,26 @@ const App = () => {
     setOpen(true);
   };
 
+
+  //State management for the Recipe Dialog (defined in parent component).
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
-  const handleFabClickOpen = () => {
+  const handleFabClickOpenRecipeDialog = () => {
     setDialogOpen(true);
-};
+  };
 
-  //Functions for the add Recipe dialog
-
-  
-
-
-
-
-
-  function handleRemoveIngredientClick(key) {
-
-    //const updatedIngredientList = ingredients.filter((ingredient) => ingredient.key !== key);
-    //setIngredients(updatedIngredientList);
-    alert('dog')
-
+  const handleCloseRecipeDialog = () => {
+    setDialogOpen(false);
   };
 
 
+  // function handleRemoveIngredientClick(key) {
 
+  //   //const updatedIngredientList = ingredients.filter((ingredient) => ingredient.key !== key);
+  //   //setIngredients(updatedIngredientList);
+  //   alert('dog')
 
-  //Filter by tags function here
+  // };
 
   return <>
     <CssBaseline />
@@ -233,11 +229,14 @@ const App = () => {
         }}
           color="secondary"
           aria-label="add"
-          onClick={handleFabClickOpen}
+          onClick={handleFabClickOpenRecipeDialog}
         >
           <AddIcon />
         </Fab>
-        <RecipeDialog />
+        <RecipeDialog
+          openRecipeDialog={handleFabClickOpenRecipeDialog}
+          closeRecipeDialog={handleCloseRecipeDialog}
+        />
       </div>
       <Box sx={{ bgcolor: 'background.paper' }}>
         <Container sx={{ marginTop: '20px' }} maxWidth="sm">

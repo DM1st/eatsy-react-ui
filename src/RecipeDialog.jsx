@@ -9,17 +9,10 @@ import FilterByTags from './FilterByTags';
 import AddMethod from './AddMethod';
 import AddIngredients from './AddIngredients'
 
-function RecipeDialog() {
-
-    const [dialogOpen, setDialogOpen] = React.useState(false);
-
-    const handleCloseDialog = () => {
-        setDialogOpen(false);
-    };
-
+function RecipeDialog(props) {
 
     return (
-        <Dialog fullWidth open={dialogOpen} onClose={handleCloseDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
+        <Dialog fullWidth open={props.openRecipeDialog} onClose={props.closeRecipeDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
             <Box fullWidth p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <Typography variant="h5" sx={{ marginBottom: '10px' }}>
                     New Recipe
@@ -31,7 +24,7 @@ function RecipeDialog() {
                     <TextField margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
-                    <SelectAvatar />
+                    {/*<SelectAvatar />*/}
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <RecipePhoto />
@@ -40,7 +33,7 @@ function RecipeDialog() {
                     <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
-                    <AddIngredients />
+                    {/*<AddIngredients />*/}
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <AddMethod />
