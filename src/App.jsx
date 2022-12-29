@@ -322,6 +322,14 @@ const App = () => {
 
       };
 
+      function handleRemoveIngredientClick(key){
+
+        //const updatedIngredientList = ingredients.filter((ingredient) => ingredient.key !== key);
+        //setIngredients(updatedIngredientList);
+        alert('dog')
+
+      };
+
       const AddIngredients = () => {
 
         //Define handle click here
@@ -334,20 +342,18 @@ const App = () => {
         };
       
         //State object - initialise with an empty array
-        const [ingredients, setIngredients] = useState([
-          {ingredientName: 'Dill Pickles', quantity: '10 g'},
-          {ingredientName: 'Egg noodles', quantity: '1 nest'},
-          {ingredientName:  'Chicken breast', quantity: '100g'},
-        ]);
+        const [ingredients, setIngredients] = useState([]);
 
         //State object for adding new ingredient to ingredient list
         const [inputValue, setInputValue] = useState('');
 
         const handleAddButtonClick = () => {
           
+          
           //Creates new ingredient object which gets pushed to the Array
           const newIngredient = {
             ingredientName: inputValue,
+            key: Date.now(),
           };
         
           //Copies the existing array (to avoid mutating state) and add the newIngredient object on to the end. 
@@ -373,13 +379,6 @@ const App = () => {
   
           );
   
-        };
-
-        const handleRemoveIngredientClick = (ingredientName) => {
-
-          const updatedIngredientList = ingredients.filter((ingredient) => ingredient.ingredientName !== ingredientName);
-          setIngredients(updatedIngredientList);
-
         };
 
         return(
@@ -433,8 +432,8 @@ const App = () => {
                             primary={ingredient.ingredientName}
                           />
                           <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label='deleteIngredient'>
-                              <DeleteIcon /*onClick={handleRemoveIngredientClick(ingredient.ingredientName)}*//>
+                            <IconButton /*onClick={handleRemoveIngredientClick(ingredient.key)}*/ edge="end" aria-label='deleteIngredient'>
+                              <DeleteIcon />
                             </IconButton>
                           </ListItemSecondaryAction>
                         </ListItem>
