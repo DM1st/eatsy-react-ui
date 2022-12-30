@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 
 import { CssBaseline, Grid, Container, Fab } from '@mui/material';
 
@@ -55,25 +55,17 @@ import SearchTabPanel from './SearchTabPanel';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-class App extends React.Component {
+function App() {
 
-  //State management for the Recipe Dialog (defined in parent component - App).
-  state = {
+  //State management using setState hook for the Recipe Dialog (defined in parent component - App).
+  const [openRecipeDialog, setOpenRecipeDialog] = useState(false);
 
-    openRecipeDialog: false
-
+  const handleFabClickOpenRecipeDialog = () => {
+    setOpenRecipeDialog(true);
   };
 
-  handleFabClickOpenRecipeDialog = () => {
-    this.setState({
-      openRecipeDialog: true
-    });
-  };
-
-  handleCloseRecipeDialog = () => {
-    this.setState({
-      openRecipeDialog: false
-    });
+  const handleCloseRecipeDialog = () => {
+    setOpenRecipeDialog(false);
   };
 
 
@@ -84,7 +76,6 @@ class App extends React.Component {
   //   alert('dog')
 
   // };
-  render() {
     return (
       <div>
         <CssBaseline />
@@ -98,13 +89,13 @@ class App extends React.Component {
             }}
               color="secondary"
               aria-label="add"
-              onClick={this.handleFabClickOpenRecipeDialog}
+              onClick={handleFabClickOpenRecipeDialog}
             >
               <AddIcon />
             </Fab>
             <RecipeDialog
-              openRecipeDialog={this.handleFabClickOpenRecipeDialog}
-              closeRecipeDialog={this.handleCloseRecipeDialog}
+              openRecipeDialog={handleFabClickOpenRecipeDialog}
+              closeRecipeDialog={handleCloseRecipeDialog}
             />
           </div>
           <SearchTabPanel />
@@ -121,7 +112,6 @@ class App extends React.Component {
         <EatsyFooter />
       </div>
     )
-  }
 };
 
 export default App;
