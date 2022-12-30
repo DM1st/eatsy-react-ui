@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 
 import { Typography, Box, TextField, ListItem, Dialog } from '@mui/material';
 
@@ -41,7 +41,7 @@ function RecipeDialog(props) {
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <FilterByTags />
                 </ListItem>
-                <SaveRecipe />
+                <SaveRecipe onClick={props.closeRecipeDialog}/>
             </Box>
         </Dialog>
     )

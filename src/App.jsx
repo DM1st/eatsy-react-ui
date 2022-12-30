@@ -28,7 +28,6 @@ import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
-import { render } from '@testing-library/react';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -168,14 +167,15 @@ const App = () => {
 
 
   //State management for the Recipe Dialog (defined in parent component).
-  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [openRecipeDialog, setOpenRecipeDialog] = React.useState(false);
 
   const handleFabClickOpenRecipeDialog = () => {
-    setDialogOpen(true);
+    setOpenRecipeDialog(true);
   };
 
+
   const handleCloseRecipeDialog = () => {
-    setDialogOpen(false);
+    setOpenRecipeDialog(false);
   };
 
 
