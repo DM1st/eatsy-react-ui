@@ -13,7 +13,7 @@ function RecipeDialog(props) {
 
     return (
         <Dialog fullWidth open={props.openRecipeDialog} onClose={props.closeRecipeDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
-            <Box fullWidth p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
+            <Box p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <Typography variant="h5" sx={{ marginBottom: '10px' }}>
                     New Recipe
                 </Typography>

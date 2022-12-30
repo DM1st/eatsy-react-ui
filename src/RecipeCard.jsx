@@ -93,7 +93,7 @@ function RecipeCard() {
                             Edit
                           </MenuItem>
                           <Divider sx={{ my: 0.5 }} />
-                          <MenuItem onClick={handleClose} disableRipple disabled='true'>
+                          <MenuItem onClick={handleClose} disableRipple disabled>
                             <DeleteSharpIcon />
                             Delete
                           </MenuItem>
