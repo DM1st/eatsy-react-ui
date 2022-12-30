@@ -1,4 +1,4 @@
-import {React} from 'react';
+import {React, useState} from 'react';
 
 import { Typography, Box, Container, Fab, ListItem, Dialog, IconButton, Stack, Avatar} from '@mui/material';
 import { green, teal, blue, red, lime, indigo, amber, cyan, deepPurple, deepOrange, yellow } from '@mui/material/colors';
@@ -17,7 +17,7 @@ import BakeryDiningIcon from '@mui/icons-material/BakeryDiningSharp';
 
 function  SelectAvatar() {
 
-        const [open, setOpen] = React.useState(false);
+        const [open, setOpen] = useState(false);
         const handleOpen = () => {
             setOpen(true);
         };

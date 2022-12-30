@@ -33,7 +33,7 @@ function RecipeCard() {
     let author = 'Uploader: DM1st';
 
     //State for the expansion dropdown on the recipe cards
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
     //Update state of RecipeCard expansion when arrow is clicked
     const handleExpandClick = () => {
       setExpanded(!expanded);
@@ -45,7 +45,7 @@ function RecipeCard() {
 
     //Define state for the basic menu.
     //A basic menu opens over the anchor element by default (and ensures all items are visible. )
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     //Use boolean to track wheter menu should be open or closed based on the anchor state.
     const open = Boolean(anchorEl);
     //Set the anchor for the basic menu to be over the button that was clicked

@@ -9,7 +9,7 @@ function AddIngredients() {
 
     //Define handle click here
     //State for the ingredients sub dialog in the parent recipe dialog
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => {
       setOpen(true);
     };
