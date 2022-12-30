@@ -26,7 +26,6 @@ function  SelectAvatar() {
         };
 
         return (
-            <React.Fragment>
                 <Container sx={{ width: '100%', padding: '0px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Typography color="textSecondary">Select your avatar</Typography>
                     <Fab onClick={handleOpen} component="span" sx={{ color: blue[700], backgroundColor: 'white' }}>
@@ -88,7 +87,6 @@ function  SelectAvatar() {
                         </Box>
                     </Dialog>
                 </Container>
-            </React.Fragment>
         );
 
     };

@@ -24,7 +24,7 @@ function RecipeDialog(props) {
                     <TextField margin="dense" id="Uploader name" label="Uploader (your name)" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
-                    {/*<SelectAvatar />*/}
+                    <SelectAvatar />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <RecipePhoto />
@@ -33,7 +33,7 @@ function RecipeDialog(props) {
                     <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
-                    {/*<AddIngredients />*/}
+                    <AddIngredients />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <AddMethod />
