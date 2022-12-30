@@ -55,18 +55,25 @@ import SearchTabPanel from './SearchTabPanel';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-function App() {
+class App extends React.Component {
 
   //State management for the Recipe Dialog (defined in parent component - App).
-  const [openRecipeDialog, setOpenRecipeDialog] = React.useState(false);
+  state = {
 
-  const handleFabClickOpenRecipeDialog = () => {
-    setOpenRecipeDialog(true);
+    openRecipeDialog: false
+
   };
 
+  handleFabClickOpenRecipeDialog = () => {
+    this.setState({
+      openRecipeDialog: true
+    });
+  };
 
-  const handleCloseRecipeDialog = () => {
-    setOpenRecipeDialog(false);
+  handleCloseRecipeDialog = () => {
+    this.setState({
+      openRecipeDialog: false
+    });
   };
 
 
@@ -77,43 +84,44 @@ function App() {
   //   alert('dog')
 
   // };
-
-  return (
-    <div>
-      <CssBaseline />
-      <EatsyAppBar />
-      <main>
-        <div>
-          <Fab sx={{
-            position: "fixed",
-            bottom: (theme) => theme.spacing(2),
-            right: (theme) => theme.spacing(2)
-          }}
-            color="secondary"
-            aria-label="add"
-            onClick={handleFabClickOpenRecipeDialog}
-          >
-            <AddIcon />
-          </Fab>
-          <RecipeDialog
-            openRecipeDialog={handleFabClickOpenRecipeDialog}
-            closeRecipeDialog={handleCloseRecipeDialog}
-          />
-        </div>
-        <SearchTabPanel />
-        <Container maxWidth="md" sx={{ padding: '20px 0' }}>
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <RecipeCard />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </main>
-      <EatsyFooter />
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        <CssBaseline />
+        <EatsyAppBar />
+        <main>
+          <div>
+            <Fab sx={{
+              position: "fixed",
+              bottom: (theme) => theme.spacing(2),
+              right: (theme) => theme.spacing(2)
+            }}
+              color="secondary"
+              aria-label="add"
+              onClick={this.handleFabClickOpenRecipeDialog}
+            >
+              <AddIcon />
+            </Fab>
+            <RecipeDialog
+              openRecipeDialog={this.handleFabClickOpenRecipeDialog}
+              closeRecipeDialog={this.handleCloseRecipeDialog}
+            />
+          </div>
+          <SearchTabPanel />
+          <Container maxWidth="md" sx={{ padding: '20px 0' }}>
+            <Grid container spacing={4}>
+              {cards.map((card) => (
+                <Grid item key={card} xs={12} sm={6} md={4}>
+                  <RecipeCard />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </main>
+        <EatsyFooter />
+      </div>
+    )
+  }
 };
 
 export default App;
