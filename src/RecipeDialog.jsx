@@ -9,10 +9,10 @@ import FilterByTags from './FilterByTags';
 import AddMethod from './AddMethod';
 import AddIngredients from './AddIngredients'
 
-function RecipeDialog(props) {
+function RecipeDialog({open, closeRecipeDialog}) {
 
     return (
-        <Dialog fullWidth open={props.openRecipeDialog} onClose={props.closeRecipeDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
+        <Dialog fullWidth open={open} onClose={closeRecipeDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
             <Box p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <Typography variant="h5" sx={{ marginBottom: '10px' }}>
                     New Recipe
@@ -41,7 +41,7 @@ function RecipeDialog(props) {
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <FilterByTags />
                 </ListItem>
-                <SaveRecipe onClick={props.closeRecipeDialog}/>
+                <SaveRecipe closeRecipeDialog={closeRecipeDialog} />
             </Box>
         </Dialog>
     )

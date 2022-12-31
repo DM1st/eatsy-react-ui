@@ -94,7 +94,7 @@ function App() {
               <AddIcon />
             </Fab>
             <RecipeDialog
-              openRecipeDialog={handleFabClickOpenRecipeDialog}
+              open={openRecipeDialog}
               closeRecipeDialog={handleCloseRecipeDialog}
             />
           </div>
