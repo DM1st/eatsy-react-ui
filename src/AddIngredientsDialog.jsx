@@ -92,10 +92,10 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
         {ingredients.map((ingredient, index) => {
           return (
             <ListItem
-              key={ingredient}
+              key={ingredient.key}
               dense
               divider
-            >
+              >
               <ThemeProvider theme={theme}>
                 <TextField
                   focused
