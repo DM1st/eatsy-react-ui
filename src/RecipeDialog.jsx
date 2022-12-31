@@ -1,15 +1,25 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 
-import { Typography, Box, TextField, ListItem, Dialog } from '@mui/material';
+import { Typography, Box, TextField, ListItem, Dialog, Button } from '@mui/material';
 
 import SelectAvatar from './SelectAvatar';
 import RecipePhoto from './RecipePhoto';
 import SaveRecipe from './SaveRecipe';
 import FilterByTags from './FilterByTags';
 import AddMethod from './AddMethod';
-import AddIngredients from './AddIngredients'
+import AddIngredientsDialog from './AddIngredientsDialog'
 
 function RecipeDialog({open, closeRecipeDialog}) {
+
+        //State for the ingredients sub dialog in the parent recipe dialog
+        const [openIngredientsDialog, setOpenIngredientsDialog] = useState(false);
+        
+        const handleIngredientsDialogOpen = () => {
+            setOpenIngredientsDialog(true);
+        };
+        const handleIngredientsDialogClose = () => {
+            setOpenIngredientsDialog(false);
+        };
 
     return (
         <Dialog fullWidth open={open} onClose={closeRecipeDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
@@ -33,7 +43,11 @@ function RecipeDialog({open, closeRecipeDialog}) {
                     <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
-                    <AddIngredients />
+                <Typography color="textSecondary">Add ingredients</Typography>
+                <Button variant="outlined" onClick={handleIngredientsDialogOpen}>
+                Ingredients
+                </Button>
+                    <AddIngredientsDialog open={openIngredientsDialog} closeIngredientsDialog={handleIngredientsDialogClose} />
                 </ListItem>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <AddMethod />
