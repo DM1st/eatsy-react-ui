@@ -1,9 +1,19 @@
 import { React, useState } from 'react';
 
-import { Button, Container, List, ListItem, ListSubheader, ListItemText, ListItemSecondaryAction, Paper, InputBase, Dialog, Divider, IconButton } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import { Button, Container, List, ListItem, ListSubheader, ListItemSecondaryAction, Paper, InputBase, Dialog, Divider, IconButton, TextField } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+
+const theme = createTheme({
+  palette: {
+    camouflage: {
+      main: '	#ffffff',
+    },
+  },
+});
 
 function AddIngredientsDialog({open, closeIngredientsDialog}) {
 
@@ -45,7 +55,6 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
 
   return (
 
-    //<Container >
     <Dialog
       open={open}
       onClose={closeIngredientsDialog}
@@ -61,7 +70,7 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
         {/*value of the input to be whatever value is stoered in the inputValue state variable. */}
         <InputBase value={inputValue} onChange={(event) => setInputValue(event.target.value)}
           sx={{ ml: 1, flex: 1 }}
-          placeholder="Add new ingredient"
+          placeholder="Add ingredient"
           inputProps={{ 'aria-label': 'Add new ingredient' }}
         />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
@@ -87,9 +96,14 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
               dense
               divider
             >
-              <ListItemText
-                primary={ingredient.ingredientName}
-              />
+              <ThemeProvider theme={theme}>
+                <TextField
+                  focused
+                  color="camouflage"
+                  variant="standard"
+                  defaultValue={ingredient.ingredientName}
+                />
+              </ThemeProvider>
               <ListItemSecondaryAction>
                 <IconButton onClick={() => handleRemoveIngredientClick(ingredient.key)} edge="end" aria-label='deleteIngredient'>
                   <DeleteIcon />
@@ -105,7 +119,6 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
         </Button>
       </Container>
     </Dialog>
-    //</Container>
   );
 };
 
