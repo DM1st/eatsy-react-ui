@@ -30,7 +30,18 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
     setInputValue('');
   };
 
-  
+  //Remove ingredient from the list
+  //Modify the current stateful list with a filter. 
+  const handleRemoveIngredientClick = (key) => {
+
+    const updatedIngredientList = ingredients.filter((ingredient) => ingredient.key !== key);
+    setIngredients(updatedIngredientList);
+
+  }
+
+
+
+
 
   return (
 
@@ -80,7 +91,7 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
                 primary={ingredient.ingredientName}
               />
               <ListItemSecondaryAction>
-                <IconButton /*onClick={handleRemoveIngredientClick(ingredient.key)}*/ edge="end" aria-label='deleteIngredient'>
+                <IconButton onClick={() => handleRemoveIngredientClick(ingredient.key)} edge="end" aria-label='deleteIngredient'>
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
