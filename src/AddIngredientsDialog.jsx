@@ -7,9 +7,6 @@ import AddIcon from '@mui/icons-material/Add';
 
 function AddIngredientsDialog({open, closeIngredientsDialog}) {
 
-  //Define handle click here
-
-
   //State object - initialise with an empty array
   const [ingredients, setIngredients] = useState([]);
 
@@ -17,7 +14,6 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
   const [inputValue, setInputValue] = useState('');
 
   const handleAddButtonClick = () => {
-
 
     //Creates new ingredient object which gets pushed to the Array
     const newIngredient = {
@@ -33,6 +29,8 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
     //Reset the inputValue to empty the string for ease of adding new ingredients.
     setInputValue('');
   };
+
+  
 
   return (
 
