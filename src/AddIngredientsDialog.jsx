@@ -76,7 +76,15 @@ function AddIngredientsDialog({ open, closeIngredientsDialog }) {
         {/*Whever user types, onChange gets called. React passes event in automatically so we can obtain the value*/}
         {/*setInputValue is then called to set what the user has typed in as state. */}
         {/*value of the input to be whatever value is stoered in the inputValue state variable. */}
-        <InputBase value={inputValue} onChange={(event) => setInputValue(event.target.value)}
+        <InputBase
+          value={inputValue}
+          onChange={(event) => setInputValue(event.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleAddButtonClick();
+            }
+          }}
           sx={{ ml: 1, flex: 1 }}
           placeholder="Add ingredient"
           inputProps={{ 'aria-label': 'Add new ingredient' }}
