@@ -9,11 +9,13 @@ import FilterByTags from './FilterByTags';
 import AddMethod from './AddMethod';
 import AddIngredientsDialog from './AddIngredientsDialog'
 
+/**
+ * Recipe Dialog Component used for creating and editing recipies 
+ */
 function RecipeDialog({ open, closeRecipeDialog }) {
 
-    //State for the ingredients sub dialog in the parent recipe dialog
+    // The Open/Close State for the ingredients sub dialog in this parent recipe dialog
     const [openIngredientsDialog, setOpenIngredientsDialog] = useState(false);
-
     const handleIngredientsDialogOpen = () => {
         setOpenIngredientsDialog(true);
     };
