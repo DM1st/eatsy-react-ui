@@ -36,15 +36,14 @@ function EatsyAppBar() {
                   disablePortal: true,
                 }}
                 onClose={handleTooltipClose}
+                onClick={handleTooltipOpen}
                 open={open}
                 disableFocusListener
                 disableHoverListener
                 disableTouchListener
                 title="Eatsy is an online recipe book to allow users to find, create and share their favourite recipes with other cooking and baking enthusiasts!"
               >
-                <iconButton onClick={handleTooltipOpen}>
                   <InfoOutlinedIcon />
-                </iconButton>
               </Tooltip>
             </div>
           </ClickAwayListener>
