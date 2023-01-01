@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 });
 
-function AddIngredientsDialog({open, closeIngredientsDialog}) {
+function AddIngredientsDialog({ open, closeIngredientsDialog }) {
 
   //State object - initialise with an empty array
   const [ingredients, setIngredients] = useState([]);
@@ -49,7 +49,15 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
 
   }
 
+  const handleExistingIngredientEdit = (updatedIngredientName, key) => {
 
+    ingredients.map(ingredient => {
+      if (ingredient.key === key) {
+        ingredient.ingredientName = updatedIngredientName;
+      }
+    })
+
+  }
 
 
 
@@ -95,13 +103,14 @@ function AddIngredientsDialog({open, closeIngredientsDialog}) {
               key={ingredient.key}
               dense
               divider
-              >
+            >
               <ThemeProvider theme={theme}>
                 <TextField
                   focused
                   color="camouflage"
                   variant="standard"
                   defaultValue={ingredient.ingredientName}
+                  onChange={(event) => handleExistingIngredientEdit(event.target.value, ingredient.key)}
                 />
               </ThemeProvider>
               <ListItemSecondaryAction>
