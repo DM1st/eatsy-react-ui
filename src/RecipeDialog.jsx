@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 
 import { createTheme } from '@mui/material/styles';
-import { Typography, Box, TextField, ListItem, Dialog, Button, Container, Divider } from '@mui/material';
+import { Typography, Box, TextField, ListItem, Dialog, Button, Container } from '@mui/material';
 
 import SelectAvatar from './SelectAvatar';
 import RecipePhoto from './RecipePhoto';

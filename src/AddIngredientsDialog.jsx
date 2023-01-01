@@ -51,7 +51,7 @@ export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
 
   const handleExistingIngredientEdit = (updatedIngredientName, key) => {
 
-    ingredients.map(ingredient => {
+    ingredients.forEach(ingredient => {
       if (ingredient.key === key) {
         ingredient.ingredientName = updatedIngredientName;
       }
