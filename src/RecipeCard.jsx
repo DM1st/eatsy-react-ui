@@ -112,7 +112,7 @@ function RecipeCard() {
         title="Recipe Title"
         subheader={author}
         action={
-          <div>
+          <>
             <IconButton
               id="customized-hamburger-button"
               aria-controls={open ? 'customized-hamburger-menu' : undefined}
@@ -143,7 +143,7 @@ function RecipeCard() {
                 Delete
               </MenuItem>
             </StyledMenu>
-          </div>
+          </>
         }
       />
       <CardMedia sx={{ paddingTop: '56.25%' }} //16:9

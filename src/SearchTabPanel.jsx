@@ -67,7 +67,7 @@ function SearchTabPanel() {
     return (
         <Box sx={{ bgcolor: 'background.paper' }}>
             <Container sx={{ marginTop: '20px' }} maxWidth="sm">
-                <div >
+                <>
                     <Tabs value={value} onChange={handleChange} aria-label="search tabs" centered="true" >
                         <Tab icon={<LocalOfferSharpIcon />}
                             label="Filter by tag"
@@ -104,7 +104,7 @@ function SearchTabPanel() {
                             )}
                         />
                     </TabPanel>
-                </div>
+                </>
             </Container>
         </Box>
     )
