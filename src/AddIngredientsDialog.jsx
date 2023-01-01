@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 });
 
-function AddIngredientsDialog({ open, closeIngredientsDialog }) {
+export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
 
   //State object - initialise with an empty array
   const [ingredients, setIngredients] = useState([]);
@@ -138,5 +138,3 @@ function AddIngredientsDialog({ open, closeIngredientsDialog }) {
     </Dialog>
   );
 };
-
-export default AddIngredientsDialog;

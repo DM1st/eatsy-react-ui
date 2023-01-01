@@ -27,7 +27,7 @@ function RecipeDialog({ open, closeRecipeDialog }) {
         <Dialog fullWidth open={open} onClose={closeRecipeDialog} aria-labelledby="parent-dialog-title" aria-describedby="parent-dialog-description">
             <Box p={4} display='flex' flexDirection='column' alignItems='start' gap='2'>
                 <Typography variant="h5" sx={{ marginBottom: '10px' }}>
-                    Recipe
+                    Add New Recipe
                 </Typography>
                 <ListItem sx={{ paddingRight: '0', paddingLeft: '0' }} divider>
                     <TextField margin="dense" id="Recipe title" label="Add recipe title" type="text" fullWidth />
