@@ -52,9 +52,9 @@ function  SelectAvatar() {
                             <ListItem divider>
                                 <Stack direction="row" spacing={2} padding={2} >
                                     <IconButton><Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar"> <RamenDiningIcon /></Avatar></IconButton>
-                                    <IconButton><Avatar sx={{ bgcolor: lime[500] }} aria-label="Ramen Dinning avatar"> <FastfoodIcon /></Avatar></IconButton>
-                                    <IconButton><Avatar sx={{ bgcolor: blue[500] }} aria-label="Ramen Dinning avatar"> <CakeIcon /></Avatar></IconButton>
-                                    <IconButton><Avatar sx={{ bgcolor: yellow[500] }} aria-label="Ramen Dinning avatar"> <BakeryDiningIcon /></Avatar></IconButton>
+                                    <IconButton><Avatar sx={{ bgcolor: lime[500] }} aria-label="Fast food avatar"> <FastfoodIcon /></Avatar></IconButton>
+                                    <IconButton><Avatar sx={{ bgcolor: blue[500] }} aria-label="Cake avatar"> <CakeIcon /></Avatar></IconButton>
+                                    <IconButton><Avatar sx={{ bgcolor: yellow[500] }} aria-label="Bakery Dinning avatar"> <BakeryDiningIcon /></Avatar></IconButton>
                                 </Stack>
                             </ListItem>
                             <ListItem divider>
