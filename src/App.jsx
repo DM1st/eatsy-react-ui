@@ -34,11 +34,11 @@ function App() {
 
   // };
     return (
-      <div>
+      <>
         <CssBaseline />
         <EatsyAppBar />
         <main>
-          <div>
+          <>
             <Fab sx={{
               position: "fixed",
               bottom: (theme) => theme.spacing(2),
@@ -54,7 +54,7 @@ function App() {
               open={openRecipeDialog}
               closeRecipeDialog={handleCloseRecipeDialog}
             />
-          </div>
+          </>
           <SearchTabPanel />
           <Container maxWidth="md" sx={{ padding: '20px 0' }}>
             <Grid container spacing={4}>
@@ -67,7 +67,7 @@ function App() {
           </Container>
         </main>
         <EatsyFooter />
-      </div>
+      </>
     )
 };
 
