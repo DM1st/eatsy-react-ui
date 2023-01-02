@@ -1,14 +1,10 @@
-import { React, useState } from 'react';
-
-import { CssBaseline, Grid, Container, Fab } from '@mui/material';
-
 import AddIcon from '@mui/icons-material/Add';
-
-import {RecipeDialog} from './features/addRecipe';
-
-import RecipeCard from './RecipeCard';
-import EatsyFooter from './EatsyFooter';
+import { CssBaseline, Grid, Container, Fab } from '@mui/material';
+import { React, useState } from 'react';
 import EatsyAppBar from './EatsyAppBar';
+import EatsyFooter from './EatsyFooter';
+import {RecipeDialog} from './features/addRecipe';
+import RecipeCard from './RecipeCard';
 import SearchTabPanel from './SearchTabPanel';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];

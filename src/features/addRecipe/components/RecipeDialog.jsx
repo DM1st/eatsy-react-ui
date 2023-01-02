@@ -1,14 +1,14 @@
-import { React, useState } from 'react';
-import PropTypes from 'prop-types';
-import { createTheme } from '@mui/material/styles';
 import { Typography, Box, TextField, ListItem, Dialog, Button, Container } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import { React, useState } from 'react';
 
-import SelectAvatar from './SelectAvatar';
+import AddIngredientsDialog from './AddIngredientsDialog'
+import AddMethod from './AddMethod';
 import RecipePhoto from './RecipePhoto';
 import SaveRecipe from './SaveRecipe';
+import SelectAvatar from './SelectAvatar';
 import FilterByTags from '../../../FilterByTags';
-import AddMethod from './AddMethod';
-import AddIngredientsDialog from './AddIngredientsDialog'
 
 const RecipeDialogListItemTheme = createTheme({
     components: {
