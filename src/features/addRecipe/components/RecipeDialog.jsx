@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { createTheme } from '@mui/material/styles';
 import { Typography, Box, TextField, ListItem, Dialog, Button, Container } from '@mui/material';
 
@@ -35,7 +35,7 @@ const RecipeDialogListItemTheme = createTheme({
 /**
  * Recipe Dialog Component used for creating and editing recipies 
  */
-export function RecipeDialog({ open, closeRecipeDialog }) {
+export const RecipeDialog = ({ open, closeRecipeDialog }) => {
 
     // The Open/Close State for the ingredients sub dialog in this parent recipe dialog
     const [openIngredientsDialog, setOpenIngredientsDialog] = useState(false);
@@ -86,4 +86,9 @@ export function RecipeDialog({ open, closeRecipeDialog }) {
             </Box>
         </Dialog>
     )
+};
+
+RecipeDialog.propTypes = {
+    open: PropTypes.bool.isRequired,
+    closeRecipeDialog: PropTypes.func.isRequired
 };

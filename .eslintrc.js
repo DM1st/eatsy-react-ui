@@ -15,7 +15,7 @@ module.exports = {
         "plugin:jest/recommended",
         "plugin:testing-library/react"
     ],
-    parser: "react-scripts/node_modules/babel-eslint", // Uses babel-eslint transforms. (Reuse babel-eslint dependency from react-scripts)
+    parser: "@babel/eslint-parser", // Uses babel-eslint transforms. (Reuse babel-eslint dependency from react-scripts)
     parserOptions: {
         ecmaFeatures: {
             jsx: true
@@ -28,37 +28,38 @@ module.exports = {
     ],
     root: true, // For configuration cascading.
     rules: {
-        indent: [
-            "error",
-            4
-        ],
-        quotes: [
-            "warn",
-            "double"
-        ],
-        "import/order": [
-            "warn",
-            {
-                alphabetize: {
-                  caseInsensitive: true,
-                  order: "asc"
-                },
-                groups: [
-                  "builtin",
-                  "external",
-                  "index",
-                  "sibling",
-                  "parent",
-                  "internal"
-                ]
-            }
-        ],
+        // indent: [
+        //     "error",
+        //     4
+        // ],
+        // quotes: [
+        //     "warn",
+        //     "double"
+        // ],
+        // "import/order": [
+        //     "warn",
+        //     {
+        //         alphabetize: {
+        //           caseInsensitive: true,
+        //           order: "asc"
+        //         },
+        //         groups: [
+        //           "builtin",
+        //           "external",
+        //           "index",
+        //           "sibling",
+        //           "parent",
+        //           "internal"
+        //         ]
+        //     }
+        // ],
         "no-restricted-imports": [
             'error',
             {
                 patterns: ['@/features/*/*'],
             },
         ],
+        "react/no-unknown-property": ['error', { ignore: ['css', 'sx'] }]
     },
     settings: {
         react: {

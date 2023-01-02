@@ -1,5 +1,10 @@
+import { React } from 'react';
 import { Container, Button } from '@mui/material';
+import PropTypes from 'prop-types';
 
+SaveRecipe.propTypes = {
+    closeRecipeDialog: PropTypes.func.isRequired
+}
 
 function SaveRecipe(props) {
 
@@ -12,6 +17,6 @@ function SaveRecipe(props) {
         </Container>
 
     );
-};
+}
 
 export default SaveRecipe;

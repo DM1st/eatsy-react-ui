@@ -1,3 +1,4 @@
+import { React } from 'react';
 import { Container, Typography, Button } from '@mui/material';
 
 
@@ -13,6 +14,6 @@ function AddMethod() {
         </Container>
 
     );
-};
+}
 
 export default AddMethod;

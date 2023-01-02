@@ -28,6 +28,6 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
       </Container>
     );
 
-  };
+  }
 
   export default RecipePhoto;

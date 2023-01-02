@@ -70,6 +70,6 @@ function App() {
         <EatsyFooter />
       </>
     )
-};
+}
 
 export default App;

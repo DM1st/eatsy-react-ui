@@ -89,6 +89,6 @@ function  SelectAvatar() {
                 </Container>
         );
 
-    };
+    }
 
     export default SelectAvatar;

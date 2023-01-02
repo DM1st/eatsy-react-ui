@@ -17,7 +17,7 @@ import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 
 //TODO
 const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
+  const { ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
@@ -168,7 +168,7 @@ function RecipeCard() {
           {`${countDown === 0 ? ' ' : countDown}`}
         </Button>
         <ExpandMore
-          expand={expanded}
+          expand={expanded ? 1 : 0}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"

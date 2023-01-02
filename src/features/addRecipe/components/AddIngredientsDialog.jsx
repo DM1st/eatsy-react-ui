@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Button, Container, List, ListItem, ListSubheader, ListItemSecondaryAction, Paper, InputBase, Dialog, Divider, IconButton, TextField } from '@mui/material';
@@ -105,7 +105,7 @@ export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
           </ListSubheader>
         }
       >
-        {ingredients.map((ingredient, index) => {
+        {ingredients.map((ingredient) => {
           return (
             <ListItem
               key={ingredient.key}
@@ -137,4 +137,9 @@ export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
       </Container>
     </Dialog>
   );
-};
+}
+
+AddIngredientsDialog.propTypes = {
+  open: PropTypes.bool.isRequired,
+  closeIngredientsDialog: PropTypes.func.isRequired
+}
