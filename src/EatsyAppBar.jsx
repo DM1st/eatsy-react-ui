@@ -30,12 +30,11 @@ function EatsyAppBar() {
         </Typography>
         <Toolbar sx={{ paddingTop: '4px', marginLeft: '0px' }}>
           <ClickAwayListener onClickAway={handleTooltipClose}>
-            <>
+            
               <Tooltip
                 PopperProps={{
                   disablePortal: true,
                 }}
-                onClose={handleTooltipClose}
                 onClick={handleTooltipOpen}
                 open={open}
                 disableFocusListener
@@ -45,7 +44,7 @@ function EatsyAppBar() {
               >
                   <InfoOutlinedIcon />
               </Tooltip>
-            </>
+            
           </ClickAwayListener>
         </Toolbar>
       </Grid>
