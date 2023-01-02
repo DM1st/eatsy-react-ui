@@ -1,22 +1,22 @@
-import { Typography, Box, TextField, ListItem, Dialog, Button, Container } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
-import PropTypes from 'prop-types';
-import { React, useState } from 'react';
+import { Typography, Box, TextField, ListItem, Dialog, Button, Container } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import PropTypes from "prop-types";
+import { React, useState } from "react";
 
-import AddIngredientsDialog from './AddIngredientsDialog'
-import AddMethod from './AddMethod';
-import RecipePhoto from './RecipePhoto';
-import SaveRecipe from './SaveRecipe';
-import SelectAvatar from './SelectAvatar';
-import FilterByTags from '../../../FilterByTags';
+import AddIngredientsDialog from "./AddIngredientsDialog"
+import AddMethod from "./AddMethod";
+import RecipePhoto from "./RecipePhoto";
+import SaveRecipe from "./SaveRecipe";
+import SelectAvatar from "./SelectAvatar";
+import FilterByTags from "../../../FilterByTags";
 
 const RecipeDialogListItemTheme = createTheme({
     components: {
         MuiListItem: {
             styleOverrides: {
                 root: {
-                    paddingRight: '0',
-                    paddingLeft: '0',
+                    paddingRight: "0",
+                    paddingLeft: "0",
                 },
 
             },
@@ -24,7 +24,7 @@ const RecipeDialogListItemTheme = createTheme({
         MuiTypography: {
             styleOverrides: {
                 root: {
-                    marginBottom: '10px',
+                    marginBottom: "10px",
 
                 },
             }
@@ -68,7 +68,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
                     <TextField margin="dense" id="Recipe description" label="Add recipe description" type="text" fullWidth />
                 </ListItem>
                 <ListItem divider theme={RecipeDialogListItemTheme}>
-                    <Container sx={{ width: '100%', display: 'flex', align: 'center', paddingTop: '5px', paddingBottom: '5px', justifyContent: 'space-between', paddingRight: '0', paddingLeft: '0' }}>
+                    <Container sx={{ width: "100%", display: "flex", align: "center", paddingTop: "5px", paddingBottom: "5px", justifyContent: "space-between", paddingRight: "0", paddingLeft: "0" }}>
                         <Typography color="textSecondary">Add ingredients</Typography>
                         <Button variant="outlined" onClick={handleIngredientsDialogOpen}>
                             Ingredients

@@ -32,10 +32,10 @@ module.exports = {
             "error",
             4
         ],
-        // quotes: [
-        //     "warn",
-        //     "double"
-        // ],
+        quotes: [
+            "warn",
+            "double"
+        ],
         "import/order": [
             "warn",
             {
@@ -54,12 +54,12 @@ module.exports = {
             }
         ],
         "no-restricted-imports": [
-            'error',
+            "error",
             {
-                patterns: ['@/features/*/*'],
+                patterns: ["@/features/*/*"],
             },
         ],
-        "react/no-unknown-property": ['error', { ignore: ['css', 'sx'] }]
+        "react/no-unknown-property": ["error", { ignore: ["css", "sx"] }]
     },
     settings: {
         react: {
