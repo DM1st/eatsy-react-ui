@@ -4,7 +4,8 @@ import { CssBaseline, Grid, Container, Fab } from '@mui/material';
 
 import AddIcon from '@mui/icons-material/Add';
 
-import RecipeDialog from './RecipeDialog';
+import {RecipeDialog} from './features/addRecipe';
+
 import RecipeCard from './RecipeCard';
 import EatsyFooter from './EatsyFooter';
 import EatsyAppBar from './EatsyAppBar';

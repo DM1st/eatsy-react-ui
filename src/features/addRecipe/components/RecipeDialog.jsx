@@ -6,7 +6,7 @@ import { Typography, Box, TextField, ListItem, Dialog, Button, Container } from 
 import SelectAvatar from './SelectAvatar';
 import RecipePhoto from './RecipePhoto';
 import SaveRecipe from './SaveRecipe';
-import FilterByTags from './FilterByTags';
+import FilterByTags from '../../../FilterByTags';
 import AddMethod from './AddMethod';
 import AddIngredientsDialog from './AddIngredientsDialog'
 
@@ -35,7 +35,7 @@ const RecipeDialogListItemTheme = createTheme({
 /**
  * Recipe Dialog Component used for creating and editing recipies 
  */
-export default function RecipeDialog({ open, closeRecipeDialog }) {
+export function RecipeDialog({ open, closeRecipeDialog }) {
 
     // The Open/Close State for the ingredients sub dialog in this parent recipe dialog
     const [openIngredientsDialog, setOpenIngredientsDialog] = useState(false);
