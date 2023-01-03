@@ -1,16 +1,16 @@
-import { Autocomplete, TextField } from '@mui/material';
-import { React } from 'react'
+import { Autocomplete, TextField } from "@mui/material";
+import { React } from "react"
 
 function FilterByTags() {
 
     const tags = [
-        { tag: 'Dessert' },
-        { tag: 'Cake' },
-        { tag: 'Christmas' },
-        { tag: 'Food' },
-        { tag: 'Drink' },
-        { tag: 'Healthy' },
-        { tag: 'Slow Cooker' },
+        { tag: "Dessert" },
+        { tag: "Cake" },
+        { tag: "Christmas" },
+        { tag: "Food" },
+        { tag: "Drink" },
+        { tag: "Healthy" },
+        { tag: "Slow Cooker" },
 
     ]
 

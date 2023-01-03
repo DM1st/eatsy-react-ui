@@ -3,9 +3,9 @@ import { CssBaseline, Grid, Container, Fab } from "@mui/material";
 import { React, useState } from "react";
 import EatsyAppBar from "./EatsyAppBar";
 import EatsyFooter from "./EatsyFooter";
-import { RecipeDialog } from "./features/addRecipe";
 import RecipeCard from "./RecipeCard";
 import SearchTabPanel from "./SearchTabPanel";
+import { RecipeDialog } from "@/features/addRecipe";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 

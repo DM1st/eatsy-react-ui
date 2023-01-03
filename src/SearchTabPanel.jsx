@@ -1,11 +1,11 @@
-import { React, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Container, Autocomplete, TextField, Tabs, Tab, Typography } from '@mui/material';
+import LocalOfferSharpIcon from "@mui/icons-material/LocalOfferSharp";
+import SearchSharpIcon from "@mui/icons-material/SearchSharp";
+import { Box, Container, Autocomplete, TextField, Tabs, Tab, Typography } from "@mui/material";
+import PropTypes from "prop-types";
+import { React, useState } from "react";
 
-import FilterByTags from './FilterByTags';
+import FilterByTags from "./FilterByTags";
 
-import LocalOfferSharpIcon from '@mui/icons-material/LocalOfferSharp';
-import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 //TODO - defines the tabpanel component used in the main function
 function TabPanel(props) {
@@ -21,7 +21,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }} >
-                    <Typography component={'span'}>{children}</Typography>
+                    <Typography component={"span"}>{children}</Typography>
                 </Box>
             )}
         </div>
@@ -39,7 +39,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
+        "aria-controls": `simple-tabpanel-${index}`,
     };
 }
 
@@ -47,13 +47,13 @@ function SearchTabPanel() {
 
     //TODO - Dummy data until we are integrated
     const recipes = [
-        { name: 'Pasta Bake' },
-        { name: 'Pulled pork' },
-        { name: 'Homemade lemonade' },
-        { name: 'Gammon in COla' },
-        { name: 'Treacle sponge' },
-        { name: 'Chocolate pudding' },
-        { name: 'Turkey Tagine' },
+        { name: "Pasta Bake" },
+        { name: "Pulled pork" },
+        { name: "Homemade lemonade" },
+        { name: "Gammon in COla" },
+        { name: "Treacle sponge" },
+        { name: "Chocolate pudding" },
+        { name: "Turkey Tagine" },
     ]
 
     //State for which tab value is selected    
@@ -65,8 +65,8 @@ function SearchTabPanel() {
 
 
     return (
-        <Box sx={{ bgcolor: 'background.paper' }}>
-            <Container sx={{ marginTop: '20px' }} maxWidth="sm">
+        <Box sx={{ bgcolor: "background.paper" }}>
+            <Container sx={{ marginTop: "20px" }} maxWidth="sm">
                 <>
                     <Tabs value={value} onChange={handleChange} aria-label="search tabs" centered={true} >
                         <Tab icon={<LocalOfferSharpIcon />}
@@ -98,7 +98,7 @@ function SearchTabPanel() {
                                     label="Search input"
                                     InputProps={{
                                         ...params.InputProps,
-                                        type: 'search',
+                                        type: "search",
                                     }}
                                 />
                             )}

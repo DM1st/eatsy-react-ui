@@ -56,8 +56,9 @@ module.exports = {
         "no-restricted-imports": [
             "error",
             {
-                patterns: ["@/features/*/*"],
-            },
+                //Everything from a feature should be exported from the index.js file which behaves as the public API of the feature.
+                //This ensures a feature is a 'self-contained module' but can expose different parts to other features via its entry point.
+                patterns: ["./features/*/*"],             },
         ],
         "react/no-unknown-property": ["error", { ignore: ["css", "sx"] }]
     },
