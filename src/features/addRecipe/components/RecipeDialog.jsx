@@ -5,6 +5,7 @@ import { React, useState } from "react";
 
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
+import ListItemTextField from "./ListItemTextField";
 import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
 import SelectAvatar from "./SelectAvatar";
@@ -55,15 +56,14 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
         <Typography variant="h5" theme={RecipeDialogListItemTheme}>
           Add New Recipe
         </Typography>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <TextField
-            margin="dense"
-            id="Recipe title"
-            label="Add recipe title"
-            type="text"
-            fullWidth
-          />
-        </ListItem>
+        <ListItemTextField
+          theme={RecipeDialogListItemTheme}
+          marginType={"dense"}
+          uniqueId={"Recipe title"}
+          placeholderText={"Add recipe title"}
+          type={"text"}
+          fullWidth={true}
+        ></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <TextField
             margin="dense"
