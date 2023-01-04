@@ -64,30 +64,28 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           type={"text"}
           fullWidth={true}
         ></ListItemTextField>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <TextField
-            margin="dense"
-            id="Uploader name"
-            label="Uploader (your name)"
-            type="text"
-            fullWidth
-          />
-        </ListItem>
+        <ListItemTextField
+          theme={RecipeDialogListItemTheme}
+          marginType={"dense"}
+          uniqueId={"Uploader name"}
+          placeholderText={"Uploader (your name)"}
+          type={"text"}
+          fullWidth={true}
+        ></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <SelectAvatar />
         </ListItem>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <RecipePhoto />
         </ListItem>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <TextField
-            margin="dense"
-            id="Recipe description"
-            label="Add recipe description"
-            type="text"
-            fullWidth
-          />
-        </ListItem>
+        <ListItemTextField
+          theme={RecipeDialogListItemTheme}
+          marginType={"dense"}
+          uniqueId={"Recipe description"}
+          placeholderText={"Add recipe description"}
+          type={"text"}
+          fullWidth={true}
+        ></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <Container
             sx={{
