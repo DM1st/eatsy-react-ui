@@ -19,7 +19,7 @@ export default function ListItemTextField(props) {
 }
 
 ListItemTextField.propTypes = {
-  theme: PropTypes.func.isRequired,
+  theme: PropTypes.object.isRequired,
   marginType: PropTypes.string.isRequired,
   uniqueId: PropTypes.string.isRequired,
   placeholderText: PropTypes.string.isRequired,

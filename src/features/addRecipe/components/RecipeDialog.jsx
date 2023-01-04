@@ -35,6 +35,7 @@ const RecipeDialogListItemTheme = createTheme({
  * Recipe Dialog Component used for creating and editing recipies
  */
 export const RecipeDialog = ({ open, closeRecipeDialog }) => {
+  //PULL OUT AND PUT IN HOOKS THEN USE RECIPE DIALOG CONTEXT
   // The Open/Close State for the ingredients sub dialog in this parent recipe dialog
   const [openIngredientsDialog, setOpenIngredientsDialog] = useState(false);
   const handleIngredientsDialogOpen = () => {
@@ -61,7 +62,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           marginType={"dense"}
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}
-          type={"text"}
+          fieldType={"text"}
           fullWidth={true}
         ></ListItemTextField>
         <ListItemTextField
@@ -69,7 +70,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           marginType={"dense"}
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
-          type={"text"}
+          fieldType={"text"}
           fullWidth={true}
         ></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
@@ -83,7 +84,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           marginType={"dense"}
           uniqueId={"Recipe description"}
           placeholderText={"Add recipe description"}
-          type={"text"}
+          fieldType={"text"}
           fullWidth={true}
         ></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
