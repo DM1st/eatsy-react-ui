@@ -27,7 +27,7 @@ module.exports = {
   ],
   root: true, // For configuration cascading.
   rules: {
-    indent: [2, 2, { SwitchCase: 1 }],
+    indent: [2, 2, { SwitchCase: 1 }], // severity 2 - error, indent amount 2 , object stating how to indent switch and case statements.
     quotes: ["warn", "double"],
     "import/order": [
       "warn",
