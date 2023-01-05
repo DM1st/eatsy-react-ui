@@ -1,36 +1,17 @@
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import { React } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
 import ListItemFAB from "./ListItemFAB";
 import RecipeDialogListItemField from "./RecipeDialogListItemField";
+import RecipeDialogTitleField from "./RecipeDialogTitleField";
 import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
 import FilterByTags from "../../../FilterByTags";
 import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
 import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
-
-const RecipeDialogListItemTheme = createTheme({
-  components: {
-    MuiListItem: {
-      styleOverrides: {
-        root: {
-          paddingRight: "0",
-          paddingLeft: "0",
-        },
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          marginBottom: "10px",
-        },
-      },
-    },
-  },
-});
+import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 
 /**
  * Recipe Dialog Component used for creating and editing recipies
@@ -53,11 +34,10 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
       aria-describedby="parent-dialog-description"
     >
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
-        <Typography variant="h5" theme={RecipeDialogListItemTheme}>
-          Add New Recipe
-        </Typography>
+        <RecipeDialogTitleField>
+          <>Add New Recipe</>
+        </RecipeDialogTitleField>
         <RecipeDialogListItemField
-          theme={RecipeDialogListItemTheme}
           marginType={"dense"}
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}
@@ -65,7 +45,6 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           fullWidth={true}
         ></RecipeDialogListItemField>
         <RecipeDialogListItemField
-          theme={RecipeDialogListItemTheme}
           marginType={"dense"}
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
@@ -73,7 +52,6 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           fullWidth={true}
         ></RecipeDialogListItemField>
         <ListItemFAB
-          theme={RecipeDialogListItemTheme}
           open={openSelectAvatarDialog}
           handleOpen={handleOpenSelectAvatarDialog}
           closeSelectAvatarDialog={handleCloseSelectAvatorDialog}
@@ -82,7 +60,6 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           <RecipePhoto />
         </ListItem>
         <RecipeDialogListItemField
-          theme={RecipeDialogListItemTheme}
           marginType={"dense"}
           uniqueId={"Recipe description"}
           placeholderText={"Add recipe description"}

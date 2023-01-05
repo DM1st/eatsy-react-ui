@@ -1,12 +1,13 @@
 import { TextField, ListItem } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
+import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 
-export default function ListItemTextField(props) {
-  const { theme, marginType, uniqueId, placeholderText, fieldType, fullWidth } = props;
+export default function RecipeDialogListItemField(props) {
+  const { marginType, uniqueId, placeholderText, fieldType, fullWidth } = props;
 
   return (
-    <ListItem theme={theme} divider>
+    <ListItem theme={RecipeDialogListItemTheme} divider>
       <TextField
         margin={marginType}
         id={uniqueId}
@@ -18,8 +19,7 @@ export default function ListItemTextField(props) {
   );
 }
 
-ListItemTextField.propTypes = {
-  theme: PropTypes.object.isRequired,
+RecipeDialogListItemField.propTypes = {
   marginType: PropTypes.string.isRequired,
   uniqueId: PropTypes.string.isRequired,
   placeholderText: PropTypes.string.isRequired,

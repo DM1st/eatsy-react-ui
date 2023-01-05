@@ -4,11 +4,12 @@ import { blue } from "@mui/material/colors";
 import PropTypes from "prop-types";
 import { React } from "react";
 import SelectAvatar from "./SelectAvatar";
+import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 
 export default function ListItemFAB(props) {
-  const { theme, open, handleOpen, closeSelectAvatarDialog } = props;
+  const { open, handleOpen, closeSelectAvatarDialog } = props;
   return (
-    <ListItem divider theme={theme}>
+    <ListItem divider theme={RecipeDialogListItemTheme}>
       <Container
         sx={{
           width: "100%",
@@ -36,7 +37,6 @@ export default function ListItemFAB(props) {
 }
 
 ListItemFAB.propTypes = {
-  theme: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
   handleOpen: PropTypes.func.isRequired,
   closeSelectAvatarDialog: PropTypes.func.isRequired,
