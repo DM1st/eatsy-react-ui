@@ -5,10 +5,10 @@ import { React, useState } from "react";
 
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
+import ListItemFAB from "./ListItemFAB";
 import ListItemTextField from "./ListItemTextField";
 import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
-import SelectAvatar from "./SelectAvatar";
 import FilterByTags from "../../../FilterByTags";
 
 const RecipeDialogListItemTheme = createTheme({
@@ -45,6 +45,15 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
     setOpenIngredientsDialog(false);
   };
 
+  //The Open/Close State for the select avatar sub dialog in this parent recipe.
+  const [openSelectAvatarDialog, setOpenSelectAvatarDialog] = useState(false);
+  const handleOpenSelectAvatarDialog = () => {
+    setOpenSelectAvatarDialog(true);
+  };
+  const handleCloseSelectAvatorDialog = () => {
+    setOpenSelectAvatarDialog(false);
+  };
+
   return (
     <Dialog
       fullWidth
@@ -73,9 +82,12 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           fieldType={"text"}
           fullWidth={true}
         ></ListItemTextField>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <SelectAvatar />
-        </ListItem>
+        <ListItemFAB
+          theme={RecipeDialogListItemTheme}
+          open={openSelectAvatarDialog}
+          handleOpen={handleOpenSelectAvatarDialog}
+          closeSelectAvatarDialog={handleCloseSelectAvatorDialog}
+        />
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <RecipePhoto />
         </ListItem>
