@@ -5,7 +5,7 @@ import { React } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
 import ListItemFAB from "./ListItemFAB";
-import ListItemTextField from "./ListItemTextField";
+import RecipeDialogListItemField from "./RecipeDialogListItemField";
 import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
 import FilterByTags from "../../../FilterByTags";
@@ -56,22 +56,22 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
         <Typography variant="h5" theme={RecipeDialogListItemTheme}>
           Add New Recipe
         </Typography>
-        <ListItemTextField
+        <RecipeDialogListItemField
           theme={RecipeDialogListItemTheme}
           marginType={"dense"}
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}
           fieldType={"text"}
           fullWidth={true}
-        ></ListItemTextField>
-        <ListItemTextField
+        ></RecipeDialogListItemField>
+        <RecipeDialogListItemField
           theme={RecipeDialogListItemTheme}
           marginType={"dense"}
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
           fieldType={"text"}
           fullWidth={true}
-        ></ListItemTextField>
+        ></RecipeDialogListItemField>
         <ListItemFAB
           theme={RecipeDialogListItemTheme}
           open={openSelectAvatarDialog}
@@ -81,14 +81,14 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <RecipePhoto />
         </ListItem>
-        <ListItemTextField
+        <RecipeDialogListItemField
           theme={RecipeDialogListItemTheme}
           marginType={"dense"}
           uniqueId={"Recipe description"}
           placeholderText={"Add recipe description"}
           fieldType={"text"}
           fullWidth={true}
-        ></ListItemTextField>
+        ></RecipeDialogListItemField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <Container
             sx={{
