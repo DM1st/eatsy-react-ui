@@ -1,8 +1,7 @@
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import PropTypes from "prop-types";
-import { React, useState } from "react";
-
+import { React } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
 import ListItemFAB from "./ListItemFAB";
@@ -10,6 +9,8 @@ import ListItemTextField from "./ListItemTextField";
 import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
 import FilterByTags from "../../../FilterByTags";
+import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
+import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
 
 const RecipeDialogListItemTheme = createTheme({
   components: {
@@ -35,24 +36,13 @@ const RecipeDialogListItemTheme = createTheme({
  * Recipe Dialog Component used for creating and editing recipies
  */
 export const RecipeDialog = ({ open, closeRecipeDialog }) => {
-  //PULL OUT AND PUT IN HOOKS THEN USE RECIPE DIALOG CONTEXT
-  // The Open/Close State for the ingredients sub dialog in this parent recipe dialog
-  const [openIngredientsDialog, setOpenIngredientsDialog] = useState(false);
-  const handleIngredientsDialogOpen = () => {
-    setOpenIngredientsDialog(true);
-  };
-  const handleIngredientsDialogClose = () => {
-    setOpenIngredientsDialog(false);
-  };
+  //Hook for the IngredientsDialog that is opened and closed from this Recipe Dialog
+  const { openIngredientsDialog, handleIngredientsDialogOpen, handleIngredientsDialogClose } =
+    useIngredientsDialog();
 
-  //The Open/Close State for the select avatar sub dialog in this parent recipe.
-  const [openSelectAvatarDialog, setOpenSelectAvatarDialog] = useState(false);
-  const handleOpenSelectAvatarDialog = () => {
-    setOpenSelectAvatarDialog(true);
-  };
-  const handleCloseSelectAvatorDialog = () => {
-    setOpenSelectAvatarDialog(false);
-  };
+  //Hook for the SelectAvatarDialog that is opened and closed from this Recipe Dialog
+  const { openSelectAvatarDialog, handleOpenSelectAvatarDialog, handleCloseSelectAvatorDialog } =
+    useSelectAvatarDialog();
 
   return (
     <Dialog
