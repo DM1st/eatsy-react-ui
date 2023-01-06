@@ -1,13 +1,14 @@
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
-import ListItemwithTextAndFAB from "./ListItemwithTextAndFAB";
+import FileUploadInput from "./FileUploadInput";
+import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
 import RecipeDialogListItemField from "./RecipeDialogListItemField";
 import RecipeDialogTitleField from "./RecipeDialogTitleField";
-import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
 import SelectAvatar from "./SelectAvatar";
 import FilterByTags from "../../../FilterByTags";
@@ -56,7 +57,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           fieldType={"text"}
           fullWidth={true}
         ></RecipeDialogListItemField>
-        <ListItemwithTextAndFAB
+        <ListItemWithTextAndFAB
           handleOpen={handleOpenSelectAvatarDialog}
           selectFabImageIcon={<CollectionsIcon />}
           childDialog={
@@ -67,10 +68,14 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           }
         >
           <>Select your avatar</>
-        </ListItemwithTextAndFAB>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <RecipePhoto />
-        </ListItem>
+        </ListItemWithTextAndFAB>
+        <ListItemWithTextAndFAB
+          optionalIdForHtmlLabel="add-recipe-contained-button-file"
+          selectFabImageIcon={<AddPhotoAlternateIcon />}
+          childDialog={<FileUploadInput label={"add-recipe-contained-button-file"} />}
+        >
+          <>Add Recipe photo</>
+        </ListItemWithTextAndFAB>
         <RecipeDialogListItemField
           marginType={"dense"}
           uniqueId={"Recipe description"}
