@@ -9,15 +9,19 @@ import RecipeDialogListItemField from "./RecipeDialogListItemField";
 import RecipeDialogTitleField from "./RecipeDialogTitleField";
 import RecipePhoto from "./RecipePhoto";
 import SaveRecipe from "./SaveRecipe";
+import SelectAvatar from "./SelectAvatar";
 import FilterByTags from "../../../FilterByTags";
 import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
 import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
+// import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 
 /**
  * Recipe Dialog Component used for creating and editing recipies
  */
 export const RecipeDialog = ({ open, closeRecipeDialog }) => {
+  //   const {openStatus: }
+
   //Hook for the IngredientsDialog that is opened and closed from this Recipe Dialog
   const { openIngredientsDialog, handleIngredientsDialogOpen, handleIngredientsDialogClose } =
     useIngredientsDialog();
@@ -53,10 +57,14 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           fullWidth={true}
         ></RecipeDialogListItemField>
         <ListItemFAB
-          open={openSelectAvatarDialog}
           handleOpen={handleOpenSelectAvatarDialog}
-          closeDialog={handleCloseSelectAvatorDialog}
           selectFabImageIcon={<CollectionsIcon />}
+          childDialog={
+            <SelectAvatar
+              openSelectAvatarDialog={openSelectAvatarDialog}
+              closeSelectAvatarDialog={handleCloseSelectAvatorDialog}
+            />
+          }
         >
           <>Select your avatar</>
         </ListItemFAB>
