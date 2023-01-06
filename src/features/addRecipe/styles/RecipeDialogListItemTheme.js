@@ -1,3 +1,4 @@
+import { blue } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 /**
@@ -27,6 +28,14 @@ export const RecipeDialogListItemTheme = createTheme({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+        },
+      },
+    },
+    MuiFab: {
+      styleOverrides: {
+        root: {
+          color: blue[700],
+          backgroundColor: "white",
         },
       },
     },

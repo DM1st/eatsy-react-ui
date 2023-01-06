@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { React } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
-import ListItemFAB from "./ListItemFAB";
+import ListItemwithTextAndFAB from "./ListItemwithTextAndFAB";
 import RecipeDialogListItemField from "./RecipeDialogListItemField";
 import RecipeDialogTitleField from "./RecipeDialogTitleField";
 import RecipePhoto from "./RecipePhoto";
@@ -56,7 +56,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           fieldType={"text"}
           fullWidth={true}
         ></RecipeDialogListItemField>
-        <ListItemFAB
+        <ListItemwithTextAndFAB
           handleOpen={handleOpenSelectAvatarDialog}
           selectFabImageIcon={<CollectionsIcon />}
           childDialog={
@@ -67,7 +67,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           }
         >
           <>Select your avatar</>
-        </ListItemFAB>
+        </ListItemwithTextAndFAB>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <RecipePhoto />
         </ListItem>
