@@ -1,4 +1,3 @@
-import CollectionsIcon from "@mui/icons-material/Collections";
 import { Typography, Container, Fab, ListItem } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import PropTypes from "prop-types";
@@ -9,7 +8,13 @@ import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 /**
  * Component for the list items in RecipeDialog(s) that have text and a clickable FAB.
  */
-export default function ListItemFAB({ open, handleOpen, closeSelectAvatarDialog, children }) {
+export default function ListItemFAB({
+  open,
+  handleOpen,
+  closeDialog,
+  selectFabImageIcon,
+  children,
+}) {
   return (
     <ListItem divider theme={RecipeDialogListItemTheme}>
       <Container
@@ -27,14 +32,11 @@ export default function ListItemFAB({ open, handleOpen, closeSelectAvatarDialog,
           component="span"
           sx={{ color: blue[700], backgroundColor: "white" }}
         >
-          <CollectionsIcon />
+          <>{selectFabImageIcon}</>
         </Fab>
       </Container>
-      {/* The SelectAvatar dialog only becomes visible once the FAB has been clicked. */}
-      <SelectAvatar
-        openSelectAvatarDialog={open}
-        closeSelectAvatarDialog={closeSelectAvatarDialog}
-      />
+      {/* The specified child dialog only becomes visible once the FAB has been clicked. */}
+      <SelectAvatar openSelectAvatarDialog={open} closeSelectAvatarDialog={closeDialog} />
     </ListItem>
   );
 }
@@ -43,6 +45,7 @@ export default function ListItemFAB({ open, handleOpen, closeSelectAvatarDialog,
 ListItemFAB.propTypes = {
   open: PropTypes.bool.isRequired,
   handleOpen: PropTypes.func.isRequired,
-  closeSelectAvatarDialog: PropTypes.func.isRequired,
+  closeDialog: PropTypes.func.isRequired,
+  selectFabImageIcon: PropTypes.element.isRequired,
   children: PropTypes.node.isRequired,
 };

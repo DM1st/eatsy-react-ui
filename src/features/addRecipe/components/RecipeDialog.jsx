@@ -1,3 +1,4 @@
+import CollectionsIcon from "@mui/icons-material/Collections";
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
@@ -54,7 +55,8 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
         <ListItemFAB
           open={openSelectAvatarDialog}
           handleOpen={handleOpenSelectAvatarDialog}
-          closeSelectAvatarDialog={handleCloseSelectAvatorDialog}
+          closeDialog={handleCloseSelectAvatorDialog}
+          selectFabImageIcon={<CollectionsIcon />}
         >
           <>Select your avatar</>
         </ListItemFAB>
