@@ -35,6 +35,9 @@ import PropTypes from "prop-types";
 
 import { React } from "react";
 
+/**
+ * The child dialog of the RecipeDialog for selecting the avatar of the uploader for the recipe.
+ */
 function SelectAvatar(props) {
   const { openSelectAvatarDialog, closeSelectAvatarDialog } = props;
   return (

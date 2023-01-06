@@ -55,7 +55,9 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           open={openSelectAvatarDialog}
           handleOpen={handleOpenSelectAvatarDialog}
           closeSelectAvatarDialog={handleCloseSelectAvatorDialog}
-        />
+        >
+          <>Select your avatar</>
+        </ListItemFAB>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <RecipePhoto />
         </ListItem>

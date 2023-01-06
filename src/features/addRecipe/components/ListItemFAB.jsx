@@ -6,8 +6,10 @@ import { React } from "react";
 import SelectAvatar from "./SelectAvatar";
 import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 
-export default function ListItemFAB(props) {
-  const { open, handleOpen, closeSelectAvatarDialog } = props;
+/**
+ * Component for the list items in RecipeDialog(s) that have text and a clickable FAB.
+ */
+export default function ListItemFAB({ open, handleOpen, closeSelectAvatarDialog, children }) {
   return (
     <ListItem divider theme={RecipeDialogListItemTheme}>
       <Container
@@ -19,7 +21,7 @@ export default function ListItemFAB(props) {
           justifyContent: "space-between",
         }}
       >
-        <Typography color="textSecondary">Select your avatar</Typography>
+        <Typography color="textSecondary">{children}</Typography>
         <Fab
           onClick={handleOpen}
           component="span"
@@ -28,6 +30,7 @@ export default function ListItemFAB(props) {
           <CollectionsIcon />
         </Fab>
       </Container>
+      {/* The SelectAvatar dialog only becomes visible once the FAB has been clicked. */}
       <SelectAvatar
         openSelectAvatarDialog={open}
         closeSelectAvatarDialog={closeSelectAvatarDialog}
@@ -36,8 +39,10 @@ export default function ListItemFAB(props) {
   );
 }
 
+// To confirm the correct type is passed to the component for each prop (and that all required props are provided)
 ListItemFAB.propTypes = {
   open: PropTypes.bool.isRequired,
   handleOpen: PropTypes.func.isRequired,
   closeSelectAvatarDialog: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
