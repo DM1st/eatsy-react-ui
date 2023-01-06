@@ -10,15 +10,7 @@ import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 export default function ListItemFAB({ handleOpen, selectFabImageIcon, childDialog, children }) {
   return (
     <ListItem divider theme={RecipeDialogListItemTheme}>
-      <Container
-        sx={{
-          width: "100%",
-          padding: "0px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <Container theme={RecipeDialogListItemTheme}>
         <Typography color="textSecondary">{children}</Typography>
         <Fab
           onClick={handleOpen}

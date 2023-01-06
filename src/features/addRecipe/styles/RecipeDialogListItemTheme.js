@@ -20,5 +20,15 @@ export const RecipeDialogListItemTheme = createTheme({
         },
       },
     },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          padding: "0px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        },
+      },
+    },
   },
 });
