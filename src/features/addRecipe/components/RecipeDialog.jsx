@@ -76,18 +76,7 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           placeholderText={"Add recipe description"}
         ></RecipeDialogListItemField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
-          <Container
-            sx={{
-              width: "100%",
-              display: "flex",
-              align: "center",
-              paddingTop: "5px",
-              paddingBottom: "5px",
-              justifyContent: "space-between",
-              paddingRight: "0",
-              paddingLeft: "0",
-            }}
-          >
+          <Container theme={RecipeDialogListItemTheme} variant="secondary">
             <Typography color="textSecondary">Add ingredients</Typography>
             <Button variant="outlined" onClick={handleIngredientsDialogOpen}>
               Ingredients

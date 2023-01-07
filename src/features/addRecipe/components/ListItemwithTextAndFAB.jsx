@@ -15,7 +15,7 @@ export default function ListItemWithTextAndFAB({
 }) {
   return (
     <ListItem divider theme={RecipeDialogListItemTheme}>
-      <Container theme={RecipeDialogListItemTheme}>
+      <Container theme={RecipeDialogListItemTheme} variant="primary">
         {/*The children contains the text to be in the row for this list item*/}
         <Typography color="textSecondary">{children}</Typography>
         {/*label required for the Fabs that use the FileUploadInput component */}
