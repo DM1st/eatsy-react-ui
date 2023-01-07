@@ -11,17 +11,19 @@ import { RecipeDialog } from "@/features/addRecipe";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const { Provider } = RecipeDialogContext;
-
 function App() {
-  //Open or close state for the RecipeDialog.
+  //Open or Close state for the RecipeDialog storred in global hooks.
   const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } =
     useToggleDialogStatus();
 
+  //value object containing RecipeDialog state to be passed via context and not props.
   const value = {
     openRecipeDialog,
     changeRecipeDialogOpenStatus,
   };
+
+  //The Provider component exposed by the Context API to provide the context to child Dialog.
+  const { Provider } = RecipeDialogContext;
 
   return (
     <>
