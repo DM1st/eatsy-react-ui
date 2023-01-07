@@ -44,18 +44,13 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           <>Add New Recipe</>
         </RecipeDialogTitleField>
         <RecipeDialogListItemField
-          marginType={"dense"}
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}
           fieldType={"text"}
-          fullWidth={true}
         ></RecipeDialogListItemField>
         <RecipeDialogListItemField
-          marginType={"dense"}
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
-          fieldType={"text"}
-          fullWidth={true}
         ></RecipeDialogListItemField>
         <ListItemWithTextAndFAB
           handleOpen={handleOpenSelectAvatarDialog}
@@ -77,11 +72,8 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
           <>Add Recipe photo</>
         </ListItemWithTextAndFAB>
         <RecipeDialogListItemField
-          marginType={"dense"}
           uniqueId={"Recipe description"}
           placeholderText={"Add recipe description"}
-          fieldType={"text"}
-          fullWidth={true}
         ></RecipeDialogListItemField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <Container
