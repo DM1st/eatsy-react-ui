@@ -7,6 +7,7 @@ import EatsyFooter from "./EatsyFooter";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 import RecipeCard from "./RecipeCard";
 import SearchTabPanel from "./SearchTabPanel";
+import { GlobalTheme } from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -31,16 +32,7 @@ function App() {
       <EatsyAppBar />
       <main>
         <>
-          <Fab
-            sx={{
-              position: "fixed",
-              bottom: (theme) => theme.spacing(2),
-              right: (theme) => theme.spacing(2),
-            }}
-            color="secondary"
-            aria-label="add"
-            onClick={changeRecipeDialogOpenStatus}
-          >
+          <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
             <AddIcon />
           </Fab>
           <Provider value={value}>
