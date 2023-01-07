@@ -5,8 +5,8 @@ import { React, useContext } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
 import FileUploadInput from "./FileUploadInput";
+import ListItemTextField from "./ListItemTextField";
 import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
-import RecipeDialogListItemField from "./RecipeDialogListItemField";
 import RecipeDialogTitleField from "./RecipeDialogTitleField";
 import SaveRecipe from "./SaveRecipe";
 import SelectAvatar from "./SelectAvatar";
@@ -41,15 +41,14 @@ export const RecipeDialog = () => {
         <RecipeDialogTitleField>
           <>Add New Recipe</>
         </RecipeDialogTitleField>
-        <RecipeDialogListItemField
+        <ListItemTextField
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}
-          fieldType={"text"}
-        ></RecipeDialogListItemField>
-        <RecipeDialogListItemField
+        ></ListItemTextField>
+        <ListItemTextField
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
-        ></RecipeDialogListItemField>
+        ></ListItemTextField>
         <ListItemWithTextAndFAB
           handleOpen={handleOpenSelectAvatarDialog}
           selectFabImageIcon={<CollectionsIcon />}
@@ -69,10 +68,10 @@ export const RecipeDialog = () => {
         >
           <>Add Recipe photo</>
         </ListItemWithTextAndFAB>
-        <RecipeDialogListItemField
+        <ListItemTextField
           uniqueId={"Recipe description"}
           placeholderText={"Add recipe description"}
-        ></RecipeDialogListItemField>
+        ></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <Container theme={RecipeDialogListItemTheme} variant="secondary">
             <Typography color="textSecondary">Add ingredients</Typography>
