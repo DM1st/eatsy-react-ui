@@ -14,7 +14,7 @@ import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
 import FilterByTags from "../../../FilterByTags";
 import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
 import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
-import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
+import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
  * Recipe Dialog Component used for creating and editing recipies

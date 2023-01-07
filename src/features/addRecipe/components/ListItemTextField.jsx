@@ -1,7 +1,7 @@
 import { TextField, ListItem } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
-import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
+import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
  * Text Field component to be used in a list on a the Recipe dialogs.

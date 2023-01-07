@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
-import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
+import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
  * The child componenet to display the title on the RecipeDialog parent component.

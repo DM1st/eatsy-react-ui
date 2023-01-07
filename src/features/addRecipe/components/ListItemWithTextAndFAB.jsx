@@ -1,7 +1,7 @@
 import { Typography, Container, Fab, ListItem } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
-import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
+import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
  * Component for the list items in RecipeDialog(s) that have text and a clickable FAB.
