@@ -7,9 +7,9 @@ import AddMethod from "./AddMethod";
 import FileUploadInput from "./FileUploadInput";
 import ListItemTextField from "./ListItemTextField";
 import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
-import RecipeDialogTitleField from "./RecipeDialogTitleField";
 import SaveRecipe from "./SaveRecipe";
 import SelectAvatar from "./SelectAvatar";
+import TitleField from "./TitleField";
 import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
 import FilterByTags from "../../../FilterByTags";
 import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
@@ -38,9 +38,9 @@ export const RecipeDialog = () => {
       aria-describedby="parent-dialog-description"
     >
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
-        <RecipeDialogTitleField>
+        <TitleField>
           <>Add New Recipe</>
-        </RecipeDialogTitleField>
+        </TitleField>
         <ListItemTextField
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}

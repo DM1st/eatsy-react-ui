@@ -6,7 +6,7 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 /**
  * The child componenet to display the title on the RecipeDialog parent component.
  */
-export default function RecipeDialogTitleField({ children }) {
+export default function TitleField({ children }) {
   return (
     <Typography theme={RecipeDialogListItemTheme} variant="h5">
       {children}
@@ -14,6 +14,6 @@ export default function RecipeDialogTitleField({ children }) {
   );
 }
 
-RecipeDialogTitleField.propTypes = {
+TitleField.propTypes = {
   children: PropTypes.node.isRequired, //any renderable object.
 };
