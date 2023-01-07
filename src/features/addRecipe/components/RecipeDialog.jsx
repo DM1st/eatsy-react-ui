@@ -14,15 +14,13 @@ import SelectAvatar from "./SelectAvatar";
 import FilterByTags from "../../../FilterByTags";
 import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
 import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
-// import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 
 /**
  * Recipe Dialog Component used for creating and editing recipies
  */
-export const RecipeDialog = ({ open, closeRecipeDialog }) => {
-  //   const {openStatus: }
-
+export const RecipeDialog = (props) => {
+  const { openRecipeDialog, changeRecipeDialogOpenStatus } = props;
   //Hook for the IngredientsDialog that is opened and closed from this Recipe Dialog
   const { openIngredientsDialog, handleIngredientsDialogOpen, handleIngredientsDialogClose } =
     useIngredientsDialog();
@@ -34,8 +32,8 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
   return (
     <Dialog
       fullWidth
-      open={open}
-      onClose={closeRecipeDialog}
+      open={openRecipeDialog}
+      onClose={changeRecipeDialogOpenStatus}
       aria-labelledby="parent-dialog-title"
       aria-describedby="parent-dialog-description"
     >
@@ -93,13 +91,13 @@ export const RecipeDialog = ({ open, closeRecipeDialog }) => {
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <FilterByTags />
         </ListItem>
-        <SaveRecipe closeRecipeDialog={closeRecipeDialog} />
+        <SaveRecipe closeRecipeDialog={changeRecipeDialogOpenStatus} />
       </Box>
     </Dialog>
   );
 };
 
 RecipeDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  closeRecipeDialog: PropTypes.func.isRequired,
+  openRecipeDialog: PropTypes.bool.isRequired,
+  changeRecipeDialogOpenStatus: PropTypes.func.isRequired,
 };

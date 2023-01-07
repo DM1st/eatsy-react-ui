@@ -1,8 +1,9 @@
 import AddIcon from "@mui/icons-material/Add";
 import { CssBaseline, Grid, Container, Fab } from "@mui/material";
-import { React, useState } from "react";
+import { React } from "react";
 import EatsyAppBar from "./EatsyAppBar";
 import EatsyFooter from "./EatsyFooter";
+import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 import RecipeCard from "./RecipeCard";
 import SearchTabPanel from "./SearchTabPanel";
 import { RecipeDialog } from "@/features/addRecipe";
@@ -10,24 +11,10 @@ import { RecipeDialog } from "@/features/addRecipe";
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function App() {
-  //State management using setState hook for the Recipe Dialog (defined in parent component - App).
-  const [openRecipeDialog, setOpenRecipeDialog] = useState(false);
+  //Open or close state for the RecipeDialog.
+  const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } =
+    useToggleDialogStatus();
 
-  const handleFabClickOpenRecipeDialog = () => {
-    setOpenRecipeDialog(true);
-  };
-
-  const handleCloseRecipeDialog = () => {
-    setOpenRecipeDialog(false);
-  };
-
-  // function handleRemoveIngredientClick(key) {
-
-  //   //const updatedIngredientList = ingredients.filter((ingredient) => ingredient.key !== key);
-  //   //setIngredients(updatedIngredientList);
-  //   alert('dog')
-
-  // };
   return (
     <>
       <CssBaseline />
@@ -42,11 +29,14 @@ function App() {
             }}
             color="secondary"
             aria-label="add"
-            onClick={handleFabClickOpenRecipeDialog}
+            onClick={changeRecipeDialogOpenStatus}
           >
             <AddIcon />
           </Fab>
-          <RecipeDialog open={openRecipeDialog} closeRecipeDialog={handleCloseRecipeDialog} />
+          <RecipeDialog
+            openRecipeDialog={openRecipeDialog}
+            changeRecipeDialogOpenStatus={changeRecipeDialogOpenStatus}
+          />
         </>
         <SearchTabPanel />
         <Container maxWidth="md" sx={{ padding: "20px 0" }}>
