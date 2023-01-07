@@ -34,7 +34,7 @@ export default function ListItemWithTextAndFAB({
 
 // To confirm the correct type is passed to the component for each prop (and that all required props are provided)
 ListItemWithTextAndFAB.propTypes = {
-  optionalIdForHtmlLabel: PropTypes.string, //Only required if uploading a photo on click
+  optionalIdForHtmlLabel: PropTypes.string, //Only required if uploading a file on click
   handleOpen: PropTypes.func, //Not always required as some FABs do not open a new dialog on click
   selectFabImageIcon: PropTypes.element.isRequired,
   childDialog: PropTypes.node.isRequired,
