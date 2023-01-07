@@ -1,6 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import { CssBaseline, Grid, Container, Fab } from "@mui/material";
 import { React } from "react";
+import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
 import EatsyAppBar from "./EatsyAppBar";
 import EatsyFooter from "./EatsyFooter";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
@@ -10,10 +11,17 @@ import { RecipeDialog } from "@/features/addRecipe";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+const { Provider } = RecipeDialogContext;
+
 function App() {
   //Open or close state for the RecipeDialog.
   const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } =
     useToggleDialogStatus();
+
+  const value = {
+    openRecipeDialog,
+    changeRecipeDialogOpenStatus,
+  };
 
   return (
     <>
@@ -33,10 +41,9 @@ function App() {
           >
             <AddIcon />
           </Fab>
-          <RecipeDialog
-            openRecipeDialog={openRecipeDialog}
-            changeRecipeDialogOpenStatus={changeRecipeDialogOpenStatus}
-          />
+          <Provider value={value}>
+            <RecipeDialog />
+          </Provider>
         </>
         <SearchTabPanel />
         <Container maxWidth="md" sx={{ padding: "20px 0" }}>

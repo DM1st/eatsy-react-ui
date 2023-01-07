@@ -1,8 +1,7 @@
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
-import PropTypes from "prop-types";
-import { React } from "react";
+import { React, useContext } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
 import FileUploadInput from "./FileUploadInput";
@@ -11,6 +10,7 @@ import RecipeDialogListItemField from "./RecipeDialogListItemField";
 import RecipeDialogTitleField from "./RecipeDialogTitleField";
 import SaveRecipe from "./SaveRecipe";
 import SelectAvatar from "./SelectAvatar";
+import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
 import FilterByTags from "../../../FilterByTags";
 import { useIngredientsDialog } from "../hooks/useIngredientsDialog";
 import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
@@ -19,8 +19,8 @@ import { RecipeDialogListItemTheme } from "../styles/RecipeDialogListItemTheme";
 /**
  * Recipe Dialog Component used for creating and editing recipies
  */
-export const RecipeDialog = (props) => {
-  const { openRecipeDialog, changeRecipeDialogOpenStatus } = props;
+export const RecipeDialog = () => {
+  const { openRecipeDialog, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
   //Hook for the IngredientsDialog that is opened and closed from this Recipe Dialog
   const { openIngredientsDialog, handleIngredientsDialogOpen, handleIngredientsDialogClose } =
     useIngredientsDialog();
@@ -95,9 +95,4 @@ export const RecipeDialog = (props) => {
       </Box>
     </Dialog>
   );
-};
-
-RecipeDialog.propTypes = {
-  openRecipeDialog: PropTypes.bool.isRequired,
-  changeRecipeDialogOpenStatus: PropTypes.func.isRequired,
 };
