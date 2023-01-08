@@ -15,8 +15,8 @@ import {
   TextField,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import PropTypes from "prop-types";
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 
 const theme = createTheme({
   palette: {
@@ -26,7 +26,11 @@ const theme = createTheme({
   },
 });
 
-export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
+export default function AddIngredientsDialog() {
+  //Access the IngredientsDialog state from the RecipeDialog (add/edit recipe feature) level context API
+  const { openIngredientsDialog, changeIngredientsDialogOpenStatus } =
+    useContext(IngredientsDialogContext);
+
   //State object - initialise with an empty array
   const [ingredients, setIngredients] = useState([]);
 
@@ -66,8 +70,8 @@ export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
 
   return (
     <Dialog
-      open={open}
-      onClose={closeIngredientsDialog}
+      open={openIngredientsDialog}
+      onClose={changeIngredientsDialogOpenStatus}
       sx={{
         width: "100%",
         display: "flex",
@@ -147,13 +151,8 @@ export default function AddIngredientsDialog({ open, closeIngredientsDialog }) {
           paddingLeft: "0",
         }}
       >
-        <Button onClick={closeIngredientsDialog}>Done</Button>
+        <Button onClick={changeIngredientsDialogOpenStatus}>Done</Button>
       </Container>
     </Dialog>
   );
 }
-
-AddIngredientsDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  closeIngredientsDialog: PropTypes.func.isRequired,
-};

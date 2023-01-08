@@ -13,12 +13,12 @@ import { RecipeDialog } from "@/features/addRecipe";
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function App() {
-  //Open or Close state for the RecipeDialog storred in global hooks.
+  //Open or close state for the RecipeDialog stored in global hooks.
   const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } =
     useToggleDialogStatus();
 
   //value object containing RecipeDialog state to be passed via context and not props.
-  const value = {
+  const recipeDialogState = {
     openRecipeDialog,
     changeRecipeDialogOpenStatus,
   };
@@ -35,7 +35,7 @@ function App() {
           <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
             <AddIcon />
           </Fab>
-          <Provider value={value}>
+          <Provider value={recipeDialogState}>
             <RecipeDialog />
           </Provider>
         </>
