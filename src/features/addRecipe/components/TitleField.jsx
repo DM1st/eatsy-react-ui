@@ -14,6 +14,7 @@ export default function TitleField({ children }) {
   );
 }
 
+//Check that the prop is passed in when the TitleField function is called.
 TitleField.propTypes = {
   children: PropTypes.node.isRequired, //any renderable object.
 };
