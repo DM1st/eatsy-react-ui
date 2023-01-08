@@ -45,6 +45,18 @@ export const RecipeDialogListItemTheme = createTheme({
             paddingLeft: "0",
           },
         },
+        {
+          props: { variant: "tertiary" },
+          style: {
+            width: "100%",
+            display: "flex",
+            align: "center",
+            paddingTop: "20px",
+            justifyContent: "end",
+            paddingRight: "0",
+            paddingLeft: "0",
+          },
+        },
       ],
     },
     MuiFab: {

@@ -105,7 +105,9 @@ export const RecipeDialog = (props) => {
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <FilterByTags />
         </ListItem>
-        <SaveRecipe closeRecipeDialog={changeRecipeDialogOpenStatus} />
+        <SaveRecipe closeRecipeDialog={changeRecipeDialogOpenStatus}>
+          <>Save New Recipe</>
+        </SaveRecipe>
       </Box>
     </Dialog>
   );

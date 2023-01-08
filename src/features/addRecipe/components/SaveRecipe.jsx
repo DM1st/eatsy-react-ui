@@ -1,29 +1,24 @@
 import { Container, Button } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
+import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
-SaveRecipe.propTypes = {
-  closeRecipeDialog: PropTypes.func.isRequired,
-};
-
-function SaveRecipe(props) {
+/**
+ * Save Recipe button to be used at the end of a Recipe Dialog
+ * (For example creating a new recipe or saving changes on an Edit existing recipe dialog)
+ */
+export default function SaveRecipe(props) {
   return (
-    <Container
-      sx={{
-        width: "100%",
-        display: "flex",
-        align: "center",
-        paddingTop: "20px",
-        justifyContent: "end",
-        paddingRight: "0",
-        paddingLeft: "0",
-      }}
-    >
+    <Container theme={RecipeDialogListItemTheme} variant="tertiary">
       <Button onClick={props.closeRecipeDialog} variant="contained">
-        Save
+        {props.children}
       </Button>
     </Container>
   );
 }
 
-export default SaveRecipe;
+//Check to ensure required props are passed through and are of the correct type.
+SaveRecipe.propTypes = {
+  closeRecipeDialog: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired, //any renderable object.
+};
