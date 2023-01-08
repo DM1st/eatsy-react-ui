@@ -13,7 +13,7 @@ import TitleField from "./TitleField";
 import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
 import FilterByTags from "../../../FilterByTags";
 import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
-import { useSelectAvatarDialog } from "../hooks/useSelectAvatarDialog";
+import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
@@ -36,12 +36,17 @@ export const RecipeDialog = () => {
     changeIngredientsDialogOpenStatus,
   };
 
-  //The Provider component exposed by the Context API to provide the context to child Dialog.
-  const { Provider } = IngredientsDialogContext;
+  //Open or close state for the SelectAvatarDialog stored in AddRecipe feature hooks.
+  const {
+    openStatus: openSelectAvatarDialog,
+    toggleDialogStatus: changeSelectAvatarDialogOpenStatus,
+  } = useToggleDialogStatus();
 
-  //Hook for the SelectAvatarDialog that is opened and closed from this Recipe Dialog
-  const { openSelectAvatarDialog, handleOpenSelectAvatarDialog, handleCloseSelectAvatorDialog } =
-    useSelectAvatarDialog();
+  //value object containing SelectAvatarDialog state to be passed via context and not props.
+  const selectAvatarDialogState = {
+    openSelectAvatarDialog,
+    changeSelectAvatarDialogOpenStatus,
+  };
 
   return (
     <Dialog
@@ -63,18 +68,15 @@ export const RecipeDialog = () => {
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
         ></ListItemTextField>
-        <ListItemWithTextAndFAB
-          handleOpen={handleOpenSelectAvatarDialog}
-          selectFabImageIcon={<CollectionsIcon />}
-          childDialog={
-            <SelectAvatar
-              openSelectAvatarDialog={openSelectAvatarDialog}
-              closeSelectAvatarDialog={handleCloseSelectAvatorDialog}
-            />
-          }
-        >
-          <>Select your avatar</>
-        </ListItemWithTextAndFAB>
+        <SelectAvatarDialogContext.Provider value={selectAvatarDialogState}>
+          <ListItemWithTextAndFAB
+            handleOpen={changeSelectAvatarDialogOpenStatus}
+            selectFabImageIcon={<CollectionsIcon />}
+            childDialog={<SelectAvatar />}
+          >
+            <>Select your avatar</>
+          </ListItemWithTextAndFAB>
+        </SelectAvatarDialogContext.Provider>
         <ListItemWithTextAndFAB
           optionalIdForHtmlLabel="add-recipe-contained-button-file"
           selectFabImageIcon={<AddPhotoAlternateIcon />}
@@ -86,17 +88,18 @@ export const RecipeDialog = () => {
           uniqueId={"Recipe description"}
           placeholderText={"Add recipe description"}
         ></ListItemTextField>
-        <Provider value={ingredientsDialogState}>
-          <ListItem divider theme={RecipeDialogListItemTheme}>
-            <Container theme={RecipeDialogListItemTheme} variant="secondary">
-              <Typography color="textSecondary">Add ingredients</Typography>
-              <Button variant="outlined" onClick={changeIngredientsDialogOpenStatus}>
-                Ingredients
-              </Button>
+        <ListItem divider theme={RecipeDialogListItemTheme}>
+          <Container theme={RecipeDialogListItemTheme} variant="secondary">
+            <Typography color="textSecondary">Add ingredients</Typography>
+            <Button variant="outlined" onClick={changeIngredientsDialogOpenStatus}>
+              Ingredients
+            </Button>
+            {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
+            <IngredientsDialogContext.Provider value={ingredientsDialogState}>
               <AddIngredientsDialog />
-            </Container>
-          </ListItem>
-        </Provider>
+            </IngredientsDialogContext.Provider>
+          </Container>
+        </ListItem>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <AddMethod />
         </ListItem>

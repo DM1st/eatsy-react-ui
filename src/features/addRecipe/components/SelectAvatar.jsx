@@ -31,19 +31,22 @@ import {
   deepOrange,
   yellow,
 } from "@mui/material/colors";
-import PropTypes from "prop-types";
 
-import { React } from "react";
+import { React, useContext } from "react";
+import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 
 /**
  * The child dialog of the RecipeDialog for selecting the avatar of the uploader for the recipe.
  */
-function SelectAvatar(props) {
-  const { openSelectAvatarDialog, closeSelectAvatarDialog } = props;
+function SelectAvatar() {
+  //Access the SelectAvatar state from the SelectAvatare context API
+  const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } =
+    useContext(SelectAvatarDialogContext);
+
   return (
     <Dialog
       open={openSelectAvatarDialog}
-      onClose={closeSelectAvatarDialog}
+      onClose={changeSelectAvatarDialogOpenStatus}
       aria-labelledby="child-dialog-title"
       aria-describedby="child-dialog-description"
     >
@@ -157,10 +160,5 @@ function SelectAvatar(props) {
     </Dialog>
   );
 }
-
-SelectAvatar.propTypes = {
-  openSelectAvatarDialog: PropTypes.bool.isRequired,
-  closeSelectAvatarDialog: PropTypes.func.isRequired,
-};
 
 export default SelectAvatar;
