@@ -1,6 +1,7 @@
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
+import PropTypes from "prop-types";
 import { React, useContext } from "react";
 import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
@@ -20,7 +21,7 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 /**
  * Recipe Dialog Component used for creating and editing recipies
  */
-export const RecipeDialog = () => {
+export const RecipeDialog = (props) => {
   //Access the RecipeDialog state from the RecipeDialog context API
   const { openRecipeDialog, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
 
@@ -57,9 +58,7 @@ export const RecipeDialog = () => {
       aria-describedby="parent-dialog-description"
     >
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
-        <TitleField>
-          <>Add New Recipe</>
-        </TitleField>
+        <TitleField>{props.children}</TitleField>
         <ListItemTextField
           uniqueId={"Recipe title"}
           placeholderText={"Add recipe title"}
@@ -110,4 +109,9 @@ export const RecipeDialog = () => {
       </Box>
     </Dialog>
   );
+};
+
+//Check that the prop is passed in when the TitleField function is called.
+RecipeDialog.propTypes = {
+  children: PropTypes.node.isRequired, //any renderable object.
 };

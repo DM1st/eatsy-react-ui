@@ -36,7 +36,9 @@ function App() {
             <AddIcon />
           </Fab>
           <Provider value={recipeDialogState}>
-            <RecipeDialog />
+            <RecipeDialog>
+              <>Add New Recipe</>
+            </RecipeDialog>
           </Provider>
         </>
         <SearchTabPanel />
