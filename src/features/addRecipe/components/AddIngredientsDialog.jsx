@@ -1,19 +1,23 @@
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DragHandleIcon from "@mui/icons-material/DragHandle";
 import {
   Button,
   Container,
   List,
-  ListItem,
   ListSubheader,
-  ListItemSecondaryAction,
   Paper,
   InputBase,
   Dialog,
   Divider,
   IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
   TextField,
 } from "@mui/material";
+import { grey } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { React, useState, useContext } from "react";
 import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
@@ -21,7 +25,7 @@ import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 const theme = createTheme({
   palette: {
     camouflage: {
-      main: "	#ffffff",
+      main: "#ffffff",
     },
   },
 });
@@ -41,7 +45,7 @@ export default function AddIngredientsDialog() {
     //Creates new ingredient object which gets pushed to the Array
     const newIngredient = {
       ingredientName: inputValue,
-      key: Date.now(),
+      id: Date.now().toString(),
     };
 
     //Copies the existing array (to avoid mutating state) and add the newIngredient object on to the end.
@@ -55,18 +59,40 @@ export default function AddIngredientsDialog() {
 
   //Remove ingredient from the list
   //Modify the current stateful list with a filter.
-  const handleRemoveIngredientClick = (key) => {
-    const updatedIngredientList = ingredients.filter((ingredient) => ingredient.key !== key);
+  const handleRemoveIngredientClick = (id) => {
+    const updatedIngredientList = ingredients.filter((ingredient) => ingredient.id !== id);
     setIngredients(updatedIngredientList);
   };
 
-  const handleExistingIngredientEdit = (updatedIngredientName, key) => {
+  const handleExistingIngredientEdit = (updatedIngredientName, id) => {
     ingredients.forEach((ingredient) => {
-      if (ingredient.key === key) {
+      if (ingredient.id === id) {
         ingredient.ingredientName = updatedIngredientName;
       }
     });
   };
+
+  /**
+   * Triggered by the <DragDropContext> onDragEnd prop.
+   * This provides an opportunity to save the updated state (after dragging and dropping an ingredient) before the page re-renders.
+   * The paramater (result) contains regarding what should be the updated state after a drag action.
+   * In particular, the index value in both the destination and source properties.
+   */
+  function handleOnDragEnd(result) {
+    //Handle error incase ingredient is dragged outside of the defined droppable area.
+    if (result.destination === null) {
+      return;
+    } else {
+      //Create new copy of our characters array
+      const updatedIngredientsList = Array.from(ingredients);
+      //Use the source.index value to find the moved item from the new array and remove it
+      const [reorderedItem] = updatedIngredientsList.splice(result.source.index, 1);
+      //The the destination.index value is used to add that ingredient back into the array, but at its new location.
+      updatedIngredientsList.splice(result.destination.index, 0, reorderedItem);
+      //Update the Ingredients state with this correctly updated list
+      setIngredients(updatedIngredientsList);
+    }
+  }
 
   return (
     <Dialog
@@ -111,35 +137,70 @@ export default function AddIngredientsDialog() {
           <AddIcon />
         </IconButton>
       </Paper>
-      {/* Map function to loop over list and display the items */}
-      <List subheader={<ListSubheader color={"primary"}>Ingredients</ListSubheader>}>
-        {ingredients.map((ingredient) => {
-          return (
-            <ListItem key={ingredient.key} dense divider>
-              <ThemeProvider theme={theme}>
-                <TextField
-                  focused
-                  color="camouflage"
-                  variant="standard"
-                  defaultValue={ingredient.ingredientName}
-                  onChange={(event) =>
-                    handleExistingIngredientEdit(event.target.value, ingredient.key)
-                  }
-                />
-              </ThemeProvider>
-              <ListItemSecondaryAction>
-                <IconButton
-                  onClick={() => handleRemoveIngredientClick(ingredient.key)}
-                  edge="end"
-                  aria-label="deleteIngredient"
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          );
-        })}
-      </List>
+      {/* Ability to use the Drag and Drop API */}
+      {/* the DragDropContext onDragEnd prop will fire a function when an item has stopped being dragged.  */}
+      {/* This provides an opportunity to save the updated state before the page re-renders.  */}
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        {/* Entire list will be the dropzone. */}
+        {/* DroppableId allows the library to keep track of this specific instance between interactions */}
+        {/* Imediately create function with provided argument to include information and references required by the DragDrop library */}
+        {/* This is going to create a reference (provided.innerRef) for the library to access the list element’s HTML element. */}
+        {/* It also applies props to the element (provided.droppableProps) that allows the library to keep track of movements and positioning.*/}
+        <Droppable droppableId="ingredients">
+          {(provided) => (
+            <List
+              subheader={<ListSubheader color={"primary"}>Ingredients</ListSubheader>}
+              className="ingredients"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {/* Map function to loop over list and display the items */}
+              {ingredients.map((ingredient, index) => {
+                return (
+                  <Draggable key={ingredient.id} draggableId={ingredient.id} index={index}>
+                    {(provided, snapshot) => (
+                      <ListItem
+                        dense
+                        divider
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        sx={{ backgroundColor: snapshot.isDragging ? grey[100] : "#ffffff" }}
+                      >
+                        <ThemeProvider theme={theme}>
+                          <ListItemIcon>
+                            <DragHandleIcon />
+                          </ListItemIcon>
+                          <TextField
+                            focused
+                            color="camouflage"
+                            variant="standard"
+                            defaultValue={ingredient.ingredientName}
+                            onChange={(event) =>
+                              handleExistingIngredientEdit(event.target.value, ingredient.id)
+                            }
+                          />
+                        </ThemeProvider>
+                        <ListItemSecondaryAction>
+                          <IconButton
+                            onClick={() => handleRemoveIngredientClick(ingredient.id)}
+                            edge="end"
+                            aria-label="deleteIngredient"
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                    )}
+                  </Draggable>
+                );
+              })}
+              {/*Placeholder item provided and used to fill up the space that the item being dragged previously took */}
+              {provided.placeholder}
+            </List>
+          )}
+        </Droppable>
+      </DragDropContext>
       <Container
         sx={{
           width: "100%",
