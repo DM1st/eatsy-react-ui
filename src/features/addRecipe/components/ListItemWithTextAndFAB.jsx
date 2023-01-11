@@ -6,13 +6,7 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 /**
  * Component for the list items in RecipeDialog(s) that have text and a clickable FAB.
  */
-export default function ListItemWithTextAndFAB({
-  optionalIdForHtmlLabel,
-  handleOpen,
-  selectFabImageIcon,
-  childDialog,
-  children,
-}) {
+export default function ListItemWithTextAndFAB({ optionalIdForHtmlLabel, handleOpen, selectFabImageIcon, childDialog, children }) {
   return (
     <ListItem divider theme={RecipeDialogListItemTheme}>
       <Container theme={RecipeDialogListItemTheme} variant="primary">

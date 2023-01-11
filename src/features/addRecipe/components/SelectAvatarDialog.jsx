@@ -7,30 +7,8 @@ import LocalBarIcon from "@mui/icons-material/LocalBar";
 import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
 import RamenDiningIcon from "@mui/icons-material/RamenDining";
 import SoupKitchenIcon from "@mui/icons-material/SoupKitchen";
-import {
-  Typography,
-  Box,
-  Container,
-  Fab,
-  ListItem,
-  Dialog,
-  IconButton,
-  Stack,
-  Avatar,
-} from "@mui/material";
-import {
-  green,
-  teal,
-  blue,
-  red,
-  lime,
-  indigo,
-  amber,
-  cyan,
-  deepPurple,
-  deepOrange,
-  yellow,
-} from "@mui/material/colors";
+import { Typography, Box, Container, Fab, ListItem, Dialog, IconButton, Stack, Avatar } from "@mui/material";
+import { green, teal, blue, red, lime, indigo, amber, cyan, deepPurple, deepOrange, yellow } from "@mui/material/colors";
 
 import { React, useContext } from "react";
 import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
@@ -40,16 +18,10 @@ import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext
  */
 function SelectAvatar() {
   //Access the SelectAvatar state from the SelectAvatare context API
-  const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } =
-    useContext(SelectAvatarDialogContext);
+  const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 
   return (
-    <Dialog
-      open={openSelectAvatarDialog}
-      onClose={changeSelectAvatarDialogOpenStatus}
-      aria-labelledby="child-dialog-title"
-      aria-describedby="child-dialog-description"
-    >
+    <Dialog open={openSelectAvatarDialog} onClose={changeSelectAvatarDialogOpenStatus} aria-labelledby="child-dialog-title" aria-describedby="child-dialog-description">
       <Box sx={{ padding: "5px" }}>
         <Typography id="child-dialog-description" variant="h7" sx={{ padding: "20px" }}>
           Pick a pre-set Avatar:
@@ -146,11 +118,7 @@ function SelectAvatar() {
               />
             </Container>
             <label htmlFor="contained-button-avatar">
-              <Fab
-                component="span"
-                size="small"
-                sx={{ color: blue[700], backgroundColor: "white" }}
-              >
+              <Fab component="span" size="small" sx={{ color: blue[700], backgroundColor: "white" }}>
                 <AddPhotoAlternateIcon />
               </Fab>
             </label>

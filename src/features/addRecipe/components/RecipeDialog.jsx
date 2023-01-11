@@ -26,10 +26,7 @@ export function RecipeDialog(props) {
   const { openRecipeDialog, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
 
   //Open or close state for the IngredientsDialog stored in AddRecipe feature hooks.
-  const {
-    openStatus: openIngredientsDialog,
-    toggleDialogStatus: changeIngredientsDialogOpenStatus,
-  } = useToggleDialogStatus();
+  const { openStatus: openIngredientsDialog, toggleDialogStatus: changeIngredientsDialogOpenStatus } = useToggleDialogStatus();
 
   //value object containing IngredientsDialog state to be passed via context and not props.
   const ingredientsDialogState = {
@@ -38,10 +35,7 @@ export function RecipeDialog(props) {
   };
 
   //Open or close state for the SelectAvatarDialog stored in AddRecipe feature hooks.
-  const {
-    openStatus: openSelectAvatarDialog,
-    toggleDialogStatus: changeSelectAvatarDialogOpenStatus,
-  } = useToggleDialogStatus();
+  const { openStatus: openSelectAvatarDialog, toggleDialogStatus: changeSelectAvatarDialogOpenStatus } = useToggleDialogStatus();
 
   //value object containing SelectAvatarDialog state to be passed via context and not props.
   const selectAvatarDialogState = {
@@ -67,14 +61,8 @@ export function RecipeDialog(props) {
     <Dialog fullWidth open={openRecipeDialog} onClose={changeRecipeDialogOpenStatus}>
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
         <TitleField>{props.children}</TitleField>
-        <ListItemTextField
-          uniqueId={"Recipe title"}
-          placeholderText={"Add recipe title"}
-        ></ListItemTextField>
-        <ListItemTextField
-          uniqueId={"Uploader name"}
-          placeholderText={"Uploader (your name)"}
-        ></ListItemTextField>
+        <ListItemTextField uniqueId={"Recipe title"} placeholderText={"Add recipe title"}></ListItemTextField>
+        <ListItemTextField uniqueId={"Uploader name"} placeholderText={"Uploader (your name)"}></ListItemTextField>
         {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
         <SelectAvatarDialogContext.Provider value={selectAvatarDialogState}>
           <ListItemWithTextAndFAB {...selectAvatarListItemFABProps}>
@@ -84,10 +72,7 @@ export function RecipeDialog(props) {
         <ListItemWithTextAndFAB {...addPhotoListItemFABProps}>
           <>Add Recipe photo</>
         </ListItemWithTextAndFAB>
-        <ListItemTextField
-          uniqueId={"Recipe description"}
-          placeholderText={"Add recipe description"}
-        ></ListItemTextField>
+        <ListItemTextField uniqueId={"Recipe description"} placeholderText={"Add recipe description"}></ListItemTextField>
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <Container theme={RecipeDialogListItemTheme} variant="secondary">
             <Typography color="textSecondary">Add ingredients</Typography>

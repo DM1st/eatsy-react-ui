@@ -1,7 +1,11 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { React } from "react";
 
+/**
+ * FilterByTags component for searching and filtering.
+ */
 export default function FilterByTags() {
+  //Static data until the solution is integrated.
   const tags = [
     { tag: "Dessert" },
     { tag: "Cake" },
@@ -12,6 +16,8 @@ export default function FilterByTags() {
     { tag: "Slow Cooker" },
   ];
 
+  //The Autocomplete with props for number of tags that can be displayed
+  //and filtering whilst typing
   return (
     <Autocomplete
       fullWidth
