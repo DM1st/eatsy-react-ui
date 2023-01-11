@@ -16,12 +16,17 @@ import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext
 /**
  * The child dialog of the RecipeDialog for selecting the avatar of the uploader for the recipe.
  */
-function SelectAvatar() {
+export default function SelectAvatar() {
   //Access the SelectAvatar state from the SelectAvatare context API
   const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 
   return (
-    <Dialog open={openSelectAvatarDialog} onClose={changeSelectAvatarDialogOpenStatus} aria-labelledby="child-dialog-title" aria-describedby="child-dialog-description">
+    <Dialog
+      open={openSelectAvatarDialog}
+      onClose={changeSelectAvatarDialogOpenStatus}
+      aria-labelledby="child-dialog-title"
+      aria-describedby="child-dialog-description"
+    >
       <Box sx={{ padding: "5px" }}>
         <Typography id="child-dialog-description" variant="h7" sx={{ padding: "20px" }}>
           Pick a pre-set Avatar:
@@ -128,5 +133,3 @@ function SelectAvatar() {
     </Dialog>
   );
 }
-
-export default SelectAvatar;
