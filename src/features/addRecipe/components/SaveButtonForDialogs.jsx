@@ -8,7 +8,7 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
  * (For example creating a new recipe
  * or saving changes on an Edit existing recipe dialog) with the button text passed in as props
  */
-export default function SaveRecipe(props) {
+export default function SaveButtonForDialogs(props) {
   return (
     <Container theme={RecipeDialogListItemTheme} variant="tertiary">
       <Button onClick={props.closeRecipeDialog} variant="contained">
@@ -19,7 +19,7 @@ export default function SaveRecipe(props) {
 }
 
 //Check to ensure required props are passed through and are of the correct type.
-SaveRecipe.propTypes = {
+SaveButtonForDialogs.propTypes = {
   closeRecipeDialog: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired, //any renderable object.
 };

@@ -8,8 +8,8 @@ import AddMethod from "./AddMethod";
 import FileUploadInput from "./FileUploadInput";
 import ListItemTextField from "./ListItemTextField";
 import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
-import SaveRecipe from "./SaveRecipe";
-import SelectAvatar from "./SelectAvatar";
+import SaveButtonForDialogs from "./SaveButtonForDialogs";
+import SelectAvatarDialog from "./SelectAvatarDialog";
 import TitleField from "./TitleField";
 import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
 import FilterByTags from "../../../FilterByTags";
@@ -60,7 +60,7 @@ export function RecipeDialog(props) {
   const selectAvatarListItemFABProps = {
     handleOpen: changeSelectAvatarDialogOpenStatus,
     selectFabImageIcon: <CollectionsIcon />,
-    childDialog: <SelectAvatar />,
+    childDialog: <SelectAvatarDialog />,
   };
 
   return (
@@ -106,9 +106,9 @@ export function RecipeDialog(props) {
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <FilterByTags />
         </ListItem>
-        <SaveRecipe closeRecipeDialog={changeRecipeDialogOpenStatus}>
+        <SaveButtonForDialogs closeRecipeDialog={changeRecipeDialogOpenStatus}>
           <>Save New Recipe</>
-        </SaveRecipe>
+        </SaveButtonForDialogs>
       </Box>
     </Dialog>
   );
