@@ -181,15 +181,18 @@ export default function AddIngredientsDialog() {
                             }
                           />
                         </ThemeProvider>
-                        <ListItemSecondaryAction>
-                          <IconButton
-                            onClick={() => handleRemoveIngredientClick(ingredient.id)}
-                            edge="end"
-                            aria-label="deleteIngredient"
-                          >
-                            <DeleteIcon />
-                          </IconButton>
-                        </ListItemSecondaryAction>
+                        {/* div required so ListItemSecondaryAction drags with the ListItem */}
+                        <div>
+                          <ListItemSecondaryAction>
+                            <IconButton
+                              onClick={() => handleRemoveIngredientClick(ingredient.id)}
+                              edge="end"
+                              aria-label="deleteIngredient"
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </div>
                       </ListItem>
                     )}
                   </Draggable>
