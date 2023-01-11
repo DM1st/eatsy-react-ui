@@ -49,6 +49,20 @@ export function RecipeDialog(props) {
     changeSelectAvatarDialogOpenStatus,
   };
 
+  //Props for the Add Photo usage of the ListItemFAB component.
+  const addPhotoListItemFABProps = {
+    optionalIdForHtmlLabel: "add-recipe-contained-button-file",
+    selectFabImageIcon: <AddPhotoAlternateIcon />,
+    childDialog: <FileUploadInput label={"add-recipe-contained-button-file"} />,
+  };
+
+  //Props for the SelectAvatar usage of the ListItemFAB component.
+  const selectAvatarListItemFABProps = {
+    handleOpen: changeSelectAvatarDialogOpenStatus,
+    selectFabImageIcon: <CollectionsIcon />,
+    childDialog: <SelectAvatar />,
+  };
+
   return (
     <Dialog fullWidth open={openRecipeDialog} onClose={changeRecipeDialogOpenStatus}>
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
@@ -61,20 +75,13 @@ export function RecipeDialog(props) {
           uniqueId={"Uploader name"}
           placeholderText={"Uploader (your name)"}
         ></ListItemTextField>
+        {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
         <SelectAvatarDialogContext.Provider value={selectAvatarDialogState}>
-          <ListItemWithTextAndFAB
-            handleOpen={changeSelectAvatarDialogOpenStatus}
-            selectFabImageIcon={<CollectionsIcon />}
-            childDialog={<SelectAvatar />}
-          >
+          <ListItemWithTextAndFAB {...selectAvatarListItemFABProps}>
             <>Select your avatar</>
           </ListItemWithTextAndFAB>
         </SelectAvatarDialogContext.Provider>
-        <ListItemWithTextAndFAB
-          optionalIdForHtmlLabel="add-recipe-contained-button-file"
-          selectFabImageIcon={<AddPhotoAlternateIcon />}
-          childDialog={<FileUploadInput label={"add-recipe-contained-button-file"} />}
-        >
+        <ListItemWithTextAndFAB {...addPhotoListItemFABProps}>
           <>Add Recipe photo</>
         </ListItemWithTextAndFAB>
         <ListItemTextField
