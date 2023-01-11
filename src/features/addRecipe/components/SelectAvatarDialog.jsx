@@ -20,36 +20,48 @@ export default function SelectAvatar() {
   //Access the SelectAvatar state from the SelectAvatare context API
   const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 
+  const listItemProps = {
+    color: green[500],
+    specifiedLabel: "pizza avatar",
+    icon: <LocalPizzaIcon />,
+  };
+
+  function SelectAvatarListItem() {
+    return (
+      <ListItem divider>
+        <Stack direction="row" spacing={2} padding={2}>
+          <IconButton>
+            <Avatar sx={{ bgcolor: listItemProps.color }} aria-label={listItemProps.specifiedLabel}>
+              {listItemProps.icon}
+            </Avatar>
+          </IconButton>
+          <IconButton>
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar">
+              <IcecreamIcon />
+            </Avatar>
+          </IconButton>
+          <IconButton>
+            <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar">
+              <SoupKitchenIcon />
+            </Avatar>
+          </IconButton>
+          <IconButton>
+            <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar">
+              <LocalBarIcon />
+            </Avatar>
+          </IconButton>
+        </Stack>
+      </ListItem>
+    );
+  }
+
   return (
     <Dialog open={openSelectAvatarDialog} onClose={changeSelectAvatarDialogOpenStatus}>
       <Box sx={{ padding: "5px" }}>
         <Typography variant="h7" sx={{ padding: "20px" }}>
           Pick a pre-set Avatar:
         </Typography>
-        <ListItem divider>
-          <Stack direction="row" spacing={2} padding={2}>
-            <IconButton>
-              <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar">
-                <LocalPizzaIcon />
-              </Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar">
-                <IcecreamIcon />
-              </Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar">
-                <SoupKitchenIcon />
-              </Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar">
-                <LocalBarIcon />
-              </Avatar>
-            </IconButton>
-          </Stack>
-        </ListItem>
+        <SelectAvatarListItem />
         <ListItem divider>
           <Stack direction="row" spacing={2} padding={2}>
             <IconButton>
