@@ -98,9 +98,9 @@ export default function AddIngredientsDialog() {
     <Dialog
       open={openIngredientsDialog}
       onClose={changeIngredientsDialogOpenStatus}
+      fullWidth
       sx={{
         width: "100%",
-        display: "flex",
         justifyContent: "space-between",
         align: "center",
         paddingTop: "5px",
