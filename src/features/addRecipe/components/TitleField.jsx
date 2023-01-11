@@ -4,7 +4,7 @@ import { React } from "react";
 import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
- * The child componenet to display the title on the RecipeDialog parent component.
+ * The child componenet to display the title (passed in as children) on the RecipeDialog parent component.
  */
 export default function TitleField({ children }) {
   return (
