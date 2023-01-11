@@ -5,7 +5,8 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
  * Save Recipe button to be used at the end of a Recipe Dialog
- * (For example creating a new recipe or saving changes on an Edit existing recipe dialog)
+ * (For example creating a new recipe
+ * or saving changes on an Edit existing recipe dialog) with the button text passed in as props
  */
 export default function SaveRecipe(props) {
   return (
