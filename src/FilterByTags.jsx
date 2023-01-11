@@ -1,7 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { React } from "react";
 
-function FilterByTags() {
+export default function FilterByTags() {
   const tags = [
     { tag: "Dessert" },
     { tag: "Cake" },
@@ -26,5 +26,3 @@ function FilterByTags() {
     />
   );
 }
-
-export default FilterByTags;
