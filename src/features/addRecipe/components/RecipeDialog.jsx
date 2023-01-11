@@ -19,10 +19,10 @@ import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 
 /**
- * Recipe Dialog Component used for creating and editing recipies
+ * Recipe parent dialog Component which can be used for creating and editing recipies.
  */
-export const RecipeDialog = (props) => {
-  //Access the RecipeDialog state from the RecipeDialog context API
+export function RecipeDialog(props) {
+  //Access the RecipeDialog state from the RecipeDialog context(gloabl level) API
   const { openRecipeDialog, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
 
   //Open or close state for the IngredientsDialog stored in AddRecipe feature hooks.
@@ -50,13 +50,7 @@ export const RecipeDialog = (props) => {
   };
 
   return (
-    <Dialog
-      fullWidth
-      open={openRecipeDialog}
-      onClose={changeRecipeDialogOpenStatus}
-      aria-labelledby="parent-dialog-title"
-      aria-describedby="parent-dialog-description"
-    >
+    <Dialog fullWidth open={openRecipeDialog} onClose={changeRecipeDialogOpenStatus}>
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
         <TitleField>{props.children}</TitleField>
         <ListItemTextField
@@ -111,9 +105,9 @@ export const RecipeDialog = (props) => {
       </Box>
     </Dialog>
   );
-};
+}
 
-//Check that the prop is passed in when the TitleField function is called.
+//Check that the props are passed in when the TitleField function is called.
 RecipeDialog.propTypes = {
   children: PropTypes.node.isRequired, //any renderable object.
 };
