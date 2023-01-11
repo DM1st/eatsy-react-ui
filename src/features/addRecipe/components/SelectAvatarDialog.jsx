@@ -21,40 +21,31 @@ export default function SelectAvatar() {
   const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 
   return (
-    <Dialog
-      open={openSelectAvatarDialog}
-      onClose={changeSelectAvatarDialogOpenStatus}
-      aria-labelledby="child-dialog-title"
-      aria-describedby="child-dialog-description"
-    >
+    <Dialog open={openSelectAvatarDialog} onClose={changeSelectAvatarDialogOpenStatus}>
       <Box sx={{ padding: "5px" }}>
-        <Typography id="child-dialog-description" variant="h7" sx={{ padding: "20px" }}>
+        <Typography variant="h7" sx={{ padding: "20px" }}>
           Pick a pre-set Avatar:
         </Typography>
         <ListItem divider>
           <Stack direction="row" spacing={2} padding={2}>
             <IconButton>
               <Avatar sx={{ bgcolor: green[500] }} aria-label="pizza avatar">
-                {" "}
-                <LocalPizzaIcon />{" "}
+                <LocalPizzaIcon />
               </Avatar>
             </IconButton>
             <IconButton>
               <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar">
-                {" "}
-                <IcecreamIcon />{" "}
+                <IcecreamIcon />
               </Avatar>
             </IconButton>
             <IconButton>
               <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar">
-                {" "}
-                <SoupKitchenIcon />{" "}
+                <SoupKitchenIcon />
               </Avatar>
             </IconButton>
             <IconButton>
               <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar">
-                {" "}
-                <LocalBarIcon />{" "}
+                <LocalBarIcon />
               </Avatar>
             </IconButton>
           </Stack>
@@ -63,25 +54,21 @@ export default function SelectAvatar() {
           <Stack direction="row" spacing={2} padding={2}>
             <IconButton>
               <Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar">
-                {" "}
                 <RamenDiningIcon />
               </Avatar>
             </IconButton>
             <IconButton>
               <Avatar sx={{ bgcolor: lime[500] }} aria-label="Fast food avatar">
-                {" "}
                 <FastfoodIcon />
               </Avatar>
             </IconButton>
             <IconButton>
               <Avatar sx={{ bgcolor: blue[500] }} aria-label="Cake avatar">
-                {" "}
                 <CakeIcon />
               </Avatar>
             </IconButton>
             <IconButton>
               <Avatar sx={{ bgcolor: yellow[500] }} aria-label="Bakery Dinning avatar">
-                {" "}
                 <BakeryDiningIcon />
               </Avatar>
             </IconButton>
