@@ -15,6 +15,10 @@ const theme = createTheme({
   },
 });
 
+/**
+ * ListItems that can be dragged/reordered as well as being edited and deleted.
+ * One such example is using a DraggableListItem for each ingredient associated with a recipe.
+ */
 export default function DraggableListItem({ ingredient, index, handleExistingIngredientEdit, handleRemoveIngredientClick }) {
   return (
     <Draggable draggableId={ingredient.id} index={index}>
@@ -53,6 +57,7 @@ export default function DraggableListItem({ ingredient, index, handleExistingIng
   );
 }
 
+//Confirm all props provided and of the right type
 DraggableListItem.propTypes = {
   ingredient: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
