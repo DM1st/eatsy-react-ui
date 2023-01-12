@@ -1,16 +1,12 @@
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-import BakeryDiningIcon from "@mui/icons-material/BakeryDiningSharp";
-import CakeIcon from "@mui/icons-material/Cake";
-import FastfoodIcon from "@mui/icons-material/Fastfood";
-import IcecreamIcon from "@mui/icons-material/Icecream";
-import LocalBarIcon from "@mui/icons-material/LocalBar";
-import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
-import RamenDiningIcon from "@mui/icons-material/RamenDining";
-import SoupKitchenIcon from "@mui/icons-material/SoupKitchen";
-import { Typography, Box, Container, Fab, ListItem, Dialog, IconButton, Stack, Avatar } from "@mui/material";
-import { green, teal, blue, red, lime, indigo, amber, cyan, deepPurple, deepOrange, yellow } from "@mui/material/colors";
+import { Box, Dialog } from "@mui/material";
 
 import { React, useContext } from "react";
+import FileUploadInput from "./FileUploadInput";
+import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
+import SelectAvatarListItemRow from "./SelectAvatarListItemRow";
+import TitleField from "./TitleField";
+import { PresetSelectAvatarOptions } from "../config/PresetSelectAvatarOptions";
 import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 
 /**
@@ -20,114 +16,28 @@ export default function SelectAvatar() {
   //Access the SelectAvatar state from the SelectAvatare context API
   const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 
-  const listItemProps = {
-    color: green[500],
-    specifiedLabel: "pizza avatar",
-    icon: <LocalPizzaIcon />,
+  //Props for the SelectAvatar usage of the ListItemFAB component for picking a custom avatar icon.
+  const selectCustomAvatarProps = {
+    hasDivider: false,
+    optionalIdForHtmlLabel: "contained-button-avatar",
+    selectFabImageIcon: <AddPhotoAlternateIcon />,
+    fabSize: "small",
+    childDialog: <FileUploadInput label={"contained-button-avatar"} />,
   };
 
-  function SelectAvatarListItem() {
-    return (
-      <ListItem divider>
-        <Stack direction="row" spacing={2} padding={2}>
-          <IconButton>
-            <Avatar sx={{ bgcolor: listItemProps.color }} aria-label={listItemProps.specifiedLabel}>
-              {listItemProps.icon}
-            </Avatar>
-          </IconButton>
-          <IconButton>
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="ice cream avatar">
-              <IcecreamIcon />
-            </Avatar>
-          </IconButton>
-          <IconButton>
-            <Avatar sx={{ bgcolor: indigo[500] }} aria-label="soup kitchen avatar">
-              <SoupKitchenIcon />
-            </Avatar>
-          </IconButton>
-          <IconButton>
-            <Avatar sx={{ bgcolor: teal[500] }} aria-label="Local Bar avatar">
-              <LocalBarIcon />
-            </Avatar>
-          </IconButton>
-        </Stack>
-      </ListItem>
-    );
-  }
+  // The pre-configured options for a recipe uploader to choose from when selecting an avatar
+  const presetSelectAvatarOptions = PresetSelectAvatarOptions;
 
   return (
     <Dialog open={openSelectAvatarDialog} onClose={changeSelectAvatarDialogOpenStatus}>
-      <Box sx={{ padding: "5px" }}>
-        <Typography variant="h7" sx={{ padding: "20px" }}>
-          Pick a pre-set Avatar:
-        </Typography>
-        <SelectAvatarListItem />
-        <ListItem divider>
-          <Stack direction="row" spacing={2} padding={2}>
-            <IconButton>
-              <Avatar sx={{ bgcolor: amber[500] }} aria-label="Ramen Dinning avatar">
-                <RamenDiningIcon />
-              </Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: lime[500] }} aria-label="Fast food avatar">
-                <FastfoodIcon />
-              </Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: blue[500] }} aria-label="Cake avatar">
-                <CakeIcon />
-              </Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: yellow[500] }} aria-label="Bakery Dinning avatar">
-                <BakeryDiningIcon />
-              </Avatar>
-            </IconButton>
-          </Stack>
-        </ListItem>
-        <ListItem divider>
-          <Stack direction="row" spacing={2} padding={2}>
-            <IconButton>
-              <Avatar sx={{ bgcolor: green[500] }}>DM</Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>LM</Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: deepPurple[500] }}>TH</Avatar>
-            </IconButton>
-            <IconButton>
-              <Avatar sx={{ bgcolor: cyan[500] }}>TP</Avatar>
-            </IconButton>
-          </Stack>
-        </ListItem>
-        <Stack direction="row" spacing={2} padding={2}>
-          <Container
-            sx={{
-              padding: "0px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography color="textSecondary">Or, upload your custom Avatar:</Typography>
-            <Container sx={{ display: "none" }}>
-              <input
-                accept="image/*"
-                id="contained-button-avatar"
-                multiple
-                type="file"
-                /*onChange={this.handleUploadClick}*/
-              />
-            </Container>
-            <label htmlFor="contained-button-avatar">
-              <Fab component="span" size="small" sx={{ color: blue[700], backgroundColor: "white" }}>
-                <AddPhotoAlternateIcon />
-              </Fab>
-            </label>
-          </Container>
-        </Stack>
+      <Box sx={{ padding: "10px" }}>
+        <TitleField variant="h7">Pick a pre-set Avatar</TitleField>
+        <SelectAvatarListItemRow {...presetSelectAvatarOptions.rowOne} />
+        <SelectAvatarListItemRow {...presetSelectAvatarOptions.rowTwo} />
+        <SelectAvatarListItemRow {...presetSelectAvatarOptions.rowThree} />
+        <ListItemWithTextAndFAB {...selectCustomAvatarProps}>
+          <>Or, upload your custom Avatar:</>
+        </ListItemWithTextAndFAB>
       </Box>
     </Dialog>
   );

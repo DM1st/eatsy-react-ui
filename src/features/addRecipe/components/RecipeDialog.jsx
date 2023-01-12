@@ -45,22 +45,26 @@ export function RecipeDialog(props) {
 
   //Props for the Add Photo usage of the ListItemFAB component.
   const addPhotoListItemFABProps = {
+    hasDivider: true,
     optionalIdForHtmlLabel: "add-recipe-contained-button-file",
     selectFabImageIcon: <AddPhotoAlternateIcon />,
+    fabSize: "large",
     childDialog: <FileUploadInput label={"add-recipe-contained-button-file"} />,
   };
 
   //Props for the SelectAvatar usage of the ListItemFAB component.
   const selectAvatarListItemFABProps = {
+    hasDivider: true,
     handleOpen: changeSelectAvatarDialogOpenStatus,
     selectFabImageIcon: <CollectionsIcon />,
+    fabSize: "large",
     childDialog: <SelectAvatarDialog />,
   };
 
   return (
     <Dialog fullWidth open={openRecipeDialog} onClose={changeRecipeDialogOpenStatus}>
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
-        <TitleField>{props.children}</TitleField>
+        <TitleField variant="h5">{props.children}</TitleField>
         <ListItemTextField uniqueId={"Recipe title"} placeholderText={"Add recipe title"}></ListItemTextField>
         <ListItemTextField uniqueId={"Uploader name"} placeholderText={"Uploader (your name)"}></ListItemTextField>
         {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}

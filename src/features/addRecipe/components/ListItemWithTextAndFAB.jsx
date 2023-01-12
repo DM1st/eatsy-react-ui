@@ -6,15 +6,23 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 /**
  * Component for the list items in RecipeDialog(s) that have text and a clickable FAB.
  */
-export default function ListItemWithTextAndFAB({ optionalIdForHtmlLabel, handleOpen, selectFabImageIcon, childDialog, children }) {
+export default function ListItemWithTextAndFAB({
+  hasDivider,
+  optionalIdForHtmlLabel,
+  handleOpen,
+  selectFabImageIcon,
+  fabSize,
+  childDialog,
+  children,
+}) {
   return (
-    <ListItem divider theme={RecipeDialogListItemTheme}>
+    <ListItem divider={hasDivider} theme={RecipeDialogListItemTheme}>
       <Container theme={RecipeDialogListItemTheme} variant="primary">
         {/*The children contains the text to be in the row for this list item*/}
         <Typography color="textSecondary">{children}</Typography>
         {/*label required for the Fabs that use the FileUploadInput component */}
         <label htmlFor={optionalIdForHtmlLabel}>
-          <Fab onClick={handleOpen} component="span" theme={RecipeDialogListItemTheme}>
+          <Fab size={fabSize} onClick={handleOpen} component="span" theme={RecipeDialogListItemTheme}>
             {/*The icon to be inside the Floating Action Button*/}
             <>{selectFabImageIcon}</>
           </Fab>
@@ -28,9 +36,11 @@ export default function ListItemWithTextAndFAB({ optionalIdForHtmlLabel, handleO
 
 // To confirm the correct type is passed to the component for each prop (and that all required props are provided)
 ListItemWithTextAndFAB.propTypes = {
+  hasDivider: PropTypes.bool.isRequired,
   optionalIdForHtmlLabel: PropTypes.string, //Only required if uploading a file on click
   handleOpen: PropTypes.func, //Not always required as some FABs do not open a new dialog on click
   selectFabImageIcon: PropTypes.element.isRequired,
+  fabSize: PropTypes.string.isRequired,
   childDialog: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
 };
