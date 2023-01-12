@@ -1,39 +1,14 @@
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import {
-  Button,
-  Container,
-  List,
-  ListSubheader,
-  Paper,
-  InputBase,
-  Dialog,
-  Divider,
-  IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  TextField,
-} from "@mui/material";
-import { grey } from "@mui/material/colors";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { React, useState, useContext } from "react";
-import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
+import { Button, Container, List, ListSubheader, Paper, InputBase, Dialog, Divider, IconButton } from "@mui/material";
 
-const theme = createTheme({
-  palette: {
-    camouflage: {
-      main: "#ffffff",
-    },
-  },
-});
+import { React, useState, useContext } from "react";
+import DraggableListItem from "./DraggableListItem";
+import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 
 export default function AddIngredientsDialog() {
   //Access the IngredientsDialog state from the RecipeDialog (add/edit recipe feature) level context API
-  const { openIngredientsDialog, changeIngredientsDialogOpenStatus } =
-    useContext(IngredientsDialogContext);
+  const { openIngredientsDialog, changeIngredientsDialogOpenStatus } = useContext(IngredientsDialogContext);
 
   //State object - initialise with an empty array
   const [ingredients, setIngredients] = useState([]);
@@ -128,12 +103,7 @@ export default function AddIngredientsDialog() {
           inputProps={{ "aria-label": "Add new ingredient" }}
         />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <IconButton
-          onClick={() => handleAddButtonClick()}
-          color="primary"
-          sx={{ p: "10px" }}
-          aria-label="add ingredient"
-        >
+        <IconButton onClick={() => handleAddButtonClick()} color="primary" sx={{ p: "10px" }} aria-label="add ingredient">
           <AddIcon />
         </IconButton>
       </Paper>
@@ -157,45 +127,13 @@ export default function AddIngredientsDialog() {
               {/* Map function to loop over list and display the items */}
               {ingredients.map((ingredient, index) => {
                 return (
-                  <Draggable key={ingredient.id} draggableId={ingredient.id} index={index}>
-                    {(provided, snapshot) => (
-                      <ListItem
-                        dense
-                        divider
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        sx={{ backgroundColor: snapshot.isDragging ? grey[100] : "#ffffff" }}
-                      >
-                        <ThemeProvider theme={theme}>
-                          <ListItemIcon>
-                            <DragHandleIcon />
-                          </ListItemIcon>
-                          <TextField
-                            focused
-                            color="camouflage"
-                            variant="standard"
-                            defaultValue={ingredient.ingredientName}
-                            onChange={(event) =>
-                              handleExistingIngredientEdit(event.target.value, ingredient.id)
-                            }
-                          />
-                        </ThemeProvider>
-                        {/* div required so ListItemSecondaryAction drags with the ListItem */}
-                        <div>
-                          <ListItemSecondaryAction>
-                            <IconButton
-                              onClick={() => handleRemoveIngredientClick(ingredient.id)}
-                              edge="end"
-                              aria-label="deleteIngredient"
-                            >
-                              <DeleteIcon />
-                            </IconButton>
-                          </ListItemSecondaryAction>
-                        </div>
-                      </ListItem>
-                    )}
-                  </Draggable>
+                  <DraggableListItem
+                    key={ingredient.id}
+                    ingredient={ingredient}
+                    index={index}
+                    handleExistingIngredientEdit={handleExistingIngredientEdit}
+                    handleRemoveIngredientClick={handleRemoveIngredientClick}
+                  />
                 );
               })}
               {/*Placeholder item provided and used to fill up the space that the item being dragged previously took */}
