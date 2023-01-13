@@ -34,6 +34,7 @@ export default function AddItemInputBase({ inputValue, setInputValue, handleAddB
   );
 }
 
+//ProprTypes to ensure the required props (of the correct type) are being passed through to this component
 AddItemInputBase.propTypes = {
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,
