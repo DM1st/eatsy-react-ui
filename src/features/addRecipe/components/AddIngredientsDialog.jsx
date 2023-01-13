@@ -1,10 +1,11 @@
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
-import AddIcon from "@mui/icons-material/Add";
-import { Button, Container, List, ListSubheader, Paper, InputBase, Dialog, Divider, IconButton } from "@mui/material";
+import { Button, Container, List, ListSubheader, Paper, Dialog } from "@mui/material";
 
 import { React, useState, useContext } from "react";
+import AddItemInputBase from "./AddItemInputBase";
 import DraggableListItem from "./DraggableListItem";
 import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
+import { AddIngredientsDialogTheme } from "../themes/AddIngredientsDialogTheme";
 
 /**
  * A child dialog of the AddRecipe parent dialog.
@@ -44,6 +45,7 @@ export default function AddIngredientsDialog() {
     setIngredients(updatedIngredientList);
   };
 
+  //Update ingredient name when being edited.
   const handleExistingIngredientEdit = (updatedIngredientName, id) => {
     ingredients.forEach((ingredient) => {
       if (ingredient.id === id) {
@@ -55,7 +57,7 @@ export default function AddIngredientsDialog() {
   /**
    * Triggered by the <DragDropContext> onDragEnd prop.
    * This provides an opportunity to save the updated state (after dragging and dropping an ingredient) before the page re-renders.
-   * The paramater (result) contains regarding what should be the updated state after a drag action.
+   * The 'result' paramater contains information regarding what should be the updated state after a drag action.
    * In particular, the index value in both the destination and source properties.
    */
   function handleOnDragEnd(result) {
@@ -63,7 +65,7 @@ export default function AddIngredientsDialog() {
     if (result.destination === null) {
       return;
     } else {
-      //Create new copy of our characters array
+      //Create new copy of our ingredients array
       const updatedIngredientsList = Array.from(ingredients);
       //Use the source.index value to find the moved item from the new array and remove it
       const [reorderedItem] = updatedIngredientsList.splice(result.source.index, 1);
@@ -76,41 +78,14 @@ export default function AddIngredientsDialog() {
 
   return (
     <Dialog
+      theme={AddIngredientsDialogTheme}
       open={openIngredientsDialog}
       onClose={changeIngredientsDialogOpenStatus}
       fullWidth
-      sx={{
-        width: "100%",
-        justifyContent: "space-between",
-        align: "center",
-        paddingTop: "5px",
-        paddingBottom: "5px",
-        paddingRight: "0",
-        paddingLeft: "0",
-      }}
       aria-labelledby="child-dialog-ingredients"
     >
-      <Paper component="form" sx={{ p: "2px 4px", display: "flex", alignItems: "center" }}>
-        {/*Whever user types, onChange gets called. React passes event in automatically so we can obtain the value*/}
-        {/*setInputValue is then called to set what the user has typed in as state. */}
-        {/*value of the input to be whatever value is stoered in the inputValue state variable. */}
-        <InputBase
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault();
-              handleAddButtonClick();
-            }
-          }}
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Add ingredient"
-          inputProps={{ "aria-label": "Add new ingredient" }}
-        />
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <IconButton onClick={() => handleAddButtonClick()} color="primary" sx={{ p: "10px" }} aria-label="add ingredient">
-          <AddIcon />
-        </IconButton>
+      <Paper component="form" theme={AddIngredientsDialogTheme}>
+        <AddItemInputBase inputValue={inputValue} setInputValue={setInputValue} handleAddButtonClick={handleAddButtonClick} />
       </Paper>
       {/* Ability to use the Drag and Drop API */}
       {/* the DragDropContext onDragEnd prop will fire a function when an item has stopped being dragged.  */}
@@ -147,17 +122,7 @@ export default function AddIngredientsDialog() {
           )}
         </Droppable>
       </DragDropContext>
-      <Container
-        sx={{
-          width: "100%",
-          display: "flex",
-          align: "center",
-          paddingTop: "20px",
-          justifyContent: "end",
-          paddingRight: "0",
-          paddingLeft: "0",
-        }}
-      >
+      <Container theme={AddIngredientsDialogTheme}>
         <Button onClick={changeIngredientsDialogOpenStatus}>Done</Button>
       </Container>
     </Dialog>
