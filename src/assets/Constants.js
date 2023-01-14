@@ -8,4 +8,8 @@ export const Constants = {
     DESCRIPTION:
       "Eatsy is an online recipe book to allow users to find, create and share their favourite recipes with other cooking and baking enthusiasts!",
   },
+  FOOTER: {
+    DESCRIPTION: "Created by DM1st",
+    DMistGithubLink: "https://github.com/DM1st",
+  },
 };
