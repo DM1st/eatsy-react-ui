@@ -1,5 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Grid, Container, Fab, Box } from "@mui/material";
+import { Grid, Container, Fab, Box, CssBaseline } from "@mui/material";
 import { React } from "react";
 import EatsyAppBar from "./components/EatsyAppBar";
 import EatsyFooter from "./components/EatsyFooter";
@@ -26,36 +26,38 @@ export default function App() {
   const { Provider } = RecipeDialogContext;
 
   return (
-    <Box
-      //SX props needed to that Footer sticks to bottom of screen
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh", //Make long so Footer element sticks to bottom of screen
-      }}
-    >
-      <EatsyAppBar />
-      <Container sx={{ mt: 8, mb: 2 }}>
-        <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
-          <AddIcon />
-        </Fab>
-        <Provider value={recipeDialogState}>
-          <RecipeDialog>
-            <>Add New Recipe</>
-          </RecipeDialog>
-        </Provider>
-        <SearchTabPanel />
-        <Container sx={{ padding: "20px 0" }}>
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <RecipeCard />
-              </Grid>
-            ))}
-          </Grid>
+    <CssBaseline>
+      <Box
+        //SX props needed to that Footer sticks to bottom of screen
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh", //Make long so Footer element sticks to bottom of screen
+        }}
+      >
+        <EatsyAppBar />
+        <Container sx={{ mt: 8, mb: 2 }}>
+          <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
+            <AddIcon />
+          </Fab>
+          <Provider value={recipeDialogState}>
+            <RecipeDialog>
+              <>Add New Recipe</>
+            </RecipeDialog>
+          </Provider>
+          <SearchTabPanel />
+          <Container sx={{ padding: "20px 0" }}>
+            <Grid container spacing={4}>
+              {cards.map((card) => (
+                <Grid item key={card} xs={12} sm={6} md={4}>
+                  <RecipeCard />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
         </Container>
-      </Container>
-      <EatsyFooter />
-    </Box>
+        <EatsyFooter />
+      </Box>
+    </CssBaseline>
   );
 }
