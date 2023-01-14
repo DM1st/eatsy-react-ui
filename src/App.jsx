@@ -1,8 +1,8 @@
 import AddIcon from "@mui/icons-material/Add";
 import { CssBaseline, Grid, Container, Fab } from "@mui/material";
 import { React } from "react";
+import EatsyAppBar from "./components/EatsyAppBar";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
-import EatsyAppBar from "./EatsyAppBar";
 import EatsyFooter from "./EatsyFooter";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 import RecipeCard from "./RecipeCard";
@@ -14,8 +14,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function App() {
   //Open or close state for the RecipeDialog stored in global hooks.
-  const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } =
-    useToggleDialogStatus();
+  const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } = useToggleDialogStatus();
 
   //value object containing RecipeDialog state to be passed via context and not props.
   const recipeDialogState = {
