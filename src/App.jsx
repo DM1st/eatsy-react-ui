@@ -36,7 +36,7 @@ export default function App() {
         }}
       >
         <EatsyAppBar />
-        <Container sx={{ mt: 8, mb: 2 }}>
+        <Container sx={{ mb: 2 }}>
           <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
             <AddIcon />
           </Fab>
