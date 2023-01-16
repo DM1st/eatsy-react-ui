@@ -12,7 +12,7 @@ import SaveButtonForDialogs from "./SaveButtonForDialogs";
 import SelectAvatarDialog from "./SelectAvatarDialog";
 import TitleField from "./TitleField";
 import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
-import FilterByTags from "../../../FilterByTags";
+import FilterByTagsSearch from "../../../components/FilterByTagsSearch";
 import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
@@ -93,7 +93,7 @@ export function RecipeDialog(props) {
           <AddMethod />
         </ListItem>
         <ListItem divider theme={RecipeDialogListItemTheme}>
-          <FilterByTags />
+          <FilterByTagsSearch />
         </ListItem>
         <SaveButtonForDialogs closeRecipeDialog={changeRecipeDialogOpenStatus}>
           <>Save New Recipe</>

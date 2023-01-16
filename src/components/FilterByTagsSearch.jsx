@@ -4,7 +4,7 @@ import { React } from "react";
 /**
  * FilterByTags component for searching and filtering.
  */
-export default function FilterByTags() {
+export default function FilterByTagsSearch() {
   //Static data until the solution is integrated.
   const tags = [
     { tag: "Dessert" },
@@ -28,6 +28,7 @@ export default function FilterByTags() {
       options={tags}
       getOptionLabel={(option) => option.tag}
       filterSelectedOptions
+      //params=tags array specified by naming in the options propr
       renderInput={(params) => <TextField {...params} label="filter by tags" />}
     />
   );

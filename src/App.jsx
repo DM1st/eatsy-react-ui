@@ -3,12 +3,12 @@ import { Grid, Container, Fab, Box, CssBaseline } from "@mui/material";
 import { React } from "react";
 import EatsyAppBar from "./components/EatsyAppBar";
 import EatsyFooter from "./components/EatsyFooter";
+import TabPanelSearchOptions from "./components/TabPanelSearchOptions";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
-import RecipeCard from "./RecipeCard";
-import SearchTabPanel from "./SearchTabPanel";
 import { GlobalTheme } from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
+import { RecipeCard } from "@/features/viewRecipeCard";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -45,7 +45,7 @@ export default function App() {
               <>Add New Recipe</>
             </RecipeDialog>
           </Provider>
-          <SearchTabPanel />
+          <TabPanelSearchOptions />
           <Container sx={{ padding: "20px 0" }}>
             <Grid container spacing={4}>
               {cards.map((card) => (
