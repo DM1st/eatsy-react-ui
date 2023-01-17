@@ -1,13 +1,11 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LocalPizzaSharpIcon from "@mui/icons-material/LocalPizzaSharp";
 import ShareIcon from "@mui/icons-material/Share";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import { Typography, Button, Card, CardActions, CardContent, CardMedia, CardHeader, Avatar, IconButton, Collapse } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { Typography, Button, Card, CardActions, CardContent, CardMedia, IconButton, Collapse } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { React, useState } from "react";
-import MoreOptionsMenu from "./MoreOptionsMenu";
+import RecipeCardHeader from "./RecipeCardHeader";
 
 //TODO
 const ExpandMore = styled((props) => {
@@ -22,8 +20,6 @@ const ExpandMore = styled((props) => {
 }));
 
 //Dummy data until integrated into backend
-let recipeAuthor = "Uploader: DM1st";
-let recipeTitle = "Recipe Title";
 let recipeImage = "https://source.unsplash.com/ykThMylLsbY";
 let recipeImageTitle = "Image title";
 let methodStepOnePlaceholderText = "Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.";
@@ -59,32 +55,9 @@ export function RecipeCard() {
   const [countUp, setCountUp] = useState(5);
   const [countDown, setCountDown] = useState(2);
 
-  //Define state for the basic more options menu.
-  //A basic menu opens over the anchor element by default (and ensures all items are visible. )
-  const [anchorEl, setAnchorEl] = useState(null);
-  //Use boolean to track wheter menu should be open or closed based on the anchor state.
-  const open = Boolean(anchorEl);
-  //Set the anchor for the basic menu to be over the button that was clicked
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  //Choosing an option should immediatley commit the option and close the menu
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <Card sx={{ height: "100%", display: "flex", flexDirection: "column", boxShadow: "12" }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: green[500] }} aria-label="recipe">
-            <LocalPizzaSharpIcon />
-          </Avatar>
-        }
-        title={recipeTitle}
-        subheader={recipeAuthor}
-        action={<MoreOptionsMenu handleClick={handleClick} handleClose={handleClose} anchorEl={anchorEl} open={open} />}
-      />
+      <RecipeCardHeader />
       <CardMedia
         sx={{ paddingTop: "56.25%" }} //16:9 aspect ratio
         image={recipeImage}
