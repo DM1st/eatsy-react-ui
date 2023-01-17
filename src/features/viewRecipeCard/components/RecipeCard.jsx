@@ -1,11 +1,10 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ShareIcon from "@mui/icons-material/Share";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import { Typography, Button, Card, CardActions, CardContent, CardMedia, IconButton, Collapse } from "@mui/material";
+import { Typography, Card, CardActions, CardContent, CardMedia, IconButton, Collapse } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { React, useState } from "react";
 import RecipeCardHeader from "./RecipeCardHeader";
+import RecipeRating from "./RecipeRating";
 
 //TODO
 const ExpandMore = styled((props) => {
@@ -51,10 +50,6 @@ export function RecipeCard() {
     setExpanded(!expanded);
   };
 
-  //State for thumbs up/down on the Recipe card.
-  const [countUp, setCountUp] = useState(5);
-  const [countDown, setCountDown] = useState(2);
-
   return (
     <Card sx={{ height: "100%", display: "flex", flexDirection: "column", boxShadow: "12" }}>
       <RecipeCardHeader />
@@ -70,14 +65,7 @@ export function RecipeCard() {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <Button onClick={() => setCountUp(countUp + 1)}>
-          <ThumbUpIcon />
-          {`${countUp === 0 ? " " : countUp}`}
-        </Button>
-        <Button onClick={() => setCountDown(countDown + 1)}>
-          <ThumbDownIcon />
-          {`${countDown === 0 ? " " : countDown}`}
-        </Button>
+        <RecipeRating />
         <ExpandMore expand={expanded ? 1 : 0} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
           <ExpandMoreIcon />
         </ExpandMore>
