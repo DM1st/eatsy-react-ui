@@ -34,7 +34,7 @@ export function RecipeCard() {
 
   return (
     <Card sx={{ height: "100%", display: "flex", flexDirection: "column", boxShadow: "12" }}>
-      <RecipeCardHeader />
+      <RecipeCardHeader recipeTitle={PlaceholderData.at(0).recipeTitle} recipeAuthor={PlaceholderData.at(0).recipeAuthor} />
       <CardMedia
         sx={{ paddingTop: "56.25%" }} //16:9 aspect ratio
         image={PlaceholderData.at(0).recipeImage}

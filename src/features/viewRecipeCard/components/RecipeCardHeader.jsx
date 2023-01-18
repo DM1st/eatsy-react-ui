@@ -1,15 +1,15 @@
 import LocalPizzaSharpIcon from "@mui/icons-material/LocalPizzaSharp";
 import { CardHeader, Avatar } from "@mui/material";
 import { green } from "@mui/material/colors";
+import PropTypes from "prop-types";
 import { React, useState } from "react";
 import MoreOptionsMenu from "./MoreOptionsMenu";
-import { PlaceholderData } from "@/assets/PlaceholderData";
 
 /**
  * Recipe Card Header component to be implemented on the recipe cards
  * and display data such as uploader avatar, recipe title and more options menu
  */
-export default function RecipeCardHeader() {
+export default function RecipeCardHeader({ recipeTitle, recipeAuthor }) {
   //Define state for the basic more options menu.
   //A basic menu opens over the anchor element by default (and ensures all items are visible. )
   const [anchorEl, setAnchorEl] = useState(null);
@@ -31,9 +31,14 @@ export default function RecipeCardHeader() {
           <LocalPizzaSharpIcon />
         </Avatar>
       }
-      title={PlaceholderData.at(0).recipeTitle}
-      subheader={PlaceholderData.at(0).recipeAuthor}
+      title={recipeTitle}
+      subheader={recipeAuthor}
       action={<MoreOptionsMenu handleClick={handleClick} handleClose={handleClose} anchorEl={anchorEl} open={open} />}
     />
   );
 }
+
+RecipeCardHeader.propTypes = {
+  recipeTitle: PropTypes.string.isRequired,
+  recipeAuthor: PropTypes.string.isRequired,
+};
