@@ -27,14 +27,9 @@ export default function App() {
 
   return (
     <CssBaseline>
-      <Box
-        //SX props needed to that Footer sticks to bottom of screen
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh", //Make long so Footer element sticks to bottom of screen
-        }}
-      >
+      {/*SX props needed to that Footer sticks to bottom of screen*/}
+      {/*Make minHeight long so Footer element sticks to bottom of screen*/}
+      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <EatsyAppBar />
         <Container sx={{ mb: 2 }}>
           <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
