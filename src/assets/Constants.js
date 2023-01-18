@@ -1,8 +1,11 @@
 /**
  * FIle to contain all global level constants for the UI.
+ *
+ * This includes:
+ * The content to be provided in the tooltip description,
+ * The Footer content and link
  */
 
-//Description to be provided when the information tooltip on the App header is clicked
 export const Constants = {
   TOOLTIP: {
     DESCRIPTION:
