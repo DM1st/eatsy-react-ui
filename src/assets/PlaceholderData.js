@@ -6,6 +6,7 @@ export const PlaceholderData = [
     key: "68f86f26-5fc8-46e2-b45f-e6f3839bac97",
     recipeTitle: "Recipe Title",
     recipeAuthor: "Uploader: DM1st",
+    recipeSummary: "This is a recipe card. You can use this section to big up the recipe and tempt people to click it.",
     recipeImage: "https://source.unsplash.com/ykThMylLsbY",
     recipeImageTitle: "Image title",
     ingredientSet: ["Beans", "Toast"],

@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import { React, useState } from "react";
 import RecipeCardHeader from "./RecipeCardHeader";
 import RecipeRating from "./RecipeRating";
+import { PlaceholderData } from "@/assets/PlaceholderData";
 
 //TODO
 const ExpandMore = styled((props) => {
@@ -18,27 +19,6 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-//Dummy data until integrated into backend
-let recipeImage = "https://source.unsplash.com/ykThMylLsbY";
-let recipeImageTitle = "Image title";
-let methodStepOnePlaceholderText = "Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.";
-let methodStepTwoPlaceholderText =
-  "Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. \
-  Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8 \
-  minutes. Transfer shrimp to a large plate and set aside, leaving chicken and chorizo in the pan. \
-  Add pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook, stirring often until \
-  thickened and fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; \
-  bring to a boil.";
-let methodStepThreePlaceholderText =
-  "Add rice and stir very gently to distribute.\
-  Top with artichokes and peppers, and cook without stirring, until most of the liquid is \
-  absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and mussels, \
-  tucking them down into the rice, and cook again \
-  without stirring, until mussels have opened and rice is just tender, 5 to 7 minutes more. \
-  (Discard any mussels that don't open.)";
-
-let methodStepFourPlaceholderText = "Set aside off of the heat to let rest for 10 minutes, and then serve.";
-
 /**
  * Recipe Card component displaying all information for a given recipe.
  */
@@ -49,17 +29,19 @@ export function RecipeCard() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  //Array to store each method step as a component, which can then be passed to a react node.
+  const methodStepsArray = [];
 
   return (
     <Card sx={{ height: "100%", display: "flex", flexDirection: "column", boxShadow: "12" }}>
       <RecipeCardHeader />
       <CardMedia
         sx={{ paddingTop: "56.25%" }} //16:9 aspect ratio
-        image={recipeImage}
-        title={recipeImageTitle}
+        image={PlaceholderData.at(0).recipeImage}
+        title={PlaceholderData.at(0).recipeImageTitle}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography>This is a recipe card. You can use this section to big up the recipe and tempt people to click it.</Typography>
+        <Typography>{PlaceholderData.at(0).recipeSummary}</Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="share">
@@ -73,10 +55,14 @@ export function RecipeCard() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
-          <Typography paragraph>{methodStepOnePlaceholderText}</Typography>
-          <Typography paragraph>{methodStepTwoPlaceholderText}</Typography>
-          <Typography paragraph>{methodStepThreePlaceholderText}</Typography>
-          <Typography>{methodStepFourPlaceholderText}</Typography>
+          {Object.entries(PlaceholderData.at(0).method).forEach(([key, value]) => {
+            methodStepsArray.push(
+              <Typography key={key}>
+                {key}:{" " + value}
+              </Typography>
+            );
+          })}
+          <>{methodStepsArray}</>
         </CardContent>
       </Collapse>
     </Card>

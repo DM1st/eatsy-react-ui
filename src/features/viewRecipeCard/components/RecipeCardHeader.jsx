@@ -3,10 +3,7 @@ import { CardHeader, Avatar } from "@mui/material";
 import { green } from "@mui/material/colors";
 import { React, useState } from "react";
 import MoreOptionsMenu from "./MoreOptionsMenu";
-
-//Dummy data until integrated into backend
-let recipeAuthor = "Uploader: DM1st";
-let recipeTitle = "Recipe Title";
+import { PlaceholderData } from "@/assets/PlaceholderData";
 
 /**
  * Recipe Card Header component to be implemented on the recipe cards
@@ -34,8 +31,8 @@ export default function RecipeCardHeader() {
           <LocalPizzaSharpIcon />
         </Avatar>
       }
-      title={recipeTitle}
-      subheader={recipeAuthor}
+      title={PlaceholderData.at(0).recipeTitle}
+      subheader={PlaceholderData.at(0).recipeAuthor}
       action={<MoreOptionsMenu handleClick={handleClick} handleClose={handleClose} anchorEl={anchorEl} open={open} />}
     />
   );
