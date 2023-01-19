@@ -1,16 +1,14 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Grid, Container, Fab, Box, CssBaseline } from "@mui/material";
+import { Container, Fab, Box, CssBaseline } from "@mui/material";
 import { React } from "react";
 import EatsyAppBar from "./components/EatsyAppBar";
 import EatsyFooter from "./components/EatsyFooter";
+import RecipeCardGrid from "./components/RecipeCardGrid";
 import TabPanelSearchOptions from "./components/TabPanelSearchOptions";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 import { GlobalTheme } from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
-import { RecipeCard } from "@/features/viewRecipeCard";
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 export default function App() {
   //Open or close state for the RecipeDialog stored in global hooks.
@@ -36,20 +34,10 @@ export default function App() {
             <AddIcon />
           </Fab>
           <Provider value={recipeDialogState}>
-            <RecipeDialog>
-              <>Add New Recipe</>
-            </RecipeDialog>
+            <RecipeDialog>{"Add New Recipe"}</RecipeDialog>
           </Provider>
           <TabPanelSearchOptions />
-          <Container sx={{ padding: "20px 0" }}>
-            <Grid container spacing={4}>
-              {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
-                  <RecipeCard />
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
+          <RecipeCardGrid />
         </Container>
         <EatsyFooter />
       </Box>
