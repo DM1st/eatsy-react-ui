@@ -2,6 +2,8 @@ import { createTheme } from "@mui/material/styles";
 
 /**
  * The common theme to apply to global components in the application.
+ *
+ * E.g. Have the floating action button fixed in the bottom right of the screen at all times above the primary components
  */
 export const GlobalTheme = createTheme({
   components: {

@@ -1,13 +1,13 @@
-import AddIcon from "@mui/icons-material/Add";
-import { Container, Fab, Box, CssBaseline } from "@mui/material";
+import { Container, Box, CssBaseline } from "@mui/material";
 import { React } from "react";
+import AddRecipeButton from "./components/AddRecipeButton";
 import EatsyAppBar from "./components/EatsyAppBar";
 import EatsyFooter from "./components/EatsyFooter";
 import RecipeCardGrid from "./components/RecipeCardGrid";
 import TabPanelSearchOptions from "./components/TabPanelSearchOptions";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
-import { GlobalTheme } from "./themes/GlobalTheme";
+
 import { RecipeDialog } from "@/features/addRecipe";
 
 /**
@@ -34,9 +34,7 @@ export default function App() {
       <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <EatsyAppBar />
         <Container sx={{ mb: 2 }}>
-          <Fab aria-label="add" onClick={changeRecipeDialogOpenStatus} theme={GlobalTheme}>
-            <AddIcon />
-          </Fab>
+          <AddRecipeButton changeRecipeDialogOpenStatus={changeRecipeDialogOpenStatus} />
           <Provider value={recipeDialogState}>
             <RecipeDialog>{"Add New Recipe"}</RecipeDialog>
           </Provider>
