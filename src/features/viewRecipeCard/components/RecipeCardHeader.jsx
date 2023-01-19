@@ -38,6 +38,7 @@ export default function RecipeCardHeader({ recipeTitle, recipeAuthor }) {
   );
 }
 
+//Check required props are provided and are of the correct type.
 RecipeCardHeader.propTypes = {
   recipeTitle: PropTypes.string.isRequired,
   recipeAuthor: PropTypes.string.isRequired,

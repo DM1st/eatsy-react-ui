@@ -7,7 +7,7 @@ import { React, useState } from "react";
  * Thumbs up/down rating to be implemented on recipe card component
  * Allows for a ratio/scoring system of each recipe for the users.
  */
-export default function RecipeRating() {
+export default function RecipeRatingThumbs() {
   //Placeholder state
   //State for thumbs up/down on the Recipe card.
   const [countUp, setCountUp] = useState(5);
