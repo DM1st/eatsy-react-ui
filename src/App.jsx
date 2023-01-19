@@ -10,6 +10,10 @@ import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 import { GlobalTheme } from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
 
+/**
+ * The top level React component which contains all other React elements.
+ * This App component is provided to the root.render() method in the root index.js file.
+ */
 export default function App() {
   //Open or close state for the RecipeDialog stored in global hooks.
   const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } = useToggleDialogStatus();
