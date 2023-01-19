@@ -1,4 +1,4 @@
-import { Container, Box, CssBaseline } from "@mui/material";
+import { Container, CssBaseline } from "@mui/material";
 import { React } from "react";
 import AddRecipeButton from "./components/AddRecipeButton";
 import EatsyAppBar from "./components/EatsyAppBar";
@@ -8,6 +8,7 @@ import TabPanelSearchOptions from "./components/TabPanelSearchOptions";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 
+import StyledBox from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
 
 /**
@@ -29,9 +30,7 @@ export default function App() {
 
   return (
     <CssBaseline>
-      {/*SX props needed to that Footer sticks to bottom of screen*/}
-      {/*Make minHeight long so Footer element sticks to bottom of screen*/}
-      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <StyledBox>
         <EatsyAppBar />
         <Container sx={{ mb: 2 }}>
           <AddRecipeButton changeRecipeDialogOpenStatus={changeRecipeDialogOpenStatus} />
@@ -42,7 +41,7 @@ export default function App() {
           <RecipeCardGrid />
         </Container>
         <EatsyFooter />
-      </Box>
+      </StyledBox>
     </CssBaseline>
   );
 }
