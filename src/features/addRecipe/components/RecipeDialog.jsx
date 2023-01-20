@@ -52,7 +52,7 @@ export function RecipeDialog(props) {
     childDialog: <FileUploadInput label={"add-recipe-contained-button-file"} />,
   };
 
-  //Props for the SelectAvatar usage of the ListItemFAB component.
+  //Props for the SelectAvatar usage of the ListItemFAB component. (Passed in as spread props)
   const selectAvatarListItemFABProps = {
     hasDivider: true,
     handleOpen: changeSelectAvatarDialogOpenStatus,

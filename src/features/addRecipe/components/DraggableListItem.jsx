@@ -35,7 +35,7 @@ export default function DraggableListItem({ ingredient, index, handleExistingIng
               defaultValue={ingredient.ingredientName}
               onChange={(event) => handleExistingIngredientEdit(event.target.value, ingredient.id)}
             />
-            {/* div required so ListItemSecondaryAction drags with the ListItem */}
+            {/* Box required so ListItemSecondaryAction drags with the ListItem */}
             <Box>
               <ListItemSecondaryAction>
                 <IconButton onClick={() => handleRemoveIngredientClick(ingredient.id)} edge="end" aria-label="deleteIngredient">
