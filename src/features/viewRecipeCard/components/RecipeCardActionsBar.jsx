@@ -1,22 +1,9 @@
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ShareIcon from "@mui/icons-material/Share";
 import { CardActions, IconButton } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import { React } from "react";
 import RecipeRatingThumbs from "./RecipeRatingThumbs";
-
-//TODO
-const ExpandMore = styled((props) => {
-  const { ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { StyledExpandMoreIcon } from "./StyledExpandMoreIcon";
 
 /**
  * Recipe Card actions component to provide a bar with actions such as:
@@ -29,9 +16,7 @@ export default function RecipeCardActionsBar({ handleExpandClick, isExpanded }) 
         <ShareIcon />
       </IconButton>
       <RecipeRatingThumbs />
-      <ExpandMore expand={isExpanded ? 1 : 0} onClick={handleExpandClick} aria-expanded={isExpanded} aria-label="show more">
-        <ExpandMoreIcon />
-      </ExpandMore>
+      <StyledExpandMoreIcon expand={isExpanded} onClick={handleExpandClick} aria-expanded={isExpanded} aria-label="show more" />
     </CardActions>
   );
 }
