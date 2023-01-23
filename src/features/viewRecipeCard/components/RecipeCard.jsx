@@ -19,7 +19,7 @@ export function RecipeCard() {
   };
 
   return (
-    <Card sx={{ height: "100%", display: "flex", flexDirection: "column", boxShadow: "20" }}>
+    <Card sx={{ display: "flex", flexDirection: "column", boxShadow: "20" }}>
       <RecipeCardHeader recipeTitle={PlaceholderData.at(0).recipeTitle} recipeAuthor={PlaceholderData.at(0).recipeAuthor} />
       <RecipeCardImage image={PlaceholderData.at(0).recipeImage} imageTitle={PlaceholderData.at(0).recipeImageTitle} />
       <RecipeCardSummarySection>{PlaceholderData.at(0).recipeSummary}</RecipeCardSummarySection>
