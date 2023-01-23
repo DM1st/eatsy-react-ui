@@ -1,9 +1,7 @@
 import { Grid, Container } from "@mui/material";
 import { React } from "react";
+import { cards } from "@/assets/PlaceholderData";
 import { RecipeCard } from "@/features/viewRecipeCard";
-
-//Placeholder for each recipe object
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 /**
  * Grid to contain RecipeCards
