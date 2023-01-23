@@ -4,13 +4,13 @@ import AddRecipeButton from "./components/AddRecipeButton";
 import EatsyAppBar from "./components/EatsyAppBar";
 import EatsyFooter from "./components/EatsyFooter";
 import RecipeCardGrid from "./components/RecipeCardGrid";
-import TabPanelSearchOptions from "./components/TabPanelSearchOptions";
 import { AppBarTooltipContext } from "./contexts/AppBarTooltipContext";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
 import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 
 import StyledBox from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
+import { TabPanelSearchOptions } from "@/features/tabPanelSearchOptions";
 
 /**
  * The top level React component which contains all other React elements.
