@@ -23,7 +23,7 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
  */
 export function RecipeDialog(props) {
   //Access the RecipeDialog state from the RecipeDialog context(gloabl level) API
-  const { openRecipeDialog, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
+  const { recipeDialogOpen, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
 
   //Open or close state for the IngredientsDialog stored in AddRecipe feature hooks.
   const { openStatus: openIngredientsDialog, toggleDialogStatus: changeIngredientsDialogOpenStatus } = useToggleDialogStatus();
@@ -62,7 +62,7 @@ export function RecipeDialog(props) {
   };
 
   return (
-    <Dialog fullWidth open={openRecipeDialog} onClose={changeRecipeDialogOpenStatus}>
+    <Dialog fullWidth open={recipeDialogOpen} onClose={changeRecipeDialogOpenStatus}>
       <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
         <TitleField variant="h5">{props.children}</TitleField>
         <ListItemTextField uniqueId={"Recipe title"} placeholderText={"Add recipe title"}></ListItemTextField>

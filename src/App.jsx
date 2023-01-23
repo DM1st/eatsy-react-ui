@@ -17,11 +17,11 @@ import { RecipeDialog } from "@/features/addRecipe";
  */
 export default function App() {
   //Open or close state for the RecipeDialog stored in global hooks.
-  const { openStatus: openRecipeDialog, toggleDialogStatus: changeRecipeDialogOpenStatus } = useToggleDialogStatus();
+  const { openStatus: recipeDialogOpen, toggleDialogStatus: changeRecipeDialogOpenStatus } = useToggleDialogStatus();
 
   //value object containing RecipeDialog state to be passed via context and not props.
   const recipeDialogState = {
-    openRecipeDialog,
+    recipeDialogOpen: recipeDialogOpen,
     changeRecipeDialogOpenStatus,
   };
 
