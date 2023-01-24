@@ -13,7 +13,7 @@ import FilterByTagsSearch from "../../../components/FilterByTagsSearch";
 export function TabPanelSearchOptions() {
   //State for which tab value is selected (based on individual Tab Panel index)
   const [value, setValue] = useState(0);
-  //change the state for which tab has been selected.
+  //change the state for which tab has been selected. (based on individual Tab Panel index)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
