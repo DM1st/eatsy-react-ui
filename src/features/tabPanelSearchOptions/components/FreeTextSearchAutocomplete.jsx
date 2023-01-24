@@ -1,17 +1,10 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { React } from "react";
+import { recipes } from "../../../assets/PlaceholderData";
 
-//Dummy data until the UI is integrated with the backend.
-const recipes = [
-  { name: "Pasta Bake" },
-  { name: "Pulled pork" },
-  { name: "Homemade lemonade" },
-  { name: "Gammon in COla" },
-  { name: "Treacle sponge" },
-  { name: "Chocolate pudding" },
-  { name: "Turkey Tagine" },
-];
-
+/**
+ * Autocomplete component to search over existing recipes
+ */
 export default function FreeTextSearchAutocomplete() {
   return (
     <Autocomplete

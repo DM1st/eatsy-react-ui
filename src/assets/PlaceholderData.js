@@ -32,7 +32,7 @@ export const PlaceholderData = [
 //Placeholder for each recipe object
 export const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-//Static data until the solution is integrated.
+//Static data for tags until the solution is integrated.
 export const tags = [
   { tag: "Dessert" },
   { tag: "Cake" },
@@ -41,4 +41,15 @@ export const tags = [
   { tag: "Drink" },
   { tag: "Healthy" },
   { tag: "Slow Cooker" },
+];
+
+//Static data for searchable recipes until the UI is integrated with the backend.
+export const recipes = [
+  { name: "Pasta Bake" },
+  { name: "Pulled pork" },
+  { name: "Homemade lemonade" },
+  { name: "Gammon in COla" },
+  { name: "Treacle sponge" },
+  { name: "Chocolate pudding" },
+  { name: "Turkey Tagine" },
 ];
