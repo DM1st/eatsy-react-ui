@@ -1,12 +1,16 @@
 import { Typography, CardContent, Collapse } from "@mui/material";
 import PropTypes from "prop-types";
-import { React } from "react";
+import { React, useContext } from "react";
+import { RecipeCardContext } from "../contexts/RecipeCardContext";
 
 /**
  * The collapsable content component that can be used on each Recipe card
  *  to provide further information via an open and close vertical transition
  */
-export default function RecipeCardCollapsableContent({ isExpanded, recipeMethod }) {
+export default function RecipeCardCollapsableContent({ recipeMethod }) {
+  //Access the RecipeCard state from the RecipeCard feature level context API
+  const { isExpanded } = useContext(RecipeCardContext);
+
   //MethodStepsArray to store each method step to be displayed in this instance of the RecipeCardCollapsableContent.
   //This can then be passed to a react node for rendering.
   const methodStepsArray = [];
@@ -32,6 +36,5 @@ export default function RecipeCardCollapsableContent({ isExpanded, recipeMethod 
 
 //Check required props are provided and of the correct type.
 RecipeCardCollapsableContent.propTypes = {
-  isExpanded: PropTypes.bool.isRequired,
   recipeMethod: PropTypes.object.isRequired,
 };

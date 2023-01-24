@@ -1,15 +1,18 @@
 import ShareIcon from "@mui/icons-material/Share";
 import { CardActions, IconButton } from "@mui/material";
-import PropTypes from "prop-types";
-import { React } from "react";
+import { React, useContext } from "react";
 import RecipeRatingThumbs from "./RecipeRatingThumbs";
 import { StyledExpandMoreIcon } from "./StyledExpandMoreIcon";
+import { RecipeCardContext } from "../contexts/RecipeCardContext";
 
 /**
  * Recipe Card actions component to provide a bar with actions such as:
  * Voting the recipe up or down, sharing the recipe or expaning the card to view more detail.
  */
-export default function RecipeCardActionsBar({ handleExpandClick, isExpanded }) {
+export default function RecipeCardActionsBar() {
+  //Access the RecipeCard state from the RecipeCard feature level context API
+  const { isExpanded, handleExpandClick } = useContext(RecipeCardContext);
+
   return (
     <CardActions disableSpacing>
       <IconButton aria-label="share">
@@ -20,9 +23,3 @@ export default function RecipeCardActionsBar({ handleExpandClick, isExpanded }) 
     </CardActions>
   );
 }
-
-//Check required props are provided and of the correct type.
-RecipeCardActionsBar.propTypes = {
-  handleExpandClick: PropTypes.func.isRequired,
-  isExpanded: PropTypes.bool.isRequired,
-};
