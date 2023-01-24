@@ -21,8 +21,8 @@ export function TabPanelSearchOptions() {
   return (
     <Container sx={{ marginTop: "20px" }} maxWidth="sm">
       <Tabs value={value} onChange={handleChange} aria-label="search tabs" centered={true}>
-        <Tab icon={<LocalOfferSharpIcon />} label="Filter by tag" iconPosition="start" style={{ minHeight: "30%" }} {...a11yProps(0)} />
-        <Tab icon={<SearchSharpIcon />} label="Free text search" iconPosition="start" style={{ minHeight: "30%" }} {...a11yProps(1)} />
+        <Tab icon={<LocalOfferSharpIcon />} label="Filter by tag" iconPosition="start" style={{ minHeight: "30%" }} />
+        <Tab icon={<SearchSharpIcon />} label="Free text search" iconPosition="start" style={{ minHeight: "30%" }} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <FilterByTagsSearch />
@@ -32,12 +32,4 @@ export function TabPanelSearchOptions() {
       </TabPanel>
     </Container>
   );
-}
-
-//Accessibility props to be passed in via spread operator
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
 }
