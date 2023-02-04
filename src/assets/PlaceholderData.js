@@ -53,3 +53,7 @@ export const recipes = [
   { name: "Chocolate pudding" },
   { name: "Turkey Tagine" },
 ];
+
+//Static data for the number of thumbs up and down each recipe has until the solution is integrated
+export const initialNumberofThumbsUp = 5;
+export const initialNumberofThumbsdown = 2;
