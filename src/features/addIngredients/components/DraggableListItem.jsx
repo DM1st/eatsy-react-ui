@@ -6,7 +6,7 @@ import { Box, IconButton, ListItem, ListItemIcon, ListItemSecondaryAction, TextF
 import { grey } from "@mui/material/colors";
 import PropTypes from "prop-types";
 import { React } from "react";
-import { DraggableListItemTheme } from "../../addRecipe/themes/DraggableListItemTheme";
+import { DraggableListItemTheme } from "../themes/DraggableListItemTheme";
 
 /**
  * ListItems that can be dragged/reordered as well as being edited and deleted.

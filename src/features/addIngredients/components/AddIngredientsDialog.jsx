@@ -5,7 +5,7 @@ import { React, useState, useContext } from "react";
 import AddItemInputBase from "./AddItemInputBase";
 import DraggableListItem from "./DraggableListItem";
 import { IngredientsDialogContext } from "../../addRecipe/contexts/IngredientsDialogContext";
-import { AddIngredientsDialogTheme } from "../../addRecipe/themes/AddIngredientsDialogTheme";
+import { AddIngredientsDialogTheme } from "../themes/AddIngredientsDialogTheme";
 
 /**
  * A child dialog of the AddRecipe parent dialog.
