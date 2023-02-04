@@ -3,7 +3,6 @@ import CollectionsIcon from "@mui/icons-material/Collections";
 import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
-import AddIngredientsDialog from "./AddIngredientsDialog";
 import AddMethod from "./AddMethod";
 import FileUploadInput from "./FileUploadInput";
 import ListItemTextField from "./ListItemTextField";
@@ -17,6 +16,7 @@ import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
+import { AddIngredientsDialog } from "@/features/addIngredients";
 
 /**
  * Recipe parent dialog Component which can be used for creating and editing recipies.

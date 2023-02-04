@@ -4,15 +4,15 @@ import { Button, Container, List, ListSubheader, Paper, Dialog } from "@mui/mate
 import { React, useState, useContext } from "react";
 import AddItemInputBase from "./AddItemInputBase";
 import DraggableListItem from "./DraggableListItem";
-import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
-import { AddIngredientsDialogTheme } from "../themes/AddIngredientsDialogTheme";
+import { IngredientsDialogContext } from "../../addRecipe/contexts/IngredientsDialogContext";
+import { AddIngredientsDialogTheme } from "../../addRecipe/themes/AddIngredientsDialogTheme";
 
 /**
  * A child dialog of the AddRecipe parent dialog.
  * This dialog displays all ingredients associated with the current Recipe.
  * It allow new ingredients to be added and edited as DraggableListItem components.
  */
-export default function AddIngredientsDialog() {
+export function AddIngredientsDialog() {
   //Access the IngredientsDialog state from the RecipeDialog (add/edit recipe feature) level context API
   const { openIngredientsDialog, changeIngredientsDialogOpenStatus } = useContext(IngredientsDialogContext);
 
