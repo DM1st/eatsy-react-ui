@@ -2,17 +2,17 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { Box, Dialog } from "@mui/material";
 
 import { React, useContext } from "react";
-import FileUploadInput from "./FileUploadInput";
-import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
 import SelectAvatarListItemRow from "./SelectAvatarListItemRow";
-import TitleField from "./TitleField";
-import { PresetSelectAvatarOptions } from "../config/PresetSelectAvatarOptions";
-import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
+import FileUploadInput from "../../../components/FileUploadInput";
+import ListItemWithTextAndFAB from "../../../components/ListItemWithTextAndFAB";
+import TitleField from "../../addRecipe/components/TitleField";
+import { PresetSelectAvatarOptions } from "../../addRecipe/config/PresetSelectAvatarOptions";
+import { SelectAvatarDialogContext } from "../../addRecipe/contexts/SelectAvatarDialogContext";
 
 /**
  * The child dialog of the RecipeDialog for selecting the avatar of the uploader for the recipe.
  */
-export default function SelectAvatar() {
+export function SelectAvatarDialog() {
   //Access the SelectAvatar state from the SelectAvatare context API
   const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 

@@ -4,19 +4,19 @@ import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/mater
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
 import AddMethod from "./AddMethod";
-import FileUploadInput from "./FileUploadInput";
 import ListItemTextField from "./ListItemTextField";
-import ListItemWithTextAndFAB from "./ListItemWithTextAndFAB";
 import SaveButtonForDialogs from "./SaveButtonForDialogs";
-import SelectAvatarDialog from "./SelectAvatarDialog";
 import TitleField from "./TitleField";
+import FileUploadInput from "../../../components/FileUploadInput";
 import FilterByTagsSearch from "../../../components/FilterByTagsSearch";
+import ListItemWithTextAndFAB from "../../../components/ListItemWithTextAndFAB";
 import { RecipeDialogContext } from "../../../contexts/RecipeDialogContext";
 import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 import { AddIngredientsDialog } from "@/features/addIngredients";
+import { SelectAvatarDialog } from "@/features/selectAvatar";
 
 /**
  * Recipe parent dialog Component which can be used for creating and editing recipies.

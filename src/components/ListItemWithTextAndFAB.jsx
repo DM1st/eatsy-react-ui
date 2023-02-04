@@ -1,10 +1,10 @@
 import { Typography, Container, Fab, ListItem } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
-import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
+import { RecipeDialogListItemTheme } from "../features/addRecipe/themes/RecipeDialogListItemTheme";
 
 /**
- * Component for the list items in RecipeDialog(s) that have text and a clickable FAB.
+ * Component for the list items in Dialog(s) that have text and a clickable FAB.
  */
 export default function ListItemWithTextAndFAB({
   hasDivider,

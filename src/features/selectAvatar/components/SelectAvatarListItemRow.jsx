@@ -1,7 +1,7 @@
 import { ListItem, Stack } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
-import StackItem from "./StackItem";
+import StackItem from "../../addRecipe/components/StackItem";
 
 /**
  * Reusable ListItem for rows, such as in the SelectAvatar dialog
