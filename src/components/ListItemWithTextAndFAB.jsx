@@ -1,7 +1,7 @@
 import { Typography, Container, Fab, ListItem } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
-import { RecipeDialogListItemTheme } from "../features/addRecipe/themes/RecipeDialogListItemTheme";
+import { DialogListItemTheme } from "@/themes/DialogListItemTheme";
 
 /**
  * Component for the list items in Dialog(s) that have text and a clickable FAB.
@@ -16,13 +16,13 @@ export default function ListItemWithTextAndFAB({
   children,
 }) {
   return (
-    <ListItem divider={hasDivider} theme={RecipeDialogListItemTheme}>
-      <Container theme={RecipeDialogListItemTheme} variant="primary">
+    <ListItem divider={hasDivider} theme={DialogListItemTheme}>
+      <Container theme={DialogListItemTheme} variant="primary">
         {/*The children contains the text to be in the row for this list item*/}
         <Typography color="textSecondary">{children}</Typography>
         {/*label required for the Fabs that use the FileUploadInput component */}
         <label htmlFor={optionalIdForHtmlLabel}>
-          <Fab size={fabSize} onClick={handleOpen} component="span" theme={RecipeDialogListItemTheme}>
+          <Fab size={fabSize} onClick={handleOpen} component="span" theme={DialogListItemTheme}>
             {/*The icon to be inside the Floating Action Button*/}
             <>{selectFabImageIcon}</>
           </Fab>

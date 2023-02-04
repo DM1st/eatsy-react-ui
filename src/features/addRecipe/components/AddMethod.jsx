@@ -1,6 +1,7 @@
 import { Container, Typography, Button } from "@mui/material";
 import { React } from "react";
 
+//TODO remove this component - replicate how the addIngredients component is done
 function AddMethod() {
   return (
     <Container
