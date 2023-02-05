@@ -13,7 +13,7 @@ import { SelectAvatarDialogContext } from "../../addRecipe/contexts/SelectAvatar
  * The child dialog of the RecipeDialog for selecting the avatar of the uploader for the recipe.
  */
 export function SelectAvatarDialog() {
-  //Access the SelectAvatar state from the SelectAvatar context API
+  //Access the SelectAvatar state from the SelectAvatar context API (held by the parent dialog)
   const { openSelectAvatarDialog, changeSelectAvatarDialogOpenStatus } = useContext(SelectAvatarDialogContext);
 
   //Props for the SelectAvatar usage of the ListItemFAB component for picking a custom avatar icon.
@@ -25,7 +25,7 @@ export function SelectAvatarDialog() {
     childDialog: <FileUploadInput label={"contained-button-avatar"} />,
   };
 
-  // The pre-configured options for a recipe uploader to choose from when selecting an avatar
+  // Store the class imported pre-configured options for a recipe uploader to choose from when selecting an avatar in this variable for access.
   const presetSelectAvatarOptions = PresetSelectAvatarOptions;
 
   return (
