@@ -1,10 +1,11 @@
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import { Button, Container, List, ListSubheader, Paper, Dialog } from "@mui/material";
 
-import { React, useState, useContext } from "react";
+import { React, useContext } from "react";
 import AddItemInputBase from "./AddItemInputBase";
 import DraggableListItem from "./DraggableListItem";
 import { IngredientsDialogContext } from "../../addRecipe/contexts/IngredientsDialogContext";
+import { useIngredientsState } from "../hooks/useIngredientsState";
 import { AddIngredientsDialogTheme } from "../themes/AddIngredientsDialogTheme";
 
 /**
@@ -16,11 +17,8 @@ export function AddIngredientsDialog() {
   //Access the IngredientsDialog state from the RecipeDialog (add/edit recipe feature) level context API
   const { openIngredientsDialog, changeIngredientsDialogOpenStatus } = useContext(IngredientsDialogContext);
 
-  //State object - initialise with an empty array
-  const [ingredients, setIngredients] = useState([]);
-
-  //State object for adding new ingredient to ingredient list
-  const [inputValue, setInputValue] = useState("");
+  //ingredients state for the list of ingredients stored in addIngredients feature hooks
+  const { ingredients, setIngredients, inputValue, setInputValue } = useIngredientsState();
 
   const handleAddButtonClick = () => {
     //Creates new ingredient object which gets pushed to the Array
