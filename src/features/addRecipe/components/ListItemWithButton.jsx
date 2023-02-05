@@ -26,6 +26,6 @@ export default function ListItemWithButton({ rowText, buttonText, onClickEvent, 
 ListItemWithButton.propTypes = {
   rowText: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
-  onClickEvent: PropTypes.func.isRequired,
-  childDialog: PropTypes.node.isRequired,
+  onClickEvent: PropTypes.func /*.isRequired,*/, //TODO required when Method dialog created
+  childDialog: PropTypes.node /*.isRequired,*/, //TODO required when Method dialog created
 };
