@@ -1,10 +1,10 @@
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import { Typography, Box, ListItem, Dialog, Button, Container } from "@mui/material";
+import { Box, ListItem, Dialog } from "@mui/material";
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
-import AddMethod from "./AddMethod";
 import ListItemTextField from "./ListItemTextField";
+import ListItemWithButton from "./ListItemWithButton";
 import SaveButtonForDialogs from "./SaveButtonForDialogs";
 import TitleField from "./TitleField";
 import FileUploadInput from "../../../components/FileUploadInput";
@@ -25,7 +25,7 @@ export function RecipeDialog(props) {
   //Access the RecipeDialog state from the RecipeDialog context(gloabl level) API
   const { recipeDialogOpen, changeRecipeDialogOpenStatus } = useContext(RecipeDialogContext);
 
-  //Open or close state for the IngredientsDialog stored in AddRecipe feature hooks.
+  //Open or close state for the IngredientsDialog stored in AddRecipe feature hooks (store the ingredients dialog state in the parent (RecipeDialog) component).
   const { openStatus: openIngredientsDialog, toggleDialogStatus: changeIngredientsDialogOpenStatus } = useToggleDialogStatus();
 
   //value object containing IngredientsDialog state to be passed via context and not props.
@@ -34,7 +34,7 @@ export function RecipeDialog(props) {
     changeIngredientsDialogOpenStatus,
   };
 
-  //Open or close state for the SelectAvatarDialog stored in AddRecipe feature hooks.
+  //Open or close state for the SelectAvatarDialog stored in AddRecipe feature hooks (store the selectAvatar dialog state in the parent (RecipeDialog) component).
   const { openStatus: openSelectAvatarDialog, toggleDialogStatus: changeSelectAvatarDialogOpenStatus } = useToggleDialogStatus();
 
   //value object containing SelectAvatarDialog state to be passed via context and not props.
@@ -77,21 +77,16 @@ export function RecipeDialog(props) {
           <>Add Recipe photo</>
         </ListItemWithTextAndFAB>
         <ListItemTextField uniqueId={"Recipe description"} placeholderText={"Add recipe description"}></ListItemTextField>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <Container theme={RecipeDialogListItemTheme} variant="secondary">
-            <Typography color="textSecondary">Add ingredients</Typography>
-            <Button variant="outlined" onClick={changeIngredientsDialogOpenStatus}>
-              Ingredients
-            </Button>
-            {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
-            <IngredientsDialogContext.Provider value={ingredientsDialogState}>
-              <AddIngredientsDialog />
-            </IngredientsDialogContext.Provider>
-          </Container>
-        </ListItem>
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <AddMethod />
-        </ListItem>
+        {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
+        <IngredientsDialogContext.Provider value={ingredientsDialogState}>
+          <ListItemWithButton
+            rowText="Add Ingredients"
+            buttonText="Ingredients"
+            onClickEvent={changeIngredientsDialogOpenStatus}
+            childDialog={<AddIngredientsDialog />}
+          />
+        </IngredientsDialogContext.Provider>
+        <ListItemWithButton rowText={"Add recipe method"} buttonText={"Method"} /*TODO: Add the two missing props */ />
         <ListItem divider theme={RecipeDialogListItemTheme}>
           <FilterByTagsSearch />
         </ListItem>
