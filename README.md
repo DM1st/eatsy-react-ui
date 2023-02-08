@@ -59,6 +59,8 @@ Most of the code lives in the `src` folder and looks like this:
 ```sh
 src
 |
++-- api               # exported API request declarations and api hooks for this UI
+|
 +-- assets            # assets folder contains all the static files such as images etc.
 |
 +-- components        # shared components used across the entire application
@@ -78,8 +80,6 @@ A feature in this codebase typically has the the following structure:
 
 ```sh
 src/features/typical-feature
-|
-+-- api         # exported API request declarations and api hooks related to a specific feature
 |
 +-- themes      # contains all the themes and styling files for a specific feature
 |
