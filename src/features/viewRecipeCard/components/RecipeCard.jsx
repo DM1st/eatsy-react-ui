@@ -1,4 +1,5 @@
 import { Card } from "@mui/material";
+import PropTypes from "prop-types";
 import { React } from "react";
 import RecipeCardActionsBar from "./RecipeCardActionsBar";
 import RecipeCardCollapsableContent from "./RecipeCardCollapsableContent";
@@ -13,7 +14,7 @@ import { PlaceholderData } from "@/assets/PlaceholderData";
 /**
  * Recipe Card component displaying all information for a given recipe.
  */
-export function RecipeCard() {
+export function RecipeCard({ recipe }) {
   //Expand or collapse state for the RecipeCard Collapsable stored in RecipeCard feature hooks
   const { openStatus: isExpanded, toggleDialogStatus: handleExpandClick } = useToggleDialogStatus();
 
@@ -33,12 +34,17 @@ export function RecipeCard() {
   return (
     <RecipeCardContext.Provider value={RecipeCardState}>
       <Card sx={{ display: "flex", flexDirection: "column", boxShadow: "20" }}>
-        <RecipeCardHeader recipeTitle={PlaceholderData.at(0).recipeTitle} recipeAuthor={PlaceholderData.at(0).recipeAuthor} />
+        <RecipeCardHeader recipeTitle={recipe.name} recipeAuthor={PlaceholderData.at(0).recipeAuthor} />
         <RecipeCardImage image={PlaceholderData.at(0).recipeImage} imageTitle={PlaceholderData.at(0).recipeImageTitle} />
         <RecipeCardSummarySection>{PlaceholderData.at(0).recipeSummary}</RecipeCardSummarySection>
         <RecipeCardActionsBar />
-        <RecipeCardCollapsableContent recipeMethod={PlaceholderData.at(0).method} />
+        <RecipeCardCollapsableContent recipeMethod={recipe.method} />
       </Card>
     </RecipeCardContext.Provider>
   );
 }
+
+//Check required props are provided and of the correct type
+RecipeCard.propTypes = {
+  recipe: PropTypes.object.isRequired,
+};
