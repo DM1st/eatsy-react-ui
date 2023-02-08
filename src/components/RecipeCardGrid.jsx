@@ -1,23 +1,16 @@
 import { Grid, Container } from "@mui/material";
-import axios from "axios";
-import { React, useState } from "react";
-import { useEffect } from "react";
+import { React } from "react";
+
 import { RecipeCard } from "@/features/viewRecipeCard";
+import { UseRecipesState } from "@/hooks/useRecipesState";
 
 /**
  * Grid to contain RecipeCards
  * Wraps each recipeCard in a resonsive grid to adjust card size as the screen size is adjusted.
  */
 export default function RecipeCardGrid() {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/retrieveAllRecipes").then((res) => {
-      const response = res.data;
-      console.log(response); //TODO remove
-      setRecipes(Array.from(response));
-    });
-  }, []);
+  //Access the state that retrieves and holds the recipes from the eatsy service.
+  const { recipes } = UseRecipesState();
 
   return (
     <Container sx={{ padding: "20px 0" }}>
