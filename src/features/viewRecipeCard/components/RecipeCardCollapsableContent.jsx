@@ -2,6 +2,7 @@ import { Typography, CardContent, Collapse } from "@mui/material";
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
 import { RecipeCardContext } from "../contexts/RecipeCardContext";
+// import { TabPanelOptions } from "@/features/tabPanelOptions";
 
 /**
  * The collapsable content component that can be used on each Recipe card
@@ -27,8 +28,9 @@ export default function RecipeCardCollapsableContent({ recipeMethod }) {
   return (
     <Collapse in={isExpanded} timeout="auto" unmountOnExit>
       <CardContent>
-        <Typography paragraph>Method:</Typography>
-        <>{methodStepsArray}</>
+        {/* <Typography paragraph>Method:</Typography>
+        <>{methodStepsArray}</> */}
+        {/* <TabPanelOptions /> */}
       </CardContent>
     </Collapse>
   );

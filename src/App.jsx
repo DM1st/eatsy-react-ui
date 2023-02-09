@@ -10,7 +10,7 @@ import { useToggleDialogStatus } from "./hooks/useToggleDialogStatus";
 
 import StyledBox from "./themes/GlobalTheme";
 import { RecipeDialog } from "@/features/addRecipe";
-import { TabPanelSearchOptions } from "@/features/tabPanelSearchOptions";
+import { TabPanelOptions } from "@/features/tabPanelOptions";
 
 /**
  * The top level React component which contains all other React elements.
@@ -48,7 +48,7 @@ export default function App() {
           <RecipeDialogContext.Provider value={recipeDialogState}>
             <RecipeDialog>{"Add New Recipe"}</RecipeDialog>
           </RecipeDialogContext.Provider>
-          <TabPanelSearchOptions />
+          <TabPanelOptions />
           <RecipeCardGrid />
         </Container>
         <EatsyFooter />

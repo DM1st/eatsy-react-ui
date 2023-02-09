@@ -5,26 +5,26 @@ import { React } from "react";
 import FreeTextSearchAutocomplete from "./FreeTextSearchAutocomplete";
 import TabPanel from "./TabPanel";
 import FilterByTagsSearch from "../../../components/FilterByTagsSearch";
-import { UseTabPanelSearchOptionsState } from "../hooks/TabPanelSearchOptionsState";
+import { UseTabPanelOptionsState } from "../hooks/TabPanelOptionsState";
 
 /**
  * The Tabs and associated TabPanels for storing and displaying the selected tab content
- * in the main section of the Eatsy Recipe page.
+ * on the respective component
  */
-export function TabPanelSearchOptions() {
-  //Variable to store the state of the Tab Panel Search Options
-  const tabPanelSearchOptionsState = UseTabPanelSearchOptionsState();
+export function TabPanelOptions() {
+  //Variable to store the state of the Tab Panel Options
+  const tabPanelOptionsState = UseTabPanelOptionsState();
 
   return (
     <Container sx={{ marginTop: "20px" }} maxWidth="sm">
-      <Tabs value={tabPanelSearchOptionsState.value} onChange={tabPanelSearchOptionsState.handleChange} aria-label="search tabs" centered={true}>
+      <Tabs value={tabPanelOptionsState.value} onChange={tabPanelOptionsState.handleChange} aria-label="search tabs" centered={true}>
         <Tab icon={<LocalOfferSharpIcon />} label="Filter by tag" iconPosition="start" style={{ minHeight: "30%" }} />
         <Tab icon={<SearchSharpIcon />} label="Free text search" iconPosition="start" style={{ minHeight: "30%" }} />
       </Tabs>
-      <TabPanel value={tabPanelSearchOptionsState.value} index={0}>
+      <TabPanel value={tabPanelOptionsState.value} index={0}>
         <FilterByTagsSearch />
       </TabPanel>
-      <TabPanel value={tabPanelSearchOptionsState.value} index={1}>
+      <TabPanel value={tabPanelOptionsState.value} index={1}>
         <FreeTextSearchAutocomplete />
       </TabPanel>
     </Container>
