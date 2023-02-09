@@ -13,8 +13,8 @@ export function TabPanelOptions({ tabIconOne, tabLabelOne, tabComponentOne, tabI
   const tabPanelOptionsState = UseTabPanelOptionsState();
 
   return (
-    <Container sx={{ marginTop: "20px" }} maxWidth="sm">
-      <Tabs value={tabPanelOptionsState.value} onChange={tabPanelOptionsState.handleChange} centered={true}>
+    <Container sx={{ marginTop: "20px" }} maxWidth="sm" disableGutters>
+      <Tabs value={tabPanelOptionsState.value} onChange={tabPanelOptionsState.handleChange} centered={true} variant="fullWidth">
         <Tab icon={tabIconOne} label={tabLabelOne} iconPosition="start" style={{ minHeight: "30%" }} />
         <Tab icon={tabIconTwo} label={tabLabelTwo} iconPosition="start" style={{ minHeight: "30%" }} />
       </Tabs>
