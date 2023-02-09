@@ -6,7 +6,7 @@ import API from "@/api/axios";
  *
  * useEffect used to couteract the http request being
  * sent on each re-render. (side-effects executed in the render cycle)
- * Without useEffect, this would cause the state to be resent with the Get request
+ * Without useEffect, this would cause the state to be re-sent with the Get request.
  * Finally, an infinite loop would be executed as setRecipes() would trigger
  * a re-render (which would lead to another Get request etc...)
  *
@@ -14,22 +14,33 @@ import API from "@/api/axios";
  * This informs useEffect that the effect isn't dependent on any values from props/state
  * thus never re-running
  *
+ * axios get() returns a promise that resolves to the response data if the request
+ * was successful, or rejects with an error if the request failed.
+ * A promise is used for handling asynchronous operations in a more structured way
+ * than using callbacks.
+ *
+ * The asynchronous behaviour of Axios and Promises makes the app more performant
+ * and responsive (app will still respond to user nteractions) since the main execution
+ * thread is not blocked whilst waiting for the response from the server.
+ * The await keyword resolves the promise and returns the value which is stored
+ * in the response variable.
+ *
  */
 export const UseRecipesState = () => {
   const [recipes, setRecipes] = useState([]);
 
-  //axios get() returns a promise which returns a response object.
-  //inside the response object, there is data that is assigned to the value of recipes
   useEffect(() => {
-    API.get("api/retrieveAllRecipes")
-      .then((res) => {
-        const response = res.data;
-        setRecipes(response);
-      })
-      .catch((error) => {
+    async function getRecipes() {
+      try {
+        const response = await API.get("api/retrieveAllRecipes");
+        setRecipes(response.data);
+      } catch (error) {
         console.error(error);
-      });
+      }
+    }
+    getRecipes();
   }, []);
-  console.log(recipes); //TODO - remove
+
+  console.log(recipes); //remove
   return { recipes };
 };
