@@ -59,7 +59,7 @@ Most of the code lives in the `src` folder and looks like this:
 ```sh
 src
 |
-+-- api               # exported API request declarations and api hooks for this UI
++-- api               # exported API request declarations for this UI
 |
 +-- assets            # assets folder contains all the static files such as images etc.
 |

@@ -18,6 +18,8 @@ import API from "@/api/axios";
 export const UseRecipesState = () => {
   const [recipes, setRecipes] = useState([]);
 
+  //axios get() returns a promise which returns a response object.
+  //inside the response object, there is data that is assigned to the value of recipes
   useEffect(() => {
     API.get("api/retrieveAllRecipes")
       .then((res) => {
