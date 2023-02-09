@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import API from "@/api/axios";
 
 /**
  * State management for the recipes in Eatsy
@@ -19,8 +19,7 @@ export const UseRecipesState = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/retrieveAllRecipes")
+    API.get("api/retrieveAllRecipes")
       .then((res) => {
         const response = res.data;
         setRecipes(response);
