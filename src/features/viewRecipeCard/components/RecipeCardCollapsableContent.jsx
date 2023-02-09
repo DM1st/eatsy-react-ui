@@ -29,12 +29,12 @@ export default function RecipeCardCollapsableContent({ recipeIngredients, recipe
 
   //Props for the RecipeCard usage of the TabPanelOptions component (passed in as spread props).
   const tabPanelOptionsProps = {
-    tabIconOne: <RestaurantIcon />,
-    tabLabelOne: "Ingredients",
-    tabComponentOne: <Box>{recipeIngredients}</Box>,
-    tabIconTwo: <FormatListNumberedIcon />,
-    tabLabelTwo: "Method",
-    tabComponentTwo: <>{methodStepsArray}</>,
+    tabIconZero: <RestaurantIcon />,
+    tabLabelZero: "Ingredients",
+    tabComponentZero: <Box>{recipeIngredients}</Box>,
+    tabIconOne: <FormatListNumberedIcon />,
+    tabLabelOne: "Method",
+    tabComponentOne: <>{methodStepsArray}</>,
   };
 
   return (

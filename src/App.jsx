@@ -41,12 +41,12 @@ export default function App() {
 
   //Props for the searchoptions usage on the TabPanelOptions component (passed in as spread props).
   const tabPanelOptionsProps = {
-    tabIconOne: <LocalOfferSharpIcon />,
-    tabLabelOne: "Filter by tag",
-    tabComponentOne: <FilterByTagsSearch />,
-    tabIconTwo: <SearchSharpIcon />,
-    tabLabelTwo: "Free text search",
-    tabComponentTwo: <FreeTextSearchAutocomplete />,
+    tabIconZero: <LocalOfferSharpIcon />,
+    tabLabelZero: "Filter by tag",
+    tabComponentZero: <FilterByTagsSearch />,
+    tabIconOne: <SearchSharpIcon />,
+    tabLabelOne: "Free text search",
+    tabComponentOne: <FreeTextSearchAutocomplete />,
   };
 
   return (
