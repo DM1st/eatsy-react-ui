@@ -38,7 +38,7 @@ export function RecipeCard({ recipe }) {
         <RecipeCardImage image={PlaceholderData.at(0).recipeImage} imageTitle={PlaceholderData.at(0).recipeImageTitle} />
         <RecipeCardSummarySection>{PlaceholderData.at(0).recipeSummary}</RecipeCardSummarySection>
         <RecipeCardActionsBar />
-        <RecipeCardCollapsableContent recipeMethod={recipe.method} />
+        <RecipeCardCollapsableContent recipeIngredients={recipe.ingredientSet} recipeMethod={recipe.method} />
       </Card>
     </RecipeCardContext.Provider>
   );

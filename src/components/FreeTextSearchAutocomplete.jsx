@@ -1,6 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { React } from "react";
-import { recipes } from "../../../assets/PlaceholderData";
+import { recipes } from "../assets/PlaceholderData";
 
 /**
  * Autocomplete component to search over existing recipes

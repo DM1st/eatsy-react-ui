@@ -1,8 +1,12 @@
+import LocalOfferSharpIcon from "@mui/icons-material/LocalOfferSharp";
+import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import { Container, CssBaseline } from "@mui/material";
 import { React } from "react";
 import AddRecipeButton from "./components/AddRecipeButton";
 import EatsyAppBar from "./components/EatsyAppBar";
 import EatsyFooter from "./components/EatsyFooter";
+import FilterByTagsSearch from "./components/FilterByTagsSearch";
+import FreeTextSearchAutocomplete from "./components/FreeTextSearchAutocomplete";
 import RecipeCardGrid from "./components/RecipeCardGrid";
 import { AppBarTooltipContext } from "./contexts/AppBarTooltipContext";
 import { RecipeDialogContext } from "./contexts/RecipeDialogContext";
@@ -35,6 +39,16 @@ export default function App() {
     changeTooltipOpenStatus,
   };
 
+  //Props for the searchoptions usage on the TabPanelOptions component (passed in as spread props).
+  const tabPanelOptionsProps = {
+    tabIconOne: <LocalOfferSharpIcon />,
+    tabLabelOne: "Filter by tag",
+    tabComponentOne: <FilterByTagsSearch />,
+    tabIconTwo: <SearchSharpIcon />,
+    tabLabelTwo: "Free text search",
+    tabComponentTwo: <FreeTextSearchAutocomplete />,
+  };
+
   return (
     <CssBaseline>
       <StyledBox>
@@ -48,7 +62,7 @@ export default function App() {
           <RecipeDialogContext.Provider value={recipeDialogState}>
             <RecipeDialog>{"Add New Recipe"}</RecipeDialog>
           </RecipeDialogContext.Provider>
-          <TabPanelOptions />
+          <TabPanelOptions {...tabPanelOptionsProps} />
           <RecipeCardGrid />
         </Container>
         <EatsyFooter />
