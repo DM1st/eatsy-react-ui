@@ -1,5 +1,5 @@
-import LocalOfferSharpIcon from "@mui/icons-material/LocalOfferSharp";
-import SearchSharpIcon from "@mui/icons-material/SearchSharp";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Typography, CardContent, Collapse, Box } from "@mui/material";
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
@@ -29,10 +29,10 @@ export default function RecipeCardCollapsableContent({ recipeIngredients, recipe
 
   //Props for the RecipeCard usage of the TabPanelOptions component (passed in as spread props).
   const tabPanelOptionsProps = {
-    tabIconOne: <LocalOfferSharpIcon />,
+    tabIconOne: <RestaurantIcon />,
     tabLabelOne: "Ingredients",
     tabComponentOne: <Box>{recipeIngredients}</Box>,
-    tabIconTwo: <SearchSharpIcon />,
+    tabIconTwo: <FormatListNumberedIcon />,
     tabLabelTwo: "Method",
     tabComponentTwo: <>{methodStepsArray}</>,
   };
