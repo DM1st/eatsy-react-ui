@@ -34,11 +34,11 @@ export function RecipeCard({ recipe }) {
   return (
     <RecipeCardContext.Provider value={RecipeCardState}>
       <Card sx={{ display: "flex", flexDirection: "column", boxShadow: "20" }}>
-        <RecipeCardHeader recipeTitle={recipe.name} recipeAuthor={PlaceholderData.at(0).recipeAuthor} />
+        <RecipeCardHeader recipeTitle={recipe.name} recipeAuthor={recipe.uploader} />
         <RecipeCardImage image={PlaceholderData.at(0).recipeImage} imageTitle={PlaceholderData.at(0).recipeImageTitle} />
-        <RecipeCardSummarySection>{PlaceholderData.at(0).recipeSummary}</RecipeCardSummarySection>
+        <RecipeCardSummarySection>{recipe.recipeSummary}</RecipeCardSummarySection>
         <RecipeCardActionsBar />
-        <RecipeCardCollapsableContent recipeIngredients={recipe.ingredientSet} recipeMethod={recipe.method} />
+        <RecipeCardCollapsableContent recipeIngredients={recipe.ingredients} recipeMethod={recipe.method} />
       </Card>
     </RecipeCardContext.Provider>
   );

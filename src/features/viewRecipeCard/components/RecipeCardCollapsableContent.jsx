@@ -1,6 +1,6 @@
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
-import { Typography, CardContent, Collapse, Box } from "@mui/material";
+import { Typography, CardContent, Collapse } from "@mui/material";
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
 import { RecipeCardContext } from "../contexts/RecipeCardContext";
@@ -22,16 +22,25 @@ export default function RecipeCardCollapsableContent({ recipeIngredients, recipe
   Object.entries(recipeMethod).forEach(([key, value]) => {
     methodStepsArray.push(
       <Typography key={key}>
-        {key}:{" " + value}
+        {"Step " + key}:{" " + value}
       </Typography>
     );
+  });
+
+  //IngredientStepsArray to store each ingredient to be displayed in this instance of the RecipeCardCollapsableContent.
+  //This can then be passed to a react node for rendering.
+  const ingredientStepsArray = [];
+
+  //Update the methodStep array with a Typography component for each individual method step.
+  Object.entries(recipeIngredients).forEach(([key, value]) => {
+    ingredientStepsArray.push(<Typography key={key}>{value}</Typography>);
   });
 
   //Props for the RecipeCard usage of the TabPanelOptions component (passed in as spread props).
   const tabPanelOptionsProps = {
     tabIconZero: <RestaurantIcon />,
     tabLabelZero: "Ingredients",
-    tabComponentZero: <Box>{recipeIngredients}</Box>,
+    tabComponentZero: <>{ingredientStepsArray}</>,
     tabIconOne: <FormatListNumberedIcon />,
     tabLabelOne: "Method",
     tabComponentOne: <>{methodStepsArray}</>,
