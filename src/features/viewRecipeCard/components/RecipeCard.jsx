@@ -19,7 +19,7 @@ export function RecipeCard({ recipe }) {
   const { openStatus: isExpanded, toggleDialogStatus: handleExpandClick } = useToggleDialogStatus();
 
   //Thumbs up/dowm rating state for the RecipeCard stored in RecipeCard feature hooks
-  const { countUp, countDown, setCountUp, setCountDown } = UseThumbsUpDownState();
+  const { countUp, countDown, setCountUp, setCountDown } = UseThumbsUpDownState(recipe.thumbsUpCount, recipe.thumbsDownCount);
 
   //value object containing RecipeCard state to be passed via context and not props.
   const RecipeCardState = {
