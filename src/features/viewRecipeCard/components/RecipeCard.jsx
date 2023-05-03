@@ -35,7 +35,7 @@ export function RecipeCard({ recipe }) {
     <RecipeCardContext.Provider value={RecipeCardState}>
       <Card sx={{ display: "flex", flexDirection: "column", boxShadow: "20" }}>
         <RecipeCardHeader recipeTitle={recipe.name} recipeAuthor={recipe.uploader} />
-        <RecipeCardImage imageTitle={PlaceholderData.at(0).recipeImageTitle} />
+        <RecipeCardImage imageTitle={PlaceholderData.at(0).recipeImageTitle} recipeKey={recipe.key} />
         <RecipeCardSummarySection>{recipe.recipeSummary}</RecipeCardSummarySection>
         <RecipeCardActionsBar />
         <RecipeCardCollapsableContent recipeIngredients={recipe.ingredients} recipeMethod={recipe.method} />
