@@ -6,6 +6,7 @@ import MobileStepper from "@mui/material/MobileStepper";
 import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+//import PropTypes from "prop-types";
 import * as React from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
@@ -108,3 +109,8 @@ export function RecipeCardCarousel() {
     </Box>
   );
 }
+
+//Check required props are provided and of the correct type.
+// RecipeCardCarousel.propTypes = {
+//   images: PropTypes.object.isRequired,
+// };
