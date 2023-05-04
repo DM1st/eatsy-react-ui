@@ -2,14 +2,15 @@ import { Card } from "@mui/material";
 import PropTypes from "prop-types";
 import { React } from "react";
 import RecipeCardActionsBar from "./RecipeCardActionsBar";
+import { RecipeCardCarousel } from "./RecipeCardCarousel";
 import RecipeCardCollapsableContent from "./RecipeCardCollapsableContent";
 import RecipeCardHeader from "./RecipeCardHeader";
-import RecipeCardImage from "./RecipeCardImage";
+//import RecipeCardImage from "./RecipeCardImage";
 import RecipeCardSummarySection from "./RecipeCardSummarySection";
 import { RecipeCardContext } from "../contexts/RecipeCardContext";
 import { UseThumbsUpDownState } from "../hooks/useThumbsUpDownState";
 import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
-import { PlaceholderData } from "@/assets/PlaceholderData";
+//import { PlaceholderData } from "@/assets/PlaceholderData";
 
 /**
  * Recipe Card component displaying all information for a given recipe.
@@ -35,7 +36,8 @@ export function RecipeCard({ recipe }) {
     <RecipeCardContext.Provider value={RecipeCardState}>
       <Card sx={{ display: "flex", flexDirection: "column", boxShadow: "20" }}>
         <RecipeCardHeader recipeTitle={recipe.name} recipeAuthor={recipe.uploader} />
-        <RecipeCardImage imageTitle={PlaceholderData.at(0).recipeImageTitle} recipeKey={recipe.key} />
+        {/* <RecipeCardImage imageTitle={PlaceholderData.at(0).recipeImageTitle} recipeKey={recipe.key} /> */}
+        <RecipeCardCarousel />
         <RecipeCardSummarySection>{recipe.recipeSummary}</RecipeCardSummarySection>
         <RecipeCardActionsBar />
         <RecipeCardCollapsableContent recipeIngredients={recipe.ingredients} recipeMethod={recipe.method} />
