@@ -5,37 +5,22 @@ import Button from "@mui/material/Button";
 import MobileStepper from "@mui/material/MobileStepper";
 import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-//import PropTypes from "prop-types";
+//import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
 import * as React from "react";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import { UseRecipeImageModelsState } from "../hooks/UseRecipeImageModelsState";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const images = [
-  {
-    label: "San Francisco – Oakland Bay Bridge, United States",
-    imgPath: "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    label: "Bird",
-    imgPath: "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    label: "Bali, Indonesia",
-    imgPath: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
-  },
-  {
-    label: "Goč, Serbia",
-    imgPath: "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-];
+export function RecipeCardCarousel({ recipeKey }) {
+  //Get the recipeModels
+  const { recipeImageModels } = UseRecipeImageModelsState(recipeKey);
 
-export function RecipeCardCarousel() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
+  const maxSteps = recipeImageModels.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -62,7 +47,7 @@ export function RecipeCardCarousel() {
           bgcolor: "background.default",
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
+        {/* <Typography>{recipeImageModels[activeStep].imageName}</Typography>  */}
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -70,20 +55,21 @@ export function RecipeCardCarousel() {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {images.map((step, index) => (
-          <div key={step.label}>
+        {recipeImageModels.map((currentRecipeImageModel, index) => (
+          <div key={currentRecipeImageModel.key}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
                 sx={{
-                  height: 255,
+                  objectFit: "contain",
+                  height: "100%",
                   display: "block",
                   maxWidth: 400,
                   overflow: "hidden",
                   width: "100%",
                 }}
-                src={step.imgPath}
-                alt={step.label}
+                src={"http://localhost:8080/api/get/image/" + currentRecipeImageModel.key}
+                alt={currentRecipeImageModel.imageName}
               />
             ) : null}
           </div>
@@ -111,6 +97,6 @@ export function RecipeCardCarousel() {
 }
 
 //Check required props are provided and of the correct type.
-// RecipeCardCarousel.propTypes = {
-//   images: PropTypes.object.isRequired,
-// };
+RecipeCardCarousel.propTypes = {
+  recipeKey: PropTypes.string.isRequired,
+};
