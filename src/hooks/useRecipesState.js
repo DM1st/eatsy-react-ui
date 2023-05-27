@@ -41,6 +41,6 @@ export const UseRecipesState = () => {
     getRecipes();
   }, []);
 
-  console.log(recipes); //remove
+  //console.log(recipes); //remove
   return { recipes };
 };

@@ -11,15 +11,18 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
 export default function SaveButtonForDialogs(props) {
   return (
     <Container theme={RecipeDialogListItemTheme} variant="tertiary">
-      <Button onClick={props.closeRecipeDialog} variant="contained">
-        {props.children}
-      </Button>
+      <form onSubmit={props.formUpload}>
+        <Button type="submit" onClick={props.closeRecipeDialog} variant="contained">
+          {props.children}
+        </Button>
+      </form>
     </Container>
   );
 }
 
 //Check to ensure required props are passed through and are of the correct type.
 SaveButtonForDialogs.propTypes = {
+  formUpload: PropTypes.func.isRequired,
   closeRecipeDialog: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired, //any renderable object.
 };

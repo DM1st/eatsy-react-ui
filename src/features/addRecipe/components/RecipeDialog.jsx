@@ -3,6 +3,7 @@ import CollectionsIcon from "@mui/icons-material/Collections";
 import { Box, ListItem, Dialog } from "@mui/material";
 import PropTypes from "prop-types";
 import { React, useContext } from "react";
+import { useState } from "react";
 import ListItemTextField from "./ListItemTextField";
 import ListItemWithButton from "./ListItemWithButton";
 import SaveButtonForDialogs from "./SaveButtonForDialogs";
@@ -15,8 +16,16 @@ import { IngredientsDialogContext } from "../contexts/IngredientsDialogContext";
 import { SelectAvatarDialogContext } from "../contexts/SelectAvatarDialogContext";
 import { useToggleDialogStatus } from "../hooks/useToggleDialogStatus";
 import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
+import API from "@/api/axios";
 import { AddIngredientsDialog } from "@/features/addIngredients";
 import { SelectAvatarDialog } from "@/features/selectAvatar";
+
+//Initial values for the form
+const initialValues = {
+  recipeTitle: "",
+  uploaderName: "",
+  recipeDescription: "",
+};
 
 /**
  * Recipe parent dialog Component which can be used for creating and editing recipies.
@@ -61,40 +70,81 @@ export function RecipeDialog(props) {
     childDialog: <SelectAvatarDialog />,
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const [values, setValues] = useState(initialValues);
+
+  const submitForm = () => {
+    const formData = new FormData();
+    console.log("WE ARE IN HERE");
+    formData.append("name", values.recipeTitle);
+    formData.append("uploader", values.uploaderName);
+    formData.append("recipeSummary", values.recipeDescription);
+
+    API.post("api/add", formData)
+      .then(() => {
+        alert("File Upload success");
+      })
+      .catch(() => alert("File Upload Error"));
+  };
+
   return (
-    <Dialog fullWidth open={recipeDialogOpen} onClose={changeRecipeDialogOpenStatus}>
-      <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
-        <TitleField variant="h5">{props.children}</TitleField>
-        <ListItemTextField uniqueId={"Recipe title"} placeholderText={"Add recipe title"}></ListItemTextField>
-        <ListItemTextField uniqueId={"Uploader name"} placeholderText={"Uploader (your name)"}></ListItemTextField>
-        {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
-        <SelectAvatarDialogContext.Provider value={selectAvatarDialogState}>
-          <ListItemWithTextAndFAB {...selectAvatarListItemFABProps}>
-            <>Select your avatar</>
+    <form onSubmit={submitForm}>
+      <Dialog fullWidth open={recipeDialogOpen} onClose={changeRecipeDialogOpenStatus}>
+        <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
+          <TitleField variant="h5">{props.children}</TitleField>
+          <ListItemTextField
+            value={values.recipeTitle}
+            onChange={handleInputChange}
+            uniqueId={"Recipe title"}
+            placeholderText={"Add recipe title"}
+          ></ListItemTextField>
+          <ListItemTextField
+            value={values.uploaderName}
+            onChange={handleInputChange}
+            uniqueId={"Uploader name"}
+            placeholderText={"Uploader (your name)"}
+          ></ListItemTextField>
+          {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
+          <SelectAvatarDialogContext.Provider value={selectAvatarDialogState}>
+            <ListItemWithTextAndFAB {...selectAvatarListItemFABProps}>
+              <>Select your avatar</>
+            </ListItemWithTextAndFAB>
+          </SelectAvatarDialogContext.Provider>
+          <ListItemWithTextAndFAB {...addPhotoListItemFABProps}>
+            <>Add Recipe photo</>
           </ListItemWithTextAndFAB>
-        </SelectAvatarDialogContext.Provider>
-        <ListItemWithTextAndFAB {...addPhotoListItemFABProps}>
-          <>Add Recipe photo</>
-        </ListItemWithTextAndFAB>
-        <ListItemTextField uniqueId={"Recipe description"} placeholderText={"Add recipe description"}></ListItemTextField>
-        {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
-        <IngredientsDialogContext.Provider value={ingredientsDialogState}>
-          <ListItemWithButton
-            rowText="Add Ingredients"
-            buttonText="Ingredients"
-            onClickEvent={changeIngredientsDialogOpenStatus}
-            childDialog={<AddIngredientsDialog />}
-          />
-        </IngredientsDialogContext.Provider>
-        <ListItemWithButton rowText={"Add recipe method"} buttonText={"Method"} /*TODO: Add the two missing props */ />
-        <ListItem divider theme={RecipeDialogListItemTheme}>
-          <FilterByTagsSearch />
-        </ListItem>
-        <SaveButtonForDialogs closeRecipeDialog={changeRecipeDialogOpenStatus}>
-          <>Save New Recipe</>
-        </SaveButtonForDialogs>
-      </Box>
-    </Dialog>
+          <ListItemTextField
+            value={values.recipeDescription}
+            onChange={handleInputChange}
+            uniqueId={"Recipe description"}
+            placeholderText={"Add recipe description"}
+          ></ListItemTextField>
+          {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
+          <IngredientsDialogContext.Provider value={ingredientsDialogState}>
+            <ListItemWithButton
+              rowText="Add Ingredients"
+              buttonText="Ingredients"
+              onClickEvent={changeIngredientsDialogOpenStatus}
+              childDialog={<AddIngredientsDialog />}
+            />
+          </IngredientsDialogContext.Provider>
+          <ListItemWithButton rowText={"Add recipe method"} buttonText={"Method"} /*TODO: Add the two missing props */ />
+          <ListItem divider theme={RecipeDialogListItemTheme}>
+            <FilterByTagsSearch />
+          </ListItem>
+          <SaveButtonForDialogs closeRecipeDialog={changeRecipeDialogOpenStatus} formUpload={submitForm}>
+            <>Save New Recipe</>
+          </SaveButtonForDialogs>
+        </Box>
+      </Dialog>
+    </form>
   );
 }
 

@@ -14,7 +14,7 @@ export default function FileUploadInput(props) {
       <input
         accept="image/*"
         id={label}
-        multiple
+        multiple="multiple"
         type="file"
         /*onChange={this.handleUploadClick}*/
       />

@@ -16,6 +16,6 @@ export const UseRecipeImageModelsState = (recipeKey) => {
     getRecipeImageModels();
   }, [recipeKey]);
 
-  console.log(recipeImageModels);
+  //console.log(recipeImageModels);
   return { recipeImageModels };
 };
