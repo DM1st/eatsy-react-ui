@@ -70,6 +70,9 @@ export function RecipeDialog(props) {
     childDialog: <SelectAvatarDialog />,
   };
 
+  const [values, setValues] = useState(initialValues);
+  //const [selectedFile, setSelectedFile] = useState(null);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -78,14 +81,16 @@ export function RecipeDialog(props) {
     });
   };
 
-  const [values, setValues] = useState(initialValues);
-
   const submitForm = () => {
     const formData = new FormData();
     console.log("WE ARE IN HERE");
+    console.log("recipeTitle " + values.recipeTitle);
+    console.log("uploader " + values.uploaderName);
+    console.log("recipeDescription " + values.recipeDescription);
+
     formData.append("name", values.recipeTitle);
     formData.append("uploader", values.uploaderName);
-    formData.append("recipeSummary", values.recipeDescription);
+    formData.append("recipeDescription", values.recipeDescription);
 
     API.post("api/add", formData)
       .then(() => {
@@ -95,20 +100,20 @@ export function RecipeDialog(props) {
   };
 
   return (
-    <form onSubmit={submitForm}>
+    <form>
       <Dialog fullWidth open={recipeDialogOpen} onClose={changeRecipeDialogOpenStatus}>
         <Box p={4} display="flex" flexDirection="column" alignItems="start" gap="2">
           <TitleField variant="h5">{props.children}</TitleField>
           <ListItemTextField
             value={values.recipeTitle}
             onChange={handleInputChange}
-            uniqueId={"Recipe title"}
+            name={"recipeTitle"}
             placeholderText={"Add recipe title"}
           ></ListItemTextField>
           <ListItemTextField
             value={values.uploaderName}
             onChange={handleInputChange}
-            uniqueId={"Uploader name"}
+            name={"uploaderName"}
             placeholderText={"Uploader (your name)"}
           ></ListItemTextField>
           {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}
@@ -123,7 +128,7 @@ export function RecipeDialog(props) {
           <ListItemTextField
             value={values.recipeDescription}
             onChange={handleInputChange}
-            uniqueId={"Recipe description"}
+            name={"recipeDescription"}
             placeholderText={"Add recipe description"}
           ></ListItemTextField>
           {/*The Provider component exposed by the Context API to provide the context to child Dialog*/}

@@ -7,17 +7,18 @@ import { RecipeDialogListItemTheme } from "../themes/RecipeDialogListItemTheme";
  * Text Field component to be used in a list on a the Recipe dialogs.
  */
 export default function ListItemTextField(props) {
-  const { uniqueId, placeholderText } = props;
+  const { name, placeholderText, onChange } = props;
 
   return (
     <ListItem theme={RecipeDialogListItemTheme} divider>
-      <TextField id={uniqueId} label={placeholderText} margin="dense" type="text" fullWidth />
+      <TextField name={name} label={placeholderText} onChange={onChange} margin="dense" type="text" fullWidth />
     </ListItem>
   );
 }
 
 //check all required props are passed to the component and they are of the correct type.
 ListItemTextField.propTypes = {
-  uniqueId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   placeholderText: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
